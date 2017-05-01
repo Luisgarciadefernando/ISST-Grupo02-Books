@@ -64,6 +64,7 @@
 
                             <div class="post-excerpt gray-text">
                                 <p><c:out value="${libreria.descripcion}" /></p>
+                                <p><c:out value="${libreria.localizacion}" /></p>
                             </div>
                             <a href="${libreria.url}" class="gray-text margin-top-10 post-read-more">
                                 <i class="fa fa-arrow-circle-o-right fa-2x v-align-middle"></i> Visitar la web

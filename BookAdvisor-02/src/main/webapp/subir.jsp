@@ -23,27 +23,25 @@
     <div id="popup1" class="overlay" style="overflow: scroll;">
         <div class="popup">
             <h1 style="text-align: center;text-decoration: underline;margin-bottom: -10px;"> Subir una ficha </h1>
-            <form class="form-subir" role="form" method="post" action="/subir" style="margin-left: -8px;margin-top: 22px;">
+            <form class="form-subir" role="form" method="post" action="/subir" style="margin-left: -3px;margin-top: 22px;">
                 <div class="form-group">
                     <a class="close" href="#">&times;</a>
                     <label for="titulo">Título</label>
-                    <input type="text" class="form-control" name="titulo" id="titulo" required=""/>
+                    <input type="text" class="form-control" name="titulo" id="titulo"/>
                     <label for="autor">Autor</label>
-                    <input type="text" class="form-control" name="autor" id="autor" required=""/>
-                    <label for="traductor">Traductor</label>
-                    <input type="text" class="form-control" name="traductor" id="traductor"/>
+                    <input type="text" class="form-control" name="autor" id="autor" />
                     <label for="genero">Género</label>
                     <select name="genero" class="form-control">
                         <option value="SinGénero">Seleccione un género literario</option>
                         <option value="Policial">Policial</option> 
-                        <option value="Romántico">Romántico</option>
+                        <option value="Romantico">Romántico</option>
                         <option value="Terror">Terror</option> 
-                        <option value="Ciencia Ficción">Ciencia Ficción</option> 
+                        <option value="CienciaFiccion">Ciencia Ficción</option> 
                         <option value="Aventura">Aventura</option> 
 
                     </select>
                     <label for="comentarios">Resumen</label> 
-                    <textarea class="form-control" name="resumen" required="" style="width: 320px; height: 100px; border-radius: 4px"></textarea>
+                    <textarea class="form-control" name="resumen" style="width: 320px; height: 100px; border-radius: 4px"></textarea>
                         
                 </div>
                 <div class="drag-drop">
@@ -59,9 +57,6 @@
                 <button type="reset" class="btn btn-default">Borrar todo</button>
             </form>
         </div>
-    </div>
-    <!-- JS -->
-        <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
-        <script type="text/javascript" src="js/templatemo-script.js"></script>      <!-- Templatemo Script --> 
+    </div> 
 </body>
 </html>

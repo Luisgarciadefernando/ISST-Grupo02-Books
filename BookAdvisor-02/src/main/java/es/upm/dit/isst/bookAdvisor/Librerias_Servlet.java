@@ -24,6 +24,9 @@ import es.upm.dit.isst.bookAdvisor.model.Lector;
 import es.upm.dit.isst.bookAdvisor.model.Libreria;
 
 public class Librerias_Servlet extends HttpServlet{
+
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public void init() throws ServletException {
 		ObjectifyService.register(Libreria.class);	
@@ -33,10 +36,10 @@ public class Librerias_Servlet extends HttpServlet{
 		      throws IOException, ServletException {
 		LibreriaDAO dao = LibreriaDAOImpl.getInstancia();
 		
-//		Libreria libreria1 = dao.create("Libreria Le", "c/ Paseo de la Casetellana", "http://www.libreriale.es", "email1", "Esta es una libreria de noseque y de nosecuantos", "libreria1.png");
-//		Libreria libreria2 = dao.create("Nosecuantitos", "c/ Paseo de la Habana", "http://www.google.es", "email2", "Esta es otra libreria de noseque y de nosecuantos", "libreria2.jpeg");
-//		Libreria libreria3 = dao.create("Libreria3", "c/ de la Piruleta", "http://www.marca.com", "email3", "Esta es una mas libreria de noseque y de nosecuantos", "libreria3.jpeg");
-		
+//		Libreria libreria1 = dao.create("Libreria Le", "c/ Paseo de la Casetellana", "http://www.libreriale.es", "email1", "Esta es una libreria de noseque y de nosecuantos", "1", "libreria1.png");
+//		Libreria libreria2 = dao.create("Nosecuantitos", "c/ Paseo de la Habana", "http://www.google.es", "email2", "Esta es otra libreria de noseque y de nosecuantos", "1", "libreria2.jpeg");
+//		Libreria libreria3 = dao.create("Libreria3", "c/ de la Piruleta", "http://www.marca.com", "email3", "Esta es una mas libreria de noseque y de nosecuantos", "1", "libreria3.jpeg");
+//		dao.deleteAll();
 		List<Libreria> librerias = dao.read();
 		
 		request.getSession().setAttribute("librerias", librerias);

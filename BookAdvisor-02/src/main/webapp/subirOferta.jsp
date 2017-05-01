@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<%@ page import="com.google.appengine.api.blobstore.BlobstoreServiceFactory" %>
-<%@ page import="com.google.appengine.api.blobstore.BlobstoreService" %>
-<% BlobstoreService blobstoreService2 = BlobstoreServiceFactory.getBlobstoreService(); %>
-    
-
-    
+        
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -161,7 +155,7 @@
     }
 
 </style>
-    <script language="javascript" src="js/jquery-1.4.4.min.js"></script>
+<script language="javascript" src="js/jquery-1.4.4.min.js"></script>
 <script language="javascript" type="text/javascript">
     
 jQuery.fn.calendarioDW = function() {
@@ -469,18 +463,39 @@ $(document).ready(function(){
 </head>
 <body>
     <div class="box">
-        <a class="button" href="#popup1">Publicar Oferta</a>
+        <a class="button" href="#popup2">Publicar Oferta</a>
     </div>      
-    <div id="popup1" class="overlay" style="overflow: scroll;">
+    <div id="popup2" class="overlay" style="overflow: scroll;">
         <div class="popup">
             <h1 style="text-align: center;text-decoration: underline;margin-bottom: -10px;"> Publicar Oferta </h1>
-            <form class="form-subir" role="form" method="post" action="/subir" style="margin-left: -3px;margin-top: 22px;">
+            <form class="form-subir" role="form" method="post" action="/subirOferta" style="margin-left: -3px;margin-top: 22px;">
                 <div class="form-group">
                     <a class="close" href="#">&times;</a>
                     <label for="titulo">Título</label>
                     <input type="text" class="form-control" name="titulo" id="titulo"/>
                     <label for="descuento">Descuento</label>
-                    <input type="text" class="form-control" name="descuento" id="descuento" />
+                    <select name="descuento" class="form-control" id="descuento">
+                        <option value="0">Seleccione un descuento</option>
+                        <option value="5">5%</option> 
+                        <option value="10">10%</option>
+                        <option value="15">15%</option> 
+                        <option value="20">20%</option> 
+                        <option value="25">25%</option> 
+                        <option value="30">30%</option>
+                        <option value="35">35%</option> 
+                        <option value="40">40%</option>
+                        <option value="45">45%</option> 
+                        <option value="50">50%</option> 
+                        <option value="55">55%</option> 
+                        <option value="60">60%</option>
+                        <option value="65">65%</option> 
+                        <option value="70">70%</option> 
+                        <option value="75">75%</option> 
+                        <option value="80">80%</option>
+                        <option value="85">85%</option> 
+                        <option value="90">90%</option>
+                        <option value="95">95%</option>
+                    </select>
                     <label for="cupon">¿Quieres asignar un cupón a tu oferta?</label>
                     <input type="text" class="form-control" name="cupon" id="cupon" />
                     <label for="caducidad" style="margin-left:18px;">Fecha de caducidad</label>

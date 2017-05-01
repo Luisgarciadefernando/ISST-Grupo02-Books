@@ -34,7 +34,7 @@
             border: 2px solid #D0991E;
             padding-bottom: 15px;
             padding-top: 5px;
-            width: 34%;
+            width: 35%;
             margin-left: 60px;
             border-radius: 10px;
             margin-top: 10px;
@@ -52,8 +52,14 @@
           }
 
           .BotonSubir{
-            margin-left: 120px;
+            margin-left: -14px;
             margin-top: -50px;
+
+          }
+          
+          .BotonSubirOferta{
+            margin-left: 205px;
+            margin-top: -54px;
 
           }
 
@@ -98,7 +104,7 @@
                     <li><a href="bibliotecas">Bibliotecas</a></li>
                     <li><a href="librerias">Librerías</a></li>
                     <li><a href="editoriales.jsp">Editoriales</a></li>
-        
+                    <li><a href="ofertas">Ofertas y descuentos</a></li>
                 </ul>
             </nav>
         </div>
@@ -127,12 +133,16 @@
           <div class="imagen" style="margin-left:-10px"><img src="img/no-disponible.jpg" alt="" class="img-circle" style="width:80px;height: 80px;margin-left: 30px;"> </div>
           <div class="usuario">
              <h10>${libreria.nombre}</h10> 
-            <p><h11> Librería </h11></p>
+            <p><h11> Libreria </h11></p>
             <a href="/logout" class="autenticado">Logout</a>
           </div>
           <div class="BotonSubir">
             <!--<a href="/subir.jsp" class="autenticado">Subir ficha</a>-->
             <%@include file="subir.jsp" %>
+          </div>
+          <div class="BotonSubirOferta">
+            <!--<a href="/subirOferta.jsp" class="autenticado">Publicar oferta</a>-->
+            <%@include file="subirOferta.jsp" %>
           </div>
         </div>
       </div> 

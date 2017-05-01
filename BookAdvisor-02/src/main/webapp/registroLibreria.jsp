@@ -61,7 +61,7 @@
                         <input type="text" class="form-control" name="url" id="url" placeholder="URL página Web" required="" autofocus="" onclick="myurl()">
                         <script>
                                 function myurl() {
-                                document.getElementById("url").value="http://www.";
+                                document.getElementById("url").value="http://";
                                 }
                         </script>
                         <textarea name="descripcion" placeholder="Describa su librería" class="form-control" name="descripcion" id="descripcion" required="" autofocus=""style="resize: none;"></textarea>

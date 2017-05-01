@@ -319,6 +319,42 @@ section { padding: 50px 0; }
 	margin-top: 0;
 }
 
+.circuloRojo {
+	height: 100px;
+	width: 100px;
+	display: table-cell;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+	font-size:24px;
+	vertical-align: middle;
+	border-radius: 50%;
+	background: #B40404;
+}
+.circuloAmarillo {
+	height: 100px;
+	width: 100px;
+	display: table-cell;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+	font-size:24px;
+	vertical-align: middle;
+	border-radius: 50%;
+	background: #D7DF01;
+}
+.circuloAzul {
+	height: 100px;
+	width: 100px;
+	display: table-cell;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+	font-size:24px;
+	vertical-align: middle;
+	border-radius: 50%;
+	background: #0B0B61;
+}
 /* Our Products */
 .img-fashion {
 	max-width: 209px;
@@ -659,45 +695,3 @@ hr.gold-hr { border-color: #D0AF51; }
 @media screen and (max-width: 345px) {
 	.product-menu a { padding: 10px; }	
 }
-
-
-
- /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map,#map2 {
-        height: 300px;
-        width: 300px;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #floating-panel{
-        position: absolute;
-        top: 10px;
-        left: 25%;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
-        text-align: center;
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-      }
-      #floating-panel2 {
-        position: absolute;
-        top: 10px;
-        left: 25%;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
-        text-align: center;
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-        margin-left:450px;
-      }
