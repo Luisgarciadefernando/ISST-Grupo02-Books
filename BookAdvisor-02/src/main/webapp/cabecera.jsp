@@ -57,6 +57,12 @@
 
           }
 
+          .BotonSubirOferta{
+            margin-left: 205px;
+            margin-top: -54px;
+
+          }
+
         </style>
 
     </head>
@@ -98,6 +104,7 @@
                     <li><a href="bibliotecas">Bibliotecas</a></li>
                     <li><a href="librerias">Librerías</a></li>
                     <li><a href="editoriales.jsp">Editoriales</a></li>
+                     <li><a href="ofertas">Ofertas y descuentos</a></li>
         
                 </ul>
             </nav>
@@ -135,6 +142,10 @@
           <div class="BotonSubir">
             <!--<a href="/subir.jsp" class="autenticado">Subir ficha</a>-->
             <%@include file="subir.jsp" %>
+          </div>
+        <div class="BotonSubirOferta">
+            <!--<a href="/subirOferta.jsp" class="autenticado">Publicar oferta</a>-->
+            <%@include file="subirOferta.jsp" %>
           </div>
         </div>
       </div> 
