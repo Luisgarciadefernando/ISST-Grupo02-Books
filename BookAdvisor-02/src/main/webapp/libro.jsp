@@ -50,6 +50,9 @@
                         <h5><strong>Resumen:</strong></h5>
                         <h6>${libro.resumen}
                         </h6>
+                        <h5><strong>Autor:</strong></h5>
+                        <h6>${libro.autor}
+                        </h6>
                         <h5><strong>Género:</strong></h5>
                         <h6>${libro.genero}
                         </h6>
@@ -89,7 +92,7 @@
                     </div>
                 </div>
                 
-                 <c:if test="${not empty lector and empty valoracion}">
+                 <c:if test="${not empty lector and empty valoracion and empty admin}">
                   <div id="div-derecha2">
                     <div id="div-derecha2-sub">
                    
@@ -156,8 +159,56 @@ $(document).ready(function(){
                         <p style="margin-left:20px !important;">${valoracion.comentario}</p>
                   	</div>
                     </c:if>  
+
+                    <c:if test="${not empty lector and empty loTiene and empty admin}">
+                   
+                        <form action="/intercambio" method="post" id="form-intercambio">
+                        <input type="hidden" name="tengo" value="true">
+                        <input type="hidden" name="libro" value="${libro.id}" >
+                        <button class="btn" type="submit" >Lo tengo</button>
+                        </form>
+                  	 	
+                    </c:if>  
+                    <c:if test="${not empty lector and not empty loTiene}">
+                   
+                        <p>Lo tienes para intercambio</p>
+                        
+                  	 	
+                    </c:if>
+                      <c:if test="${not empty libreria and empty loTiene}">
+                   
+                        <form action="/asignaLibreria" method="post" id="form-asignaLibreria">
+                        Formato: <input type="text" name="formato" required=""><br>
+                        Precio: <input type="number" name="precio" step="0.01" min="0"><br>
+                        <input type="hidden" name="tengo" value="true">
+                        <input type="hidden" name="libro" value="${libro.id}" >
+                        <button class="btn" type="submit" >Lo tengo</button>
+                        </form>
+                  	 	
+                    </c:if>  
+                    <c:if test="${not empty libreria and not empty loTiene and not empty asignacionlib}">
+                   
+                        Lo tienes a un precio de: ${asignacionlib.precio} euros<br>
+                        En formato: ${asignacionlib.formato}
+                  	 	
+                    </c:if>    
+                    <div id="disponibilidad">
+                    <form action="/disponibilidad" method="get">
+                    <input type="hidden" value="true" name="intercambio">
+                    <input type="hidden" value="${libro.id}" name="libro">
+                   <button class="btn" type="submit" >Disponibilidad intercambio</button>
+                    </form>
+                    <form action="/disponibilidad" method="get">
+                    <input type="hidden" value="true" name="librerias">
+                    <input type="hidden" value="${libro.id}" name="libro">
+                   <button class="btn" type="submit" >Disponibilidad librerias</button>
+                    </form>
+                    
+                   
+
 					<div id="comentarios"  class ="" style="margin-left: 65px;margin-top: -25px;margin-bottom: 25px;">
                         <h4 ><strong style="text-decoration: underline;">Comentarios:</strong></h4>
+
                         <c:if test="${not empty valoraciones}">
                         <c:forEach items="${valoraciones}" var="vali">
                         <p>
@@ -169,6 +220,7 @@ $(document).ready(function(){
                         </c:forEach>
                         </c:if>
                     </div>
+                    
        
         <!-- "About Us" -->
          <!-- end "About Us" -->
