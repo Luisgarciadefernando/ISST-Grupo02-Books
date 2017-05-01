@@ -144,7 +144,8 @@
     <servlet-name>Logout</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
-      <servlet-name>Intercambio</servlet-name>
+  <servlet>
+    <servlet-name>Intercambio</servlet-name>
     <servlet-class>es.upm.dit.isst.bookAdvisor.Intercambio_Servlet</servlet-class>
   </servlet>
   <servlet-mapping>
@@ -183,7 +184,6 @@
     <servlet-name>Usuario</servlet-name>
     <url-pattern>/usuario</url-pattern>
   </servlet-mapping>
-  <welcome-file-list>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
