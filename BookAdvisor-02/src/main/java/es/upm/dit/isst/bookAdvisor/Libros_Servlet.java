@@ -1,6 +1,7 @@
 package es.upm.dit.isst.bookAdvisor;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -16,26 +17,31 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.googlecode.objectify.ObjectifyService;
 
+import es.upm.dit.isst.bookAdvisor.dao.AutorDAO;
+import es.upm.dit.isst.bookAdvisor.dao.AutorDAOImpl;
 import es.upm.dit.isst.bookAdvisor.dao.LibroDAO;
 import es.upm.dit.isst.bookAdvisor.dao.LibroDAOImpl;
+import es.upm.dit.isst.bookAdvisor.model.Autor;
 import es.upm.dit.isst.bookAdvisor.model.Libro;
 
 public class Libros_Servlet  extends HttpServlet  {
 	@Override
 	public void init() throws ServletException {
 		ObjectifyService.register(Libro.class);
+		ObjectifyService.register(Autor.class);
+
 	}
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		LibroDAO dao = LibroDAOImpl.getInstancia();
 		
 		
-		List<Libro> libros = dao.read();
+		List<Libro> libros = dao.readEstado(1);
 		
-		/*
-		dao.create("El Se�or de los anillos", "------", "Fantas�a", "J R R Tolkien", 0, "anillo.jpg");
-		dao.create("El ni�o con el pijama de rayas", "", "Drama", "John Boyne", 0, "pijama.jpg");
-		dao.create("Los pilares de la tierra", "....", "Ficci�n", "Ken Follet", 0, "pilares.jpg");
+		
+		/*dao.create("El Se�or de los anillos", "Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.", "Fantas�a", "J R R Tolkien", 0, "anillo.jpg");
+		dao.create("El ni�o con el pijama de rayas", "Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.", "Drama", "John Boyne", 0, "pijama.jpg");
+		dao.create("Los pilares de la tierra", "Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.", "Ficci�n", "Ken Follet", 0, "pilares.jpg");
 		 */
 		if(request.getParameter("busqueda")!=null){
 			String busqueda = request.getParameter("busqueda");
@@ -81,8 +87,24 @@ public class Libros_Servlet  extends HttpServlet  {
 			    });
 			  Collections.reverse(libros);
 		}
-		
+	
 		request.getSession().setAttribute("libros", libros);
+		
+		AutorDAO autordao = AutorDAOImpl.getInstancia();
+		
+		List<Libro> librosautor = new ArrayList<Libro>();
+		if(request.getParameter("autor")!=null){
+			
+			String autorId = request.getParameter("autor");
+			Autor a = autordao.readId(autorId);
+			for(Libro l: libros){
+				
+				if(l.getAutor()!=null && l.getAutor().equals(a.getNombre())){
+					librosautor.add(l);
+				}
+			}
+			request.getSession().setAttribute("libros", librosautor);
+		}
 		RequestDispatcher view = request.getRequestDispatcher("libros.jsp");
 		view.forward(request, response);
 	}

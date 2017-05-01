@@ -94,6 +94,9 @@ public class Comprueba_Login_Servlet extends HttpServlet {
 				
 				request.getSession().setAttribute("lector", lector);
 				
+				if(lector.getEmail().equals("admin@admin")){
+					request.getSession().setAttribute("admin", true);
+				}
 				
 				response.sendRedirect("/libros");
 
