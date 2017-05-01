@@ -26,42 +26,58 @@
        
 
           .usuario{
-            margin-top: -75px; 
-            margin-left: 120px; 
+            margin-top: -64px !important;
+            margin-left: 120px !important; 
           }
 
           .credenciales {
-            border: 2px solid #D0991E;
+            border: 2px solid #D0991E !important;
             padding-bottom: 15px;
-            padding-top: 5px;
-            width: 34%;
-            margin-left: 60px;
-            border-radius: 10px;
-            margin-top: 10px;
+            padding-top: 5px !important;
+            width: 48% !important;
+            margin-left: 60px !important;
+            border-radius: 10px !important;
+            margin-top: 10px !important;
           }
 
           h11{
-            font-weight: bold;
-            color: #D0991E;
+            font-weight: bold !important;
+            color: #D0991E !important;
           }
 
           h10{
             
-            font-weight: bold;
-            color: black;
+            font-weight: bold !important;
+            color: black !important;
           }
 
-          .BotonSubir{
-            margin-left: 120px;
-            margin-top: -50px;
-
+  
+          
+          .botones {
+          	margin-left: 160px !important;
+			margin-top: -140px;
           }
-
-          .BotonSubirOferta{
-            margin-left: 205px;
-            margin-top: -54px;
-
+          
+          .imagen {
+          	margin-left:-10px !important;
+          
           }
+          
+          .img-circle {
+          width:80px !important;
+          height: 80px !important;
+          margin-left: 30px !important;
+          
+          }
+          .log {
+         margin-top: 24px !important;
+		 margin-left: 23px !important;
+		padding-bottom: 40px !important;
+          }
+          
+        
+          
+          
 
         </style>
 
@@ -113,18 +129,22 @@
             
       <div class="credenciales">
         <div class="templatemo-container">
-      	  <div class="imagen" style="margin-left:-10px"><img src="img/no-disponible.jpg" alt="" class="img-circle" style="width:80px;height: 80px;margin-left: 30px;"> </div>
+      	  <div class="imagen"><img src="img/no-disponible.jpg" alt="" class="img-circle"> </div>
           <div class="usuario">
       	     <h10>${lector.nombre}</h10> 
             <p><h11> Administrador </h11></p>
             
           </div>
-          <div class="BotonSubir">
-            <!--<a href="/subir.jsp" class="autenticado">Subir ficha</a>-->
-            <%@include file="subir.jsp" %>
-          </div>
+          <div class="log">
           <a href="/admin" class="autenticado">Administración del sistema</a><br>
        	  <a href="/logout" class="autenticado">Logout</a>
+       	  </div>
+          <div class="botones" style="margin-top: -163px !important;padding-bottom: 70px;">
+          
+            <!--<a href="/subir.jsp" class="autenticado">Subir ficha</a>-->
+            <%@include file="subir.jsp" %>
+         
+         </div>
         </div>
       </div> 
         
@@ -133,67 +153,89 @@
             
       <div class="credenciales">
         <div class="templatemo-container">
-      	  <div class="imagen" style="margin-left:-10px"><img src="img/no-disponible.jpg" alt="" class="img-circle" style="width:80px;height: 80px;margin-left: 30px;"> </div>
+      	  <div class="imagen"><img src="img/no-disponible.jpg" alt="" class="img-circle"> </div>
           <div class="usuario">
       	     <h10>${lector.nombre}</h10> 
             <p><h11> Lector </h11></p>
+       	    
+       	    </div>
+       	    <div class="log">
        	    <a href="/logout" class="autenticado">Logout</a>
+       	    </div>
           </div>
-          <div class="BotonSubir">
+          
+          <div class="botones">
+         
             <!--<a href="/subir.jsp" class="autenticado">Subir ficha</a>-->
             <%@include file="subir.jsp" %>
-          </div>
-        <div class="BotonSubirOferta">
+         
+        
             <!--<a href="/subirOferta.jsp" class="autenticado">Publicar oferta</a>-->
             <%@include file="subirOferta.jsp" %>
+          
           </div>
         </div>
-      </div> 
+     
         
      </c:if>
          <c:if test="${not empty libreria}">
-        <div class="credenciales">
+        <div class="credenciales" style="padding-bottom: 67px !important;">
         <div class="templatemo-container">
-          <div class="imagen" style="margin-left:-10px"><img src="img/no-disponible.jpg" alt="" class="img-circle" style="width:80px;height: 80px;margin-left: 30px;"> </div>
+          <div class="imagen"><img src="img/no-disponible.jpg" alt="" class="img-circle"> </div>
           <div class="usuario">
              <h10>${libreria.nombre}</h10> 
             <p><h11> Librería </h11></p>
+            </div>
+            <div class="log">
             <a href="/logout" class="autenticado">Logout</a>
+          	</div>
           </div>
-          <div class="BotonSubir">
+          <div class="botones">
+          
             <!--<a href="/subir.jsp" class="autenticado">Subir ficha</a>-->
             <%@include file="subir.jsp" %>
-          </div>
+          
         </div>
-      </div> 
+        </div>
+      
      </c:if>
          <c:if test="${not empty biblioteca}">
-        <div class="credenciales">
+        <div class="credenciales" style="padding-bottom: 67px !important;">
         <div class="templatemo-container">
-          <div class="imagen" style="margin-left:-10px"><img src="img/no-disponible.jpg" alt="" class="img-circle" style="width:80px;height: 80px;margin-left: 30px;"> </div>
+          <div class="imagen"><img src="img/no-disponible.jpg" alt="" class="img-circle"></div>
           <div class="usuario">
              <h10>${biblioteca.nombre}</h10> 
             <p><h11> Biblioteca </h11></p>
-            <a href="/logout" class="autenticado">Logout</a>
+            </div>
+            <div class="log">
+            	<a href="/logout" class="autenticado">Logout</a>
+         	</div>
          </div>
-          <div class="BotonSubir">
+          <div class="botones">
+          
             <!--<a href="/subir.jsp" class="autenticado">Subir ficha</a>-->
             <%@include file="subir.jsp" %>
+          
           </div>
         </div>
-      </div> 
+     
      </c:if>
       <c:if test="${not empty editorial}">
-        <div class="credenciales">
+        <div class="credenciales" style="padding-bottom: 122px !important;">
         <div class="templatemo-container">
-          <div class="imagen" style="margin-left:-10px"><img src="img/no-disponible.jpg" alt="" class="img-circle" style="width:80px;height: 80px;margin-left: 30px;"> </div>
+          <div class="imagen"><img src="img/no-disponible.jpg" alt="" class="img-circle"> </div>
           <div class="usuario">
              <h10>${editorial.nombre}</h10> 
             <p><h11> Editorial </h11></p>
-            <a href="/logout" class="autenticado">Logout</a>
+            </div>
+            <div class="log">
+            	<a href="/logout" class="autenticado">Logout</a>
+          	</div>
           </div>
+        <div class="botones">
         </div>
-      </div> 
+        </div>
+    
      </c:if>
          <!-- end Header -->
 
