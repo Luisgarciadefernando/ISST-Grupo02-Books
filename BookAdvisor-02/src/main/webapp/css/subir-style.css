@@ -174,13 +174,13 @@ border: black 2px solid;
 }
 
 .popup {
-  margin: 70px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 5px;
-  width: 30%;
-  position: relative;
-  z-index: 10;
+margin: 70px auto;
+padding: 26px;
+background: #fff;
+border-radius: 5px;
+width: 31%;
+position: relative;
+z-index: 10;
 
 }
 

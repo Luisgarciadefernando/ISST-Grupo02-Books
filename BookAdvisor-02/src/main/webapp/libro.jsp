@@ -41,7 +41,7 @@
         <section class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 id="nombre-libro" class="text-uppercase">${libro.titulo}</h3>
+                    <h3 id="nombre-libro" class="text-uppercase" style="margin-bottom: -40px;">${libro.titulo}</h3>
                     <hr class="templatemo-section-header-hr">
                     <p class="text-uppercase templatemo-section-subheader"></p>
                 <div id ="div-derecha">
@@ -53,10 +53,11 @@
                         <h5><strong>Género:</strong></h5>
                         <h6>${libro.genero}
                         </h6>
+                        
                     </div>
                     <div id="valoracion"  class ="derecha-dentro">
                     Valoracion: ${libro.valoracion }<br>
-                    Veces valorado: ${libro.vecesValorado}<br>
+                    Veces valorado:&nbsp<span class="badge"> ${libro.vecesValorado}</span><br>
                     <%Libro libro = (Libro)request.getSession().getAttribute("libro"); 
                     	int valoracionEntera = (int)libro.getValoracion();
                     	int estrellas =0;
@@ -149,21 +150,20 @@ $(document).ready(function(){
 });
 </script>
  <c:if test="${not empty lector and not empty valoracion}">
-                   
-                        <h5><strong>Tu valoración:</strong></h5>
-                        ${valoracion.valoracion}
-                        <br>
-                        ${valoracion.comentario}
-                  	 	
+ 					<div id="valoracion"  class ="" style="margin-left: 65px;margin-top: -25px;margin-bottom: 30px;">
+                        <h4 ><strong style="text-decoration: underline;">Mi valoración:</strong></h4>
+                        <h5><strong style="color:#D0B04C;"><span class="glyphicon glyphicon-heart-empty"></span>&nbspValoración:</strong>&nbsp${valoracion.valoracion}</h5>
+                        <p style="margin-left:20px !important;">${valoracion.comentario}</p>
+                  	</div>
                     </c:if>  
-<div id="comentarios"  class ="">
-                        <h4><strong>Comentarios:</strong></h4>
+					<div id="comentarios"  class ="" style="margin-left: 65px;margin-top: -25px;margin-bottom: 25px;">
+                        <h4 ><strong style="text-decoration: underline;">Comentarios:</strong></h4>
                         <c:if test="${not empty valoraciones}">
                         <c:forEach items="${valoraciones}" var="vali">
                         <p>
-                        <h5><strong>${vali.lectorNombre}</strong></h5>
+                        <h5><strong style="color:#D0B04C;"><span class="glyphicon glyphicon-user"></span>&nbsp${vali.lectorNombre}</strong></h5>
                         </p>
-                        <p>
+                        <p style="margin-left:20px !important;">
                         ${vali.comentario}
                         </p>
                         </c:forEach>
