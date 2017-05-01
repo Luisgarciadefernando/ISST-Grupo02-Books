@@ -144,6 +144,46 @@
     <servlet-name>Logout</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
+      <servlet-name>Intercambio</servlet-name>
+    <servlet-class>es.upm.dit.isst.bookAdvisor.Intercambio_Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Intercambio</servlet-name>
+    <url-pattern>/intercambio</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Disponibilidad</servlet-name>
+    <servlet-class>es.upm.dit.isst.bookAdvisor.Disponibilidad_Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Disponibilidad</servlet-name>
+    <url-pattern>/disponibilidad</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>AsignacionesLibrerias</servlet-name>
+    <servlet-class>es.upm.dit.isst.bookAdvisor.AsignaLibreria_Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AsignacionesLibrerias</servlet-name>
+    <url-pattern>/asignaLibreria</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>Admin</servlet-name>
+    <servlet-class>es.upm.dit.isst.bookAdvisor.Admin_Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Admin</servlet-name>
+    <url-pattern>/admin</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>Usuario</servlet-name>
+    <servlet-class>es.upm.dit.isst.bookAdvisor.Usuario_Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Usuario</servlet-name>
+    <url-pattern>/usuario</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
