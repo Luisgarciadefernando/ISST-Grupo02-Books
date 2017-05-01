@@ -17,4 +17,5 @@ public interface LibreriaDAO {
 		public Libreria update(Libreria libreria);
 		public Libreria delete(Libreria libreria);
 		public void deleteAll();
+		public Libreria readId(String libreria);
 }
