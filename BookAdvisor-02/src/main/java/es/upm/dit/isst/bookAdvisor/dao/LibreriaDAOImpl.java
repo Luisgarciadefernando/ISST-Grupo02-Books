@@ -7,6 +7,7 @@ import com.googlecode.objectify.Key;
 
 import es.upm.dit.isst.bookAdvisor.model.Biblioteca;
 import es.upm.dit.isst.bookAdvisor.model.Libreria;
+import es.upm.dit.isst.bookAdvisor.model.Libro;
 
 public class LibreriaDAOImpl implements LibreriaDAO{
 	private static LibreriaDAOImpl instancia;
@@ -80,6 +81,11 @@ public class LibreriaDAOImpl implements LibreriaDAO{
 		return librerias;
 	}
 
+	@Override
+	public Libreria readId(String id) {
+		// TODO Auto-generated method stub
+		return ofy().load().type(Libreria.class).filterKey(Key.create(Libreria.class,id)).first().now();
+	}
 	@Override
 	public Libreria update(Libreria libreria) {
 		ofy().save().entity(libreria).now();

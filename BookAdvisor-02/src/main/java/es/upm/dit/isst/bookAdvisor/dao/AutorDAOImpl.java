@@ -4,10 +4,14 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
 
 import java.util.List;
 
+import com.googlecode.objectify.Key;
+
+import es.upm.dit.isst.bookAdvisor.model.AsignacionesLibrerias;
 import es.upm.dit.isst.bookAdvisor.model.Autor;
 import es.upm.dit.isst.bookAdvisor.model.Editorial;
 
 public class AutorDAOImpl implements AutorDAO {
+	
 	private static AutorDAOImpl instancia;
 	
 	private AutorDAOImpl () {
@@ -16,6 +20,13 @@ public class AutorDAOImpl implements AutorDAO {
 		if (instancia == null)
 			instancia= new AutorDAOImpl();
 		return instancia;
+	}
+
+	@Override
+	public Autor readId(String id) {
+		// TODO Auto-generated method stub
+		return ofy().load().type(Autor.class).filterKey(Key.create(Autor.class,id)).first().now();
+
 	}
 
 	@Override
