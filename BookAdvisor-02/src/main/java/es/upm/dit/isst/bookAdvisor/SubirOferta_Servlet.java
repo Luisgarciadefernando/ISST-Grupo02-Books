@@ -26,6 +26,7 @@ import es.upm.dit.isst.bookAdvisor.dao.OfertaDAOImpl;
 import es.upm.dit.isst.bookAdvisor.model.Autor;
 import es.upm.dit.isst.bookAdvisor.model.Libreria;
 import es.upm.dit.isst.bookAdvisor.model.Libro;
+import es.upm.dit.isst.bookAdvisor.model.Oferta;
 
 
 public class SubirOferta_Servlet extends HttpServlet {
@@ -34,6 +35,7 @@ public class SubirOferta_Servlet extends HttpServlet {
 	public void init() throws ServletException {
 		ObjectifyService.register(Libro.class);
 		ObjectifyService.register(Autor.class);
+		ObjectifyService.register(Oferta.class);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

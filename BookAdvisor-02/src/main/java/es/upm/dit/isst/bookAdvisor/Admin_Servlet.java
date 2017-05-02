@@ -34,6 +34,8 @@ public class Admin_Servlet extends HttpServlet{
 		ObjectifyService.register(Editorial.class);
 		ObjectifyService.register(Biblioteca.class);
 		ObjectifyService.register(Libreria.class);
+		ObjectifyService.register(IntercambioTienen.class);
+	    ObjectifyService.register(Valoracion.class);
 
 	}
 

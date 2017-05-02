@@ -41,7 +41,7 @@
             <div class="container" style="margin-bottom: 40px;">
                 <div class="row">
                     <div class="col-lg-12" style="margin-bottom: -50px;">
-                        <h2 class="text-uppercase">Administrador</h2>
+                        <h2 class="text-uppercase">Libros pendientes</h2>
                         <hr class="templatemo-section-header-hr">
                         <p class="text-uppercase templatemo-section-subheader">Página de administración</p>
                     </div>
@@ -49,49 +49,36 @@
                 </div>
 	            
             </div>
-            <nav class="templatemo-nav2" id = "nav-libros">
-                        <ul class="text-uppercase">
-                            <li ><a href="/admin">Libros pendientes</a></li>
-							<li ><a href="/admin?usuarios=true">Usuarios</a></li>           
-                        </ul> 
-              </nav>
+            
         </section> <!-- end Product Type -->
  	<c:forEach items="${librosPendientes}" var="libro">
  		   <section class="container">
  		  <form action="/admin" method="post">
-            <div class="row">
-                <div class="col-lg-12">
+            <div class="row" style="margin-top:-100px;margin-bottom: 50px;">
                     <h3 id="nombre-libro" class="text-uppercase" style="margin-bottom: -40px;">${libro.titulo}</h3>
                     <hr class="templatemo-section-header-hr">
                     <p class="text-uppercase templatemo-section-subheader"></p>
-                <div id ="div-derecha">
-                    <div id="div-derecha-sub">
-                    <div id="resumen" class ="derecha-dentro">
+                	<div id ="div-izq">
                         <h5><strong>Titulo:</strong></h5>
                         <input type="text" name="titulo" value="${libro.titulo}"><br>
                         <h5><strong>Resumen:</strong></h5>
-                        <input type="text" name="resumen" value="${libro.resumen}"><br>
-                        
+                        <textarea type="text" name="resumen" style="resize: inherit;height: 100px;">${libro.resumen}</textarea><br>
                         <h5><strong>Autor:</strong></h5>
                         <input type="text" name="autor" value="${libro.autor}"><br>
                         <h5><strong>Género:</strong></h5>
                        <input type="text" name="genero" value="${libro.genero}"><br>
                        <input type="hidden" name="libroId" value="${libro.id}"><br>
-                    </div>                    
-                    </div>
-                </div> 
-                   
-                </div>
-            </div>
-                <span>
-             
-                 <img  src="img/${libro.imagen}" style="width:300px; height:400px;" alt="Error al cargar la imagen" id="libro-image" class="img-rounded imagen-libro">
-				<br>
-                  </span>
-                  <span>
-                  </span>     
-          <button action="submit" name="aceptar" value="true">Aceptar</button>
-          <button action="submit" name="rechazar" value="true">Rechazar</button>
+                       
+                	</div>    
+             		<div id="div-derecha" style="margin-left: 300px;margin-top: -315px;">
+                		 <img  src="img/${libro.imagen}" style="width:200px; height:300px;border: black solid;" alt="Error al cargar la imagen" id="libro-image" class="img-rounded imagen-libro">
+							
+          						<button style="margin-left:20px;" action="submit" name="aceptar" value="true" class="button">Aceptar</button>
+          						<button style="margin-left:10px;" action="submit" name="rechazar" value="true" class="button">Rechazar</button>
+                			
+                	</div> 
+           		
+           </div>
           </form>
         </section>
        </c:forEach>

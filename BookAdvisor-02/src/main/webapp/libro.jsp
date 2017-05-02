@@ -44,7 +44,7 @@
                     <h3 id="nombre-libro" class="text-uppercase" style="margin-bottom: -40px;">${libro.titulo}</h3>
                     <hr class="templatemo-section-header-hr">
                     <p class="text-uppercase templatemo-section-subheader"></p>
-                <div id ="div-derecha">
+                <div id ="div-derecha" style="margin-top:20px;">
                     <div id="div-derecha-sub">
                     <div id="resumen" class ="derecha-dentro">
                         <h5><strong>Resumen:</strong></h5>
@@ -58,6 +58,8 @@
                         </h6>
                         
                     </div>
+                    
+                    
                     <div id="valoracion"  class ="derecha-dentro">
                     Valoracion: ${libro.valoracion }<br>
                     Veces valorado:&nbsp<span class="badge"> ${libro.vecesValorado}</span><br>
@@ -122,50 +124,25 @@
             </div>
                 <span>
              
-                 <img  src="img/${libro.imagen}" alt="Error al cargar la imagen" id="libro-image" class="img-rounded imagen-libro">
+                 <img style="border: black solid;" src="img/${libro.imagen}" alt="Error al cargar la imagen" id="libro-image" class="img-rounded imagen-libro">
                 
                   </span>
                   <span>
                   </span>     
           
         </section> <!-- end "New Arrivals" -->
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-    // Check Radio-box
-    $(".rating input:radio").attr("checked", false);
-   
-    $('.rating input').click(function () {
-        $(".rating span").removeClass('checked');
-        $(this).parent().addClass('checked');
-        
-    });
 
-    $('input:radio').change(
-      function(){
-        var userRating = this.value;
-       // document.getElementById("valoracion").value = (String)userRating;
-       $(function () {
-  		$('#valoracionUser').val(userRating);
-		});
-       //	alert($("#valoracionUser").val());
-    }); 
-});
-</script>
- <c:if test="${not empty lector and not empty valoracion}">
- 					<div id="valoracion"  class ="" style="margin-left: 65px;margin-top: -25px;margin-bottom: 30px;">
-                        <h4 ><strong style="text-decoration: underline;">Mi valoración:</strong></h4>
-                        <h5><strong style="color:#D0B04C;"><span class="glyphicon glyphicon-heart-empty"></span>&nbspValoración:</strong>&nbsp${valoracion.valoracion}</h5>
-                        <p style="margin-left:20px !important;">${valoracion.comentario}</p>
-                  	</div>
-                    </c:if>  
-
+ 
+ 		 
+	
+	
+	<div id="botons2" style="margin-top: -30px;margin-bottom: 50px;margin-left: 70px;">
                     <c:if test="${not empty lector and empty loTiene and empty admin}">
                    
-                        <form action="/intercambio" method="post" id="form-intercambio">
+                        <form action="/intercambio" method="post" id="form-intercambio" style="margin-bottom: 10px;">
                         <input type="hidden" name="tengo" value="true">
                         <input type="hidden" name="libro" value="${libro.id}" >
-                        <button class="btn" type="submit" >Lo tengo</button>
+                        <button class="button" type="submit" >Lo tengo</button>
                         </form>
                   	 	
                     </c:if>  
@@ -177,12 +154,14 @@ $(document).ready(function(){
                     </c:if>
                       <c:if test="${not empty libreria and empty loTiene}">
                    
-                        <form action="/asignaLibreria" method="post" id="form-asignaLibreria">
-                        Formato: <input type="text" name="formato" required=""><br>
-                        Precio: <input type="number" name="precio" step="0.01" min="0"><br>
+                        <form action="/asignaLibreria" method="post" id="form-asignaLibreria" style="margin-bottom: 10px;">
+                        <div id="formato" style="margin-bottom: 10px;">
+                        <strong>Formato:&nbsp</strong><input type="text" name="formato" required=""><br>
+                        <strong style="margin-left: 16px;">Precio:&nbsp</strong><input type="number" name="precio" step="0.01" min="0" style="margin-top: 10px;width: 15.4%;"><br>
                         <input type="hidden" name="tengo" value="true">
                         <input type="hidden" name="libro" value="${libro.id}" >
-                        <button class="btn" type="submit" >Lo tengo</button>
+                        </div>
+                        <button class="button" type="submit" >Lo tengo</button>
                         </form>
                   	 	
                     </c:if>  
@@ -192,18 +171,25 @@ $(document).ready(function(){
                         En formato: ${asignacionlib.formato}
                   	 	
                     </c:if>    
-                    <div id="disponibilidad">
                     <form action="/disponibilidad" method="get">
                     <input type="hidden" value="true" name="intercambio">
                     <input type="hidden" value="${libro.id}" name="libro">
-                   <button class="btn" type="submit" >Disponibilidad intercambio</button>
+                   <button class="button" type="submit" >Disponibilidad intercambio</button><br>
                     </form>
-                    <form action="/disponibilidad" method="get">
+                    <form action="/disponibilidad" method="get" style="margin-left: 160px;margin-top: -30px;">
                     <input type="hidden" value="true" name="librerias">
                     <input type="hidden" value="${libro.id}" name="libro">
-                   <button class="btn" type="submit" >Disponibilidad librerias</button>
+                   <button class="button" type="submit" >Disponibilidad librerias</button>
                     </form>
-                    
+    </div>
+    
+    <c:if test="${not empty lector and not empty valoracion}">
+ 					<div id="valoracion"  class ="" style="margin-left: 65px;margin-top: -25px;margin-bottom: 30px;">
+                        <h4 ><strong style="text-decoration: underline;">Mi valoración:</strong></h4>
+                        <h5><strong style="color:#D0B04C;"><span class="glyphicon glyphicon-heart-empty"></span>&nbspValoración:</strong>&nbsp${valoracion.valoracion}</h5>
+                        <p style="margin-left:20px !important;">${valoracion.comentario}</p>
+                  	</div>
+                    </c:if> 
                    
 
 					<div id="comentarios"  class ="" style="margin-left: 65px;margin-top: -25px;margin-bottom: 25px;">
@@ -235,6 +221,29 @@ $(document).ready(function(){
         <!-- JS -->
         <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
         <script type="text/javascript" src="js/templatemo-script.js"></script>      <!-- Templatemo Script -->
+        	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    // Check Radio-box
+    $(".rating input:radio").attr("checked", false);
+   
+    $('.rating input').click(function () {
+        $(".rating span").removeClass('checked');
+        $(this).parent().addClass('checked');
+        
+    });
+
+    $('input:radio').change(
+      function(){
+        var userRating = this.value;
+       // document.getElementById("valoracion").value = (String)userRating;
+       $(function () {
+  		$('#valoracionUser').val(userRating);
+		});
+       //	alert($("#valoracionUser").val());
+    }); 
+});
+</script>
 
     </body>
 </html>

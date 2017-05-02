@@ -9,7 +9,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>BookAdvisor - Lectores</title>
+        <title>BookAdvisor - Usuarios</title>
         <meta name="description" content="">
         <meta name="author" content="templatemo">
         <!-- 
@@ -30,6 +30,12 @@
         <![endif]-->
         <link rel="icon" type="image/png" href="img/logo2.png" />
         
+        
+    <style>
+    
+    
+    
+    </style>    
 	</head>
 	<body>
 		<!-- Header -->
@@ -47,27 +53,30 @@
                     </div>
                     
                 </div>
+                
                 <c:if test="${not empty libro}">
-                <strong>${libro.titulo}:</strong>
+ 
                 </c:if>
-	            <div class="row">
+	            <div class="users">
                     <!-- Left block, images -->
-                    <div class="col-lg-10 col-lg-offset-1">
-                        <table class="table">
                              <tbody>
                             <c:forEach items="${usuarios}" var="usuario">
                                 <tr>
-                                    ${usuario.nombre}<br>
+                                    <h10><strong style="color:#D0B04C;"><span class="glyphicon glyphicon-user"></span>&nbsp${usuario.nombre}</strong></h10>
+                                    <br>
+                                    
                                     <c:if test="${not empty admin}">
-                                    (${usuario.email})
-                                    <a href="/usuario?id=${usuario.id}">Ver usuario</a>
+                                    <usuario style="margin-left:20px;"><strong>Email:&nbsp</strong>${usuario.email}<usuario>
+                                    <br>
+                                    <a href="/usuario?id=${usuario.id}" style="margin-left:20px;">Ver usuario</a>
+                                    <br>
                                     <br>
                                     </c:if>
                                 </tr>
                                 
                                 </c:forEach>
                             </tbody>
-                         </table>
+                         </div>
                     </div>
                     <!-- Right block, text -->
                 </div>

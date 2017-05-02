@@ -10,7 +10,7 @@ public class Logout_Servlet extends HttpServlet{
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException{
 			request.getSession().invalidate();
-			response.sendRedirect("/index.html");
+			response.sendRedirect("/index.jsp");
 		
 	}
 }

@@ -72,7 +72,7 @@
           .log {
          margin-top: 24px !important;
 		 margin-left: 23px !important;
-		padding-bottom: 40px !important;
+		padding-bottom: 42px !important;
           }
           
         
@@ -137,6 +137,7 @@
           </div>
           <div class="log">
           <a href="/admin" class="autenticado">Administración del sistema</a><br>
+       	  <a href="/admin?usuarios=true" class="autenticado">Listado de usuarios</a><br>
        	  <a href="/logout" class="autenticado">Logout</a>
        	  </div>
           <div class="botones" style="margin-top: -163px !important;padding-bottom: 70px;">
@@ -151,7 +152,7 @@
      </c:if>
      <c:if test="${not empty lector and empty admin}">
             
-      <div class="credenciales">
+      <div class="credenciales" style="padding-bottom: 67px !important;">
         <div class="templatemo-container">
       	  <div class="imagen"><img src="img/no-disponible.jpg" alt="" class="img-circle"> </div>
           <div class="usuario">
@@ -168,10 +169,6 @@
          
             <!--<a href="/subir.jsp" class="autenticado">Subir ficha</a>-->
             <%@include file="subir.jsp" %>
-         
-        
-            <!--<a href="/subirOferta.jsp" class="autenticado">Publicar oferta</a>-->
-            <%@include file="subirOferta.jsp" %>
           
           </div>
         </div>
@@ -179,7 +176,7 @@
         
      </c:if>
          <c:if test="${not empty libreria}">
-        <div class="credenciales" style="padding-bottom: 67px !important;">
+        <div class="credenciales">
         <div class="templatemo-container">
           <div class="imagen"><img src="img/no-disponible.jpg" alt="" class="img-circle"> </div>
           <div class="usuario">
@@ -194,6 +191,8 @@
           
             <!--<a href="/subir.jsp" class="autenticado">Subir ficha</a>-->
             <%@include file="subir.jsp" %>
+            <!--<a href="/subirOferta.jsp" class="autenticado">Publicar oferta</a>-->
+            <%@include file="subirOferta.jsp" %>
           
         </div>
         </div>

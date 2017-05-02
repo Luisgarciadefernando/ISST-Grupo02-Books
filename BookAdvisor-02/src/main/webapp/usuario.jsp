@@ -12,7 +12,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>BookAdvisor - Libro</title>
+        <title>BookAdvisor - Usuario</title>
         <meta name="description" content="">
         <meta name="author" content="templatemo">
         <!-- 
@@ -33,6 +33,8 @@
         <![endif]-->
         <link rel="icon" type="image/png" href="img/logo2.png" />
 
+
+
     </head>
     <body>
       <%@include file="cabecera.jsp" %>
@@ -42,15 +44,19 @@
         <!-- "New Arrivals" -->
 
                
-		<p style="margin-bottom: 10px;">Perfil de: ${lectorPerfil.nombre} (${lectorPerfil.email})
+		<p style="margin-left: 70px;margin-top: 30px;"><strong><span class="glyphicon glyphicon-user"></span>&nbspUsuario:</strong> ${lectorPerfil.nombre}
+		 <br><strong style="margin-left: 20px;">Email:</strong>&nbsp${lectorPerfil.email}
+		 
 				<c:if test="${not empty admin}">
 					<form action="/admin" method="post">
                      <input type="hidden" name="usuarioAEliminar" value="${lectorPerfil.id}">
-                     <button type="submit" name="eliminaUsuario" value="true">Eliminar usuario</button>
+                     <button class="button" type="submit" name="eliminaUsuario" value="true" style="margin-left: 90px;">Eliminar usuario</button>
+                     <button class="button" href="/admin?usuarios=true" name="volverUsuario" value="true" style="margin-left: 20px;">Lista de usuarios</button>
+                    
                      </p>
                  </c:if>
-		<div id="comentarios"  class ="" style="margin-left: 65px;margin-top: 0px;margin-bottom: 25px;">
-                  <h4 ><strong style="text-decoration: underline;">Comentarios:</strong></h4>
+		<div id="comentarios"  class ="" style="margin-left: 65px;margin-top: 25px;margin-bottom: 25px;">
+                        <h4 ><strong style="text-decoration: underline;">Comentarios de: ${lectorPerfil.nombre}:</strong></h4>
 
                      <c:if test="${not empty valoraciones}">
                       <c:forEach items="${valoraciones}" var="vali">
@@ -61,7 +67,7 @@
                     	Libro libro = librodao.readID(valoracion.getLibro());
                     	String titulo = libro.getTitulo();
                     %>
-                    <strong><%= titulo %></strong>
+                    <h5><strong style="color:#D0B04C;"><span class="glyphicon glyphicon-heart-empty"></span>&nbsp<%= titulo %></strong></h5>
                     <p style="margin-left:20px !important;">
                      ${vali.comentario}
      

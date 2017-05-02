@@ -38,7 +38,7 @@
         <!-- end Header -->
 
         <!-- "Ofertas y Descuentos" -->
-		<div class="container">
+		<div class="container" style="margin-top: 50px;">
             <div class="row">
                 <!-- Main content -->
                 <div class="row">
