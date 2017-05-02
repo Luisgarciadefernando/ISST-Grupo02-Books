@@ -62,8 +62,12 @@ public class Disponibilidad_Servlet extends HttpServlet{
 			List<IntercambioTienen> listaIntercambio = intercambioDAO.readLibro(libroId);
 			List<Lector> usuariosTienen = new ArrayList<Lector>();
 			for(IntercambioTienen i: listaIntercambio){
+				System.out.println(i.getUsuario()+"AAAAAAAAA");
 				Lector lector = lectordao.readID(i.getUsuario());
-				usuariosTienen.add(lector);
+				if(lector!=null){
+					usuariosTienen.add(lector);
+				}
+			
 			}
 			request.getSession().setAttribute("usuarios", usuariosTienen);
 			request.getSession().setAttribute("libro", libro);

@@ -57,7 +57,7 @@
                              <tbody>
                             <c:forEach items="${usuarios}" var="usuario">
                                 <tr>
-                                    ${usuario.nombre}
+                                    ${usuario.nombre}<br>
                                     <c:if test="${not empty admin}">
                                     (${usuario.email})
                                     <a href="/usuario?id=${usuario.id}">Ver usuario</a>

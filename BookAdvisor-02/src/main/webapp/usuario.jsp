@@ -4,6 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page import = "es.upm.dit.isst.bookAdvisor.model.Valoracion" %>
 <%@ page import = "es.upm.dit.isst.bookAdvisor.model.Libro" %>
+<%@ page import = "es.upm.dit.isst.bookAdvisor.dao.LibroDAO" %>
+<%@ page import = "es.upm.dit.isst.bookAdvisor.dao.LibroDAOImpl" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -54,6 +56,12 @@
                       <c:forEach items="${valoraciones}" var="vali">
                       <p>
                     </p>
+                    <%Valoracion valoracion = (Valoracion)pageContext.getAttribute("vali");
+                    	LibroDAO librodao = LibroDAOImpl.getInstancia();
+                    	Libro libro = librodao.readID(valoracion.getLibro());
+                    	String titulo = libro.getTitulo();
+                    %>
+                    <strong><%= titulo %></strong>
                     <p style="margin-left:20px !important;">
                      ${vali.comentario}
      

@@ -53,7 +53,7 @@ public class LectorDAOImpl implements LectorDAO{
 	@Override
 	public Lector readID(String id) {
 		// TODO Auto-generated method stub
-		 return ofy().load().type(Lector.class).filterKey(Key.create(Libro.class,id)).first().now();
+		 return ofy().load().type(Lector.class).filterKey(Key.create(Lector.class,id)).first().now();
 	}
 
 	@Override
