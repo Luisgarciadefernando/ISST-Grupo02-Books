@@ -43,29 +43,27 @@ public class Libros_Servlet  extends HttpServlet  {
 		dao.create("El ni�o con el pijama de rayas", "Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.", "Drama", "John Boyne", 0, "pijama.jpg");
 		dao.create("Los pilares de la tierra", "Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.", "Ficci�n", "Ken Follet", 0, "pilares.jpg");
 		 */
-		if(request.getParameter("busqueda")!=null){
-			String busqueda = request.getParameter("busqueda");
-			busqueda = busqueda.toLowerCase();
-			Pattern pat = Pattern.compile(".*"+busqueda+".*");
-			
-			Iterator<Libro> libroIt = libros.iterator();
-			while (libroIt.hasNext()) {
-			   Libro libro = libroIt.next();
-			   if(libro.getTitulo()!= null) {
-				   Matcher mat = pat.matcher(libro.getTitulo().toLowerCase());
-			     	if(!mat.matches()){
-			     		libroIt.remove();
-			     	}
-				}
-			   else {
-				   libroIt.remove();
-			   }
-			   Matcher mat = pat.matcher(libro.getTitulo());
-			     if(!mat.matches()){
-			    	libroIt.remove();
-			     }
-			}
-		}
+		List<Libro> librosBusqueda = new ArrayList<Libro>();
+	    if(request.getParameter("busqueda")!=null){
+	      String busqueda = request.getParameter("busqueda");
+	      busqueda = busqueda.toLowerCase();
+	      Pattern pat = Pattern.compile(".*"+busqueda+".*");
+	      
+	      Iterator<Libro> libroIt = libros.iterator();
+	      while (libroIt.hasNext()) {
+	         Libro libro = libroIt.next();
+	         if(libro.getTitulo()!= null) {
+	           Matcher mat = pat.matcher(libro.getTitulo().toLowerCase());
+	             if(mat.matches()){
+	               //libroIt.remove();
+	               librosBusqueda.add(libro);
+	             }
+	        }
+	        
+	      }
+	      libros=librosBusqueda;
+	    }
+	    
 		if(request.getParameter("novedades")!=null){
 			  Collections.sort(libros, new Comparator<Libro>() {
 			        @Override

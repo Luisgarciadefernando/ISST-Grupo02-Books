@@ -20,9 +20,9 @@ public class OfertaDAOImpl implements OfertaDAO{
 		return instancia;
 	}
 	@Override
-	public Oferta create(int descuento, String cupon, Libreria libreria, String titulo, String descripcion, String caducidad) {
+	public Oferta create(int descuento, String cupon, Libreria libreria, String titulo, String descripcion, String caducidad, int estado) {
 		// TODO Auto-generated method stub
-		Oferta oferta = new Oferta(descuento, cupon, libreria, titulo, descripcion, caducidad);
+		Oferta oferta = new Oferta(descuento, cupon, libreria, titulo, descripcion, caducidad, estado);
 		ofy().save().entity(oferta).now();
 		return oferta;
 	}

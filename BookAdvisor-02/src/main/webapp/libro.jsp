@@ -156,8 +156,18 @@
                    
                         <form action="/asignaLibreria" method="post" id="form-asignaLibreria" style="margin-bottom: 10px;">
                         <div id="formato" style="margin-bottom: 10px;">
-                        <strong>Formato:&nbsp</strong><input type="text" name="formato" required=""><br>
-                        <strong style="margin-left: 16px;">Precio:&nbsp</strong><input type="number" name="precio" step="0.01" min="0" style="margin-top: 10px;width: 15.4%;"><br>
+                        <strong>Formato:&nbsp</strong>
+                        <select required="" name="formato" id="formato" style="text-align:center;">
+                        <option value="Sin Formato">Seleccione un formato</option>
+                        <option value="Tapa dura">Tapa dura</option> 
+                        <option value="Tapa blanda">Tapa blanda</option>
+                        <option value="eBook">eBook</option> 
+                        </select>
+                        <br>
+                        <strong style="margin-left: 16px;">Precio:&nbsp</strong>
+                        <input required="" type="number" name="precio" step="0.50" min="1" style="margin-top: 10px;width: 15.4%;text-align:center;">
+                        <strong style="margin-left: 10px;">Euros</strong>
+                        <br>
                         <input type="hidden" name="tengo" value="true">
                         <input type="hidden" name="libro" value="${libro.id}" >
                         </div>
@@ -166,10 +176,10 @@
                   	 	
                     </c:if>  
                     <c:if test="${not empty libreria and not empty loTiene and not empty asignacionlib}">
-                   
-                        Lo tienes a un precio de: ${asignacionlib.precio} euros<br>
-                        En formato: ${asignacionlib.formato}
-                  	 	
+                   	<div id="lotienes" style="margin-bottom: 10px;">
+                        <strong><span class="glyphicon glyphicon-book"></span>&nbspLo tienes a un precio de:</strong> ${asignacionlib.precio} Euros<br>
+                        <strong>En formato:</strong> ${asignacionlib.formato}
+                  	 	</div>
                     </c:if>    
                     <form action="/disponibilidad" method="get">
                     <input type="hidden" value="true" name="intercambio">

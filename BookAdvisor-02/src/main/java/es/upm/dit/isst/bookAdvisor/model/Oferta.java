@@ -25,10 +25,12 @@ public class Oferta implements Serializable{
 	String descripcion;
 	@Index
 	String caducidad;
+	@Index
+	int estado;
 	
 	public Oferta() {}
 	
-	public Oferta (int descuento, String cupon, Libreria libreria, String titulo, String descripcion, String caducidad){
+	public Oferta (int descuento, String cupon, Libreria libreria, String titulo, String descripcion, String caducidad, int estado){
 		this.id = java.util.UUID.randomUUID().toString();
 		this.descuento = descuento;
 		this.cupon = cupon;
@@ -36,8 +38,17 @@ public class Oferta implements Serializable{
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.caducidad = caducidad;
+		this.estado = estado;
+	}
+	
+	public int getEstado() {
+		return estado;
 	}
 
+	public void setEstado(int estado) {
+		this.estado = estado;
+	}
+	
 	public String getCaducidad() {
 		return caducidad;
 	}

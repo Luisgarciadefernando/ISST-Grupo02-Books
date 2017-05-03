@@ -72,7 +72,7 @@
                             <p class="gray-text" style="margin-top: -10px;">
                             <a href="elegirRegistro.html"> ¿No tienes una cuenta? <b>Registrate</b> </a>
                             <p class="gray-text" style="margin-top: -10px;">
-                            <a href="index.html"> Volver </a>
+                            <a href="index.jsp"> Volver </a>
                         </div>
                     </form>
                 </div>

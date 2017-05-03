@@ -7,7 +7,7 @@ import es.upm.dit.isst.bookAdvisor.model.Libreria;
 import es.upm.dit.isst.bookAdvisor.model.Oferta;
 
 public interface OfertaDAO {
-	public Oferta create(int descuento, String cupon, Libreria libreria, String titulo, String descripcion, String caducidad);
+	public Oferta create(int descuento, String cupon, Libreria libreria, String titulo, String descripcion, String caducidad, int estado);
 	public List<Oferta> readDescuento(int descuento);
 	public List<Oferta> read();
 	public List<Oferta> readLibreria(Libreria libreria);

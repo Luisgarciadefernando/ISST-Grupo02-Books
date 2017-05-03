@@ -51,8 +51,6 @@
 					<form action="/admin" method="post">
                      <input type="hidden" name="usuarioAEliminar" value="${lectorPerfil.id}">
                      <button class="button" type="submit" name="eliminaUsuario" value="true" style="margin-left: 90px;">Eliminar usuario</button>
-                     <button class="button" href="/admin?usuarios=true" name="volverUsuario" value="true" style="margin-left: 20px;">Lista de usuarios</button>
-                    
                      </p>
                  </c:if>
 		<div id="comentarios"  class ="" style="margin-left: 65px;margin-top: 25px;margin-bottom: 25px;">

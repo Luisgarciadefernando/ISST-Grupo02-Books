@@ -45,7 +45,7 @@ public class Subir_Servlet extends HttpServlet {
 		
 		dao.create(titulo, resumen, genero, autor, 0, imagen);
 		
-		if(autorDao.readNombre(autor)==null){
+		if(autorDao.readNombre(autor).size()==0){
 			autorDao.create(autor);
 		}
 		/*	Map<String, List<BlobKey>> blobs = BlobstoreServiceFactory.getBlobstoreService().getUploads(req);

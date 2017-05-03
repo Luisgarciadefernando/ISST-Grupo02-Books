@@ -45,13 +45,17 @@ public class SubirOferta_Servlet extends HttpServlet {
 		int descuento = Integer.parseInt(descuentoString);
 		String cupon = req.getParameter("cupon");
 		String descripcion = req.getParameter("descripcion");
-		String caducidad = req.getParameter("caducidad");
+		String dia = req.getParameter("dia");
+		String mes = req.getParameter("mes");
+		String ano = req.getParameter("ano");
+		
+		String caducidad = dia + "/" + mes + "/" + ano;
 
 		OfertaDAO ofertaDao = OfertaDAOImpl.getInstancia();
 		
 		if(req.getSession().getAttribute("libreria")!=null){
 			Libreria libreria = (Libreria) req.getSession().getAttribute("libreria");
-			ofertaDao.create(descuento, cupon, libreria, titulo, descripcion, caducidad);
+			ofertaDao.create(descuento, cupon, libreria, titulo, descripcion, caducidad, 0);
 		}
 		
 

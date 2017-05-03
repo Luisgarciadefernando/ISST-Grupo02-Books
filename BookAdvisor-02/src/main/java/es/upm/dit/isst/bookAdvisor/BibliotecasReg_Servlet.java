@@ -63,7 +63,9 @@ public class BibliotecasReg_Servlet extends HttpServlet {
 				e.printStackTrace();
 		}
 		
-		
+		if (imagen == null){
+			imagen = "no-disponible.jpg";
+		}
 		
 		Biblioteca biblioteca = dao.readEmail(email);
 		List<Biblioteca> biblioteca1 = dao.read();

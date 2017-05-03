@@ -50,7 +50,7 @@
                             <li><a href="#">&laquo;</a></li>
                             <li><a href="/autores?letra=A">A</a></li>
                             <li><a href="/autores?letra=B">B</a></li>
-                            <li><a href="/autores?letra=B">C</a></li>
+                            <li><a href="/autores?letra=C">C</a></li>
                             <li><a href="/autores?letra=D">D</a></li>
                             <li><a href="/autores?letra=E">E</a></li>
                             <li><a href="/autores?letra=F">F</a></li>
@@ -83,7 +83,14 @@
                     <!-- Left block, images -->
                     <div class="col-lg-10 col-lg-offset-1">
                         <table class="table">
-                            
+                             <tbody>
+                            <c:forEach items="${autores}" var="autor">
+                                <tr>
+                                    <td><a href="libros?autor=${autor.id}">${autor.nombre}</td>
+                                </tr>
+                                
+                                </c:forEach>
+                            </tbody>
                          </table>
                     </div>
                     <!-- Right block, text -->

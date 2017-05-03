@@ -1,7 +1,10 @@
 package es.upm.dit.isst.bookAdvisor;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -31,8 +34,26 @@ public class Autor_Servlet extends HttpServlet{
 //		Autor autor3 = dao.create("Buzz Michael");
 		
 		List<Autor> autores = Aut_dao.read();
+		List<Autor> listaAutores = new ArrayList<Autor>();
 		
-		request.getSession().setAttribute("autores", autores);
+		if(request.getParameter("letra")!=null) {
+			String letra = request.getParameter("letra");
+			letra = letra.toLowerCase();
+			Pattern pat = Pattern.compile(letra+".*");
+
+			for(Autor a: autores){
+
+				if(a.getNombre()!=null){
+					Matcher mat = pat.matcher(a.getNombre().toLowerCase());
+					if(mat.matches()){
+						listaAutores.add(a);
+					}
+				}
+			}
+		}
+		
+		request.getSession().setAttribute("autores", listaAutores);
+		
 		
 		RequestDispatcher view = request.getRequestDispatcher("autores.jsp");
 		view.forward(request, response);
