@@ -120,7 +120,7 @@
                     <li><a href="bibliotecas">Bibliotecas</a></li>
                     <li><a href="librerias">Librerías</a></li>
                     <li><a href="editoriales.jsp">Editoriales</a></li>
-                     <li><a href="ofertas">Ofertas y descuentos</a></li>
+                     <li><a href="ofertas" style="margin-left: -15px;">Ofertas y descuentos</a></li>
         
                 </ul>
             </nav>
@@ -138,6 +138,7 @@
           <div class="log">
           <a href="/admin" class="autenticado">Administración del sistema</a><br>
        	  <a href="/admin?usuarios=true" class="autenticado">Listado de usuarios</a><br>
+       	  <a href="/admin?usuariosPendientes=true" class="autenticado">Listado de usuarios pendientes de confirmación</a><br>
        	  <a href="/logout" class="autenticado">Logout</a>
        	  </div>
           <div class="botones" style="margin-top: -163px !important;padding-bottom: 70px;">

@@ -21,8 +21,8 @@ public class LibreriaDAOImpl implements LibreriaDAO{
 	}
 
 	@Override
-	public Libreria create(String nombre, String localizacion, String url, String email, String descripcion, String contrasena, String imagen) {
-		Libreria libreria = new Libreria(nombre, localizacion, url, email, descripcion, contrasena, imagen);
+	public Libreria create(String nombre, String localizacion, String url, String email, String descripcion, String contrasena, String imagen, boolean confirmado) {
+		Libreria libreria = new Libreria(nombre, localizacion, url, email, descripcion, contrasena, imagen, confirmado);
 		ofy().save().entity(libreria).now();
 		return libreria;
 	}
@@ -57,6 +57,12 @@ public class LibreriaDAOImpl implements LibreriaDAO{
 			return null;
 		}
 		List<Libreria> librerias = ofy().load().type(Libreria.class).filter("url", url).list();
+		return librerias;
+	}
+	
+	@Override
+	public List<Libreria> readConfirmado(boolean confirmado) {
+		List<Libreria> librerias = ofy().load().type(Libreria.class).filter("confirmado", confirmado).list();
 		return librerias;
 	}
 

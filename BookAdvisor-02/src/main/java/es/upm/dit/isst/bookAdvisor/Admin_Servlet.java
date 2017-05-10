@@ -11,10 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.googlecode.objectify.ObjectifyService;
 
+import es.upm.dit.isst.bookAdvisor.dao.BibliotecaDAO;
+import es.upm.dit.isst.bookAdvisor.dao.BibliotecaDAOImpl;
+import es.upm.dit.isst.bookAdvisor.dao.EditorialDAO;
+import es.upm.dit.isst.bookAdvisor.dao.EditorialDAOImpl;
 import es.upm.dit.isst.bookAdvisor.dao.IntercambioTienenDAO;
 import es.upm.dit.isst.bookAdvisor.dao.IntercambioTienenDAOImpl;
 import es.upm.dit.isst.bookAdvisor.dao.LectorDAO;
 import es.upm.dit.isst.bookAdvisor.dao.LectorDAOImpl;
+import es.upm.dit.isst.bookAdvisor.dao.LibreriaDAO;
+import es.upm.dit.isst.bookAdvisor.dao.LibreriaDAOImpl;
 import es.upm.dit.isst.bookAdvisor.dao.LibroDAO;
 import es.upm.dit.isst.bookAdvisor.dao.LibroDAOImpl;
 import es.upm.dit.isst.bookAdvisor.dao.ValoracionDAO;
@@ -51,6 +57,20 @@ public class Admin_Servlet extends HttpServlet{
 				RequestDispatcher view = request.getRequestDispatcher("usuarios.jsp");
 				view.forward(request, response);
 			}
+			else if(request.getParameter("usuariosPendientes")!=null) {
+				LibreriaDAO libreriaDao = LibreriaDAOImpl.getInstancia();
+				List<Libreria> libreriasPendientes = libreriaDao.readConfirmado(false);
+				request.getSession().setAttribute("libreriasPendientes", libreriasPendientes);
+				EditorialDAO editorialDao = EditorialDAOImpl.getInstancia();
+				List<Editorial> editorialesPendientes = editorialDao.readConfirmado(false);
+				request.getSession().setAttribute("editorialesPendientes", editorialesPendientes);
+				BibliotecaDAO bibliotecaDao = BibliotecaDAOImpl.getInstancia();
+				List<Biblioteca> bibliotecasPendientes = bibliotecaDao.readConfirmado(false);
+				request.getSession().setAttribute("bibliotecasPendientes", bibliotecasPendientes);
+				RequestDispatcher view = request.getRequestDispatcher("usuariosPendientes.jsp");
+				view.forward(request, response);
+			}
+			
 			else {
 				LibroDAO librodao = LibroDAOImpl.getInstancia();
 				List<Libro> librosPendientes = librodao.readEstado(0);
@@ -72,6 +92,9 @@ public class Admin_Servlet extends HttpServlet{
 		LectorDAO lectordao = LectorDAOImpl.getInstancia();
 		ValoracionDAO valoraciondao = ValoracionDAOImpl.getInstancia();
 		IntercambioTienenDAO intercambiotienendao = IntercambioTienenDAOImpl.getInstancia();
+		LibreriaDAO libreriaDao = LibreriaDAOImpl.getInstancia();
+		BibliotecaDAO bibliotecaDao = BibliotecaDAOImpl.getInstancia();
+		EditorialDAO editorialDao = EditorialDAOImpl.getInstancia();
 		
 		if(request.getParameter("libroId")!=null){
 			libro = librodao.readID(request.getParameter("libroId"));
@@ -79,10 +102,16 @@ public class Admin_Servlet extends HttpServlet{
 		String resumen = request.getParameter("resumen");
 		String autor = request.getParameter("autor");
 		String titulo = request.getParameter("titulo");
+		String localizacion = request.getParameter("localizacion");
+		String descripcion = request.getParameter("descripcion");
+		String url = request.getParameter("url");
+		String email = request.getParameter("email");
+		String nombre = request.getParameter("nombre");
 		
 		if(request.getSession().getAttribute("admin")!=null){
 			if(request.getParameter("rechazar")!=null){
 				librodao.delete(libro);
+				response.sendRedirect("/admin");
 			}
 			if(request.getParameter("aceptar")!=null){
 				libro.setAutor(autor);
@@ -90,7 +119,58 @@ public class Admin_Servlet extends HttpServlet{
 				libro.setResumen(resumen);
 				libro.setEstado(1);
 				librodao.update(libro);
+				response.sendRedirect("/admin");
 				
+			}
+			if(request.getParameter("aceptarLibreria")!=null){
+				String id = request.getParameter("libreriaId");
+				Libreria libreria = libreriaDao.readId(id);
+				libreria.setEmail(email);
+				libreria.setDescripcion(descripcion);
+				libreria.setLocalizacion(localizacion);
+				libreria.setNombre(nombre);
+				libreria.setConfirmado(true);
+				libreriaDao.update(libreria);
+				response.sendRedirect("/admin?usuariosPendientes=true");
+			}
+			if(request.getParameter("rechazarLibreria")!=null){
+				String id = request.getParameter("libreriaId");
+				Libreria libreria = libreriaDao.readId(id);
+				libreriaDao.delete(libreria);
+				response.sendRedirect("/admin?usuariosPendientes=true");
+			}
+			if(request.getParameter("aceptarBiblioteca")!=null){
+				String id = request.getParameter("bibliotecaId");
+				Biblioteca biblioteca = bibliotecaDao.readId(id);
+				biblioteca.setEmail(email);
+				biblioteca.setUrl(url);
+				biblioteca.setDescripcion(descripcion);
+				biblioteca.setLocalizacion(localizacion);
+				biblioteca.setNombre(nombre);
+				biblioteca.setConfirmado(true);
+				bibliotecaDao.update(biblioteca);
+				response.sendRedirect("/admin?usuariosPendientes=true");
+			}
+			if(request.getParameter("rechazarBiblioteca")!=null){
+				String id = request.getParameter("bibliotecaId");
+				Biblioteca biblioteca = bibliotecaDao.readId(id);
+				bibliotecaDao.delete(biblioteca);
+				response.sendRedirect("/admin?usuariosPendientes=true");
+			}
+			if(request.getParameter("aceptarEditorial")!=null){
+				String id = request.getParameter("editorialId");
+				Editorial editorial = editorialDao.readId(id);
+				editorial.setEmail(email);
+				editorial.setNombre(nombre);
+				editorial.setConfirmado(true);
+				editorialDao.update(editorial);
+				response.sendRedirect("/admin?usuariosPendientes=true");
+			}
+			if(request.getParameter("rechazarEditorial")!=null){
+				String id = request.getParameter("editorialId");
+				Editorial editorial = editorialDao.readId(id);
+				editorialDao.delete(editorial);
+				response.sendRedirect("/admin?usuariosPendientes=true");
 			}
 			if(request.getParameter("eliminaUsuario")!=null){
 				Lector usuarioEliminar = lectordao.readID(request.getParameter("usuarioAEliminar"));
@@ -110,9 +190,9 @@ public class Admin_Servlet extends HttpServlet{
 						intercambiotienendao.delete(i);
 					}
 				}
+				response.sendRedirect("/admin");
 			}
 		}
-		response.sendRedirect("/admin");
 	}
 	
 }

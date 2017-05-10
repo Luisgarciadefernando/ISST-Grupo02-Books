@@ -39,7 +39,7 @@
 
         <!-- "Ofertas y Descuentos" -->
 		<div class="container" style="margin-top: 50px;">
-            <div class="row">
+            <div class="row" style="margin-bottom:50px;">
                 <!-- Main content -->
                 <div class="row">
                     <div class="col-lg-12">

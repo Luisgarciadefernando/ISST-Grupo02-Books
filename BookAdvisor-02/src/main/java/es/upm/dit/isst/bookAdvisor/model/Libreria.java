@@ -23,9 +23,11 @@ public class Libreria implements Serializable {
 	private String descripcion;
 	private String imagen;
 	private String contrasena;
+	@Index
+	private boolean confirmado;
 	
 	public Libreria(){}
-	public Libreria(String nombre, String localizacion, String url, String email, String descripcion, String contrasena, String imagen) {
+	public Libreria(String nombre, String localizacion, String url, String email, String descripcion, String contrasena, String imagen, boolean confirmado) {
 		this.nombre = nombre;
 		this.localizacion = localizacion;
 		this.url = url;
@@ -33,11 +35,19 @@ public class Libreria implements Serializable {
 		this.descripcion = descripcion;
 		this.imagen = imagen;
 		this.contrasena = contrasena;
+		this.confirmado = confirmado;
 		this.id = java.util.UUID.randomUUID().toString();
 	}
 
 	public String getId() {
 		return id;
+	}
+
+	public void setConfirmado(boolean confirmado) {
+		this.confirmado = confirmado;
+	}
+	public boolean getConfirmado() {
+		return confirmado;
 	}
 
 	public void setId(String id) {

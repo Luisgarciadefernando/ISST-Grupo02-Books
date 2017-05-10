@@ -81,7 +81,7 @@ public class LibreriasReg_Servlet extends HttpServlet {
 			response.sendRedirect("/registroLibreria");
 		}
 		else{
-			dao.create( nombre, localizacion, url, email, descripcion, hash1, imagen);
+			dao.create( nombre, localizacion, url, email, descripcion, hash1, imagen, false);
 			response.sendRedirect("/login");
 		}
 		

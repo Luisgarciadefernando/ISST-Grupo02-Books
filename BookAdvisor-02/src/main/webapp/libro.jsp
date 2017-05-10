@@ -142,12 +142,13 @@
                         <form action="/intercambio" method="post" id="form-intercambio" style="margin-bottom: 10px;">
                         <input type="hidden" name="tengo" value="true">
                         <input type="hidden" name="libro" value="${libro.id}" >
-                        <button class="button" type="submit" >Lo tengo</button>
+                        <button class="button" type="submit" >Lo tengo para intercambio</button>
+                      	<%@include file="formbookcrossing.jsp" %>
                         </form>
                   	 	
                     </c:if>  
                     <c:if test="${not empty lector and not empty loTiene}">
-                   
+                   		<%@include file="formbookcrossing.jsp" %>
                         <p>Lo tienes para intercambio</p>
                         
                   	 	

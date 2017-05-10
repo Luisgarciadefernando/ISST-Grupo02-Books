@@ -5,6 +5,7 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
 import java.util.List;
 import com.googlecode.objectify.Key;
 import es.upm.dit.isst.bookAdvisor.model.Biblioteca;
+import es.upm.dit.isst.bookAdvisor.model.Libreria;
 
 public class BibliotecaDAOImpl implements BibliotecaDAO{
 	private static BibliotecaDAOImpl instancia;
@@ -18,10 +19,22 @@ public class BibliotecaDAOImpl implements BibliotecaDAO{
 	}
 
 	@Override
-	public Biblioteca create(String nombre, String localizacion, String url, String email, String descripcion, String contrasena, String imagen) {
-		Biblioteca biblioteca = new Biblioteca(nombre, localizacion, url, email, descripcion, contrasena, imagen);
+	public Biblioteca create(String nombre, String localizacion, String url, String email, String descripcion, String contrasena, String imagen, boolean confirmado) {
+		Biblioteca biblioteca = new Biblioteca(nombre, localizacion, url, email, descripcion, contrasena, imagen, confirmado);
 		ofy().save().entity(biblioteca).now();
 		return biblioteca;
+	}
+	
+	@Override
+	public List<Biblioteca> readConfirmado(boolean confirmado) {
+		List<Biblioteca> bibliotecas = ofy().load().type(Biblioteca.class).filter("confirmado", confirmado).list();
+		return bibliotecas;
+	}
+	
+	@Override
+	public Biblioteca readId(String id) {
+		// TODO Auto-generated method stub
+		return ofy().load().type(Biblioteca.class).filterKey(Key.create(Biblioteca.class,id)).first().now();
 	}
 
 	@Override

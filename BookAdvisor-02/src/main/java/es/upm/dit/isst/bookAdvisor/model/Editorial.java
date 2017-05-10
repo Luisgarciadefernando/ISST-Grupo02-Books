@@ -18,17 +18,30 @@ public class Editorial implements Serializable {
 	private String email;
 	@Index
 	private String contrasena;
+	@Index
+	private boolean confirmado;
+	private String imagen;
+	
 	public Editorial(){}
 
-	public Editorial(String nombre, String email, String contrasena) {
+	public Editorial(String nombre, String email, String contrasena, boolean confirmado, String imagen) {
 		this.id = java.util.UUID.randomUUID().toString();
 		this.nombre = nombre;
 		this.email = email;
+		this.confirmado = confirmado;
 		this.contrasena = contrasena;
+		this.imagen = imagen;
 	}
 
 	public String getId() {
 		return id;
+	}
+
+	public void setConfirmado(boolean confirmado) {
+		this.confirmado = confirmado;
+	}
+	public boolean getConfirmado() {
+		return confirmado;
 	}
 
 	public void setId(String id) {
@@ -57,6 +70,13 @@ public class Editorial implements Serializable {
 
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
+	}
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
 }

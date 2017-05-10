@@ -32,6 +32,7 @@ public class Editorial_Servlet extends HttpServlet  {
 		String pass2 = request.getParameter("password2");
 		String hash1="";
 		String hash2="";
+		String imagen = request.getParameter("imagen");
 		
 		
 		try {
@@ -44,6 +45,9 @@ public class Editorial_Servlet extends HttpServlet  {
 			hash2= hash(pass2);
 		} catch (NoSuchAlgorithmException e) {				
 				e.printStackTrace();
+		}
+		if (imagen == null){
+			imagen = "no-disponible.jpg";
 		}
 			
 		Editorial editorial = Edi_dao.readEmail(email);
@@ -59,7 +63,7 @@ public class Editorial_Servlet extends HttpServlet  {
 			response.sendRedirect("/registroEditorial");
 		}
 		else{
-			Edi_dao.create(nombre, email, hash1);
+			Edi_dao.create(nombre, email, hash1, false, imagen);
 			
 			response.sendRedirect("/login");
 		}

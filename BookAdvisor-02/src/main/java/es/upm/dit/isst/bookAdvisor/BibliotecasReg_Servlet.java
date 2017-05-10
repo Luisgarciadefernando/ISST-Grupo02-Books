@@ -80,7 +80,7 @@ public class BibliotecasReg_Servlet extends HttpServlet {
 			response.sendRedirect("/registroBiblioteca");
 		}
 		else{
-			dao.create( nombre, localizacion, url, email, descripcion, hash1, imagen);
+			dao.create( nombre, localizacion, url, email, descripcion, hash1, imagen, false);
 			response.sendRedirect("/login");
 		}
 		

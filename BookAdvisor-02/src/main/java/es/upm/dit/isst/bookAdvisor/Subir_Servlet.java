@@ -42,22 +42,22 @@ public class Subir_Servlet extends HttpServlet {
 		LibroDAO dao = LibroDAOImpl.getInstancia();
 		AutorDAO autorDao = AutorDAOImpl.getInstancia();
 		
+//		Map<String, List<BlobKey>> blobs = BlobstoreServiceFactory.getBlobstoreService().getUploads(req);
+//		List<BlobKey> blobKeys = blobs.get("file");
+//		if (blobKeys == null || blobKeys.isEmpty() || blobKeys.get(0) == null) {
+//			resp.sendError(1200);
+//		}
+//		else {
+//			imagen = blobKeys.get(0).getKeyString();
+//		}
+//		
 		
 		dao.create(titulo, resumen, genero, autor, 0, imagen);
 		
 		if(autorDao.readNombre(autor).size()==0){
 			autorDao.create(autor);
 		}
-		/*	Map<String, List<BlobKey>> blobs = BlobstoreServiceFactory.getBlobstoreService().getUploads(req);
-		List<BlobKey> blobKeys = blobs.get("file");
-		if (blobKeys == null || blobKeys.isEmpty() || blobKeys.get(0) == null) {
-			resp.sendError(1200);
-		}
-		else {
-			resp.getWriter().println("AAA");
-		}
-		*/
-		//File file = (File)
+		
 		resp.sendRedirect("/libros");
 	}
 

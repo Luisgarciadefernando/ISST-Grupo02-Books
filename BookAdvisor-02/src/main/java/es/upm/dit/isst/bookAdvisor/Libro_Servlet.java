@@ -84,6 +84,7 @@ public class Libro_Servlet extends HttpServlet {
 			
 		
 		}
+		
 		AsignacionesLibrerias asignacionlibreria = null;
 		if(asignacionesLibrerias!=null){
 

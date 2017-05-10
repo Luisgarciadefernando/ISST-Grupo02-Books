@@ -2,7 +2,11 @@ package es.upm.dit.isst.bookAdvisor.dao;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 import java.util.List;
+
+import com.googlecode.objectify.Key;
+
 import es.upm.dit.isst.bookAdvisor.model.Editorial;
+import es.upm.dit.isst.bookAdvisor.model.Libreria;
 
 public class EditorialDAOImpl implements EditorialDAO {
 	private static EditorialDAOImpl instancia;
@@ -16,9 +20,9 @@ public class EditorialDAOImpl implements EditorialDAO {
 	}
 	
 	@Override
-	public Editorial create(String nombre, String email, String contrasena) {
+	public Editorial create(String nombre, String email, String contrasena, boolean confirmado, String imagen) {
 		
-		Editorial editorial = new Editorial(nombre, email, contrasena);
+		Editorial editorial = new Editorial(nombre, email, contrasena, confirmado, imagen);
 		ofy().save().entity(editorial).now();
 		return editorial;
 	}
@@ -34,7 +38,17 @@ public class EditorialDAOImpl implements EditorialDAO {
 			
 		return ofy().load().type(Editorial.class).filter("nombre", nombre).list();
 	}
-
+	
+	@Override
+	public List<Editorial> readConfirmado(boolean confirmado) {
+			
+		return ofy().load().type(Editorial.class).filter("confirmado", confirmado).list();
+	}
+	@Override
+	public Editorial readId(String id) {
+		// TODO Auto-generated method stub
+		return ofy().load().type(Editorial.class).filterKey(Key.create(Editorial.class,id)).first().now();
+	}
 	@Override
 	public Editorial readEmail(String email) {
 		

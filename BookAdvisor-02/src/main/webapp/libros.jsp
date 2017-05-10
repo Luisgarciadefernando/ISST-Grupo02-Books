@@ -52,7 +52,7 @@
                     <nav class="templatemo-nav2" id = "nav-libros">
                         <ul class="text-uppercase">
                             <li ><a href="libros?recomendados=true">Recomendados</a></li>
-							<li ><a href="bookcrosing.html">Bookcrosing</a></li>
+							<li ><a href="bookcrossing">Bookcrosing</a></li>
                             <li><a href="libros?novedades=true">Novedades</a></li>
                             
                         </ul> 

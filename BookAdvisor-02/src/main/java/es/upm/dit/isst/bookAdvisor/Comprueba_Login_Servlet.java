@@ -108,6 +108,10 @@ public class Comprueba_Login_Servlet extends HttpServlet {
 				response.sendRedirect("/login");
 
 			}
+			if(editorial.getConfirmado() == false){
+				request.getSession().setAttribute("mensaje","El usuario aún no ha sido confirmado por el administrador del sistema");
+				response.sendRedirect("/login");
+			}
 			else {
 				
 				request.getSession().setAttribute("editorial", editorial);
@@ -122,6 +126,10 @@ public class Comprueba_Login_Servlet extends HttpServlet {
 				request.getSession().setAttribute("mensaje","Error con la contrase�a");
 				response.sendRedirect("/login");
 
+			}
+			if(biblioteca.getConfirmado() == false){
+				request.getSession().setAttribute("mensaje","El usuario aún no está confirmado");
+				response.sendRedirect("/login");
 			}
 			else {
 				
@@ -138,10 +146,13 @@ public class Comprueba_Login_Servlet extends HttpServlet {
 				response.sendRedirect("/login");
 
 			}
+			if(libreria.getConfirmado() == false){
+				request.getSession().setAttribute("mensaje","El usuario aún no está confirmado");
+				response.sendRedirect("/login");
+			}
 			else {
 				
 				request.getSession().setAttribute("libreria", libreria);
-				
 				
 				response.sendRedirect("/libros");
 
