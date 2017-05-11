@@ -42,19 +42,9 @@
             <!-- Header -->
  <%@include file="cabecera.jsp" %>
     <!-- end Header -->
- <%
-    if (request.getSession().getAttribute("mensaje")!=null){
-    	String mensaje = (String)request.getSession().getAttribute("mensaje");
-    %>	
-    	<div class="alert alert-warning">
-    	  <strong><%= mensaje %></strong>
-    	</div>
-    <%
-    	request.getSession().removeAttribute("mensaje");
-    }
-    %>
+
         <!-- "New Arrivals" -->
-        <section class="container">
+        <section class="container" style="height: 1683px;">
             <div class="row">
                <div class="row">
                 <!-- Main content -->
@@ -75,20 +65,22 @@
                         </div>
                     <nav class="templatemo-nav2" id = "nav-libros">
                         <ul class="text-uppercase">
-                            <li class="active"><a href="#">BookCrossing</a></li>
-                            <li ><a href="libros.html">Recomendados</a></li>
-                            <li ><a href="libros.html">Novedades</a></li>
+							<li ><a href="bookcrossing">Bookcrossing</a></li>
+                            <li ><a href="libros?recomendados=true">Recomendados</a></li>
+                            <li><a href="libros?novedades=true">Novedades</a></li>
                         </ul> 
                     </nav>
                         
                 </div>
             </div>
+             
              <c:forEach items="${bookcrossinglist}" var="booki">
              <%BookCrossing b = (BookCrossing)pageContext.getAttribute("booki");
              	Libro libro = LibroDAOImpl.getInstancia().readID(b.getLibro());
              	Lector user = LectorDAOImpl.getInstancia().readID(b.getLector());
              %>
-                <div class="row">
+                
+                    <div class="conjuntoBook">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-left">
                         <div class="post-title">
                             <h3 class="text-uppercase"><%=libro.getTitulo() %></h3>
@@ -99,19 +91,19 @@
                         <div class="post-excerpt gray-text">
                             <p>${booki.informacion}</p>
                         </div>
-                        <div class="post-excerpt gray-text">
+                        <div class="bookcross">
                              <form class="" method="post" action="/bookcrossing">
-                              <strong>Lo he encontrado: </strong>
-                             <input type="hidden"  name="encontrado" value="true">
-                              <input class="buscador" type="text" name="codigo" class="entrada-form form-control" id="busqueda">
-                             <button type="submit" class="btn-default buscador"  id="boton-buscar">Validar</button>
+                              <strong>¿Lo has encontrado? </strong>
+                             <input  type="hidden"  name="encontrado" value="true">
+                              <input class="form-control" placeholder="Introduce el código del libro" type="text" name="codigo" style="width: 50%;margin-top: 10px;">
+                             <button type="submit" class="btn btn-primary"  id="boton-buscar" style="margin-left: 290px;margin-top: -59px; height: 100%;">Validar</button>
                         </form>
                         </div>
-                        <div class="post-excerpt gray-text">
-                            <p><%=user.getNombre() %></p>
+                        <div id="bookUser">
+                            <p style="color:#D0B04C"><strong><span class="glyphicon glyphicon-user"></span>&nbspUsuario propietario del libro:&nbsp</strong><h11 style="color:black !important"><%=user.getNombre() %></h11></p>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="height: 380px;">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="post-img-container">
                                 <a href="libro?id=${booki.libro}"><img src="img/<%=libro.getImagen()%>" class="post-img img-responsive"></a>
@@ -119,15 +111,14 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div id="google-map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.1410705191!2d-3.6979402483875257!3d40.42787506278295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd42288e8561bb0b%3A0xc07cc7157bae1a9f!2sPlaza+Alonso+Mart%C3%ADnez%2C+28004+Madrid!5e0!3m2!1ses!2ses!4v1491848366884" width="300" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
-                            <div class="templatemo-block-right">
-                                </div>
+                            
                             </div>
                         </div>
                     </div>
                 </div>
-                <hr>
+                 
                 </c:forEach>
-            </div>
+           
         </section> <!-- end "New Arrivals" -->
 
        

@@ -106,6 +106,7 @@ public class Libro_Servlet extends HttpServlet {
 
 		}
 		
+		
 		for(Valoracion vi: v){
 			if(lector!=null && vi.getLector().equals(lector.getId()) && vi.getLibro().equals(id)){
 				v3 = vi;

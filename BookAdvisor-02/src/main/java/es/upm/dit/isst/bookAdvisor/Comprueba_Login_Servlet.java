@@ -128,7 +128,7 @@ public class Comprueba_Login_Servlet extends HttpServlet {
 
 			}
 			if(biblioteca.getConfirmado() == false){
-				request.getSession().setAttribute("mensaje","El usuario aún no está confirmado");
+				request.getSession().setAttribute("mensaje","El usuario aún no ha sido confirmado por el administrador del sistema");
 				response.sendRedirect("/login");
 			}
 			else {
@@ -147,7 +147,7 @@ public class Comprueba_Login_Servlet extends HttpServlet {
 
 			}
 			if(libreria.getConfirmado() == false){
-				request.getSession().setAttribute("mensaje","El usuario aún no está confirmado");
+				request.getSession().setAttribute("mensaje","El usuario aún no ha sido confirmado por el administrador del sistema");
 				response.sendRedirect("/login");
 			}
 			else {

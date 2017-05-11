@@ -62,13 +62,14 @@
                              <tbody>
                             <c:forEach items="${usuarios}" var="usuario">
                                 <tr>
-                                    <h10><strong style="color:#D0B04C;"><span class="glyphicon glyphicon-user"></span>&nbsp${usuario.nombre}</strong></h10>
+                                    <h10><strong style="color:#D0B04C;"><span class="glyphicon glyphicon-user"></span>&nbspUsuario:&nbsp${usuario.nombre}</strong></h10>
+                                    <br>
+                                    <usuario><strong><span class="glyphicon glyphicon-envelope"></span>&nbspEmail:&nbsp</strong>${usuario.email}<usuario>
                                     <br>
                                     
                                     <c:if test="${not empty admin}">
-                                    <usuario style="margin-left:20px;"><strong>Email:&nbsp</strong>${usuario.email}<usuario>
-                                    <br>
-                                    <a href="/usuario?id=${usuario.id}" style="margin-left:20px;">Ver usuario</a>
+                                    
+                                    <a href="/usuario?id=${usuario.id}"><span class="glyphicon glyphicon-eye-open"></span>&nbspVer usuario</a>
                                     <br>
                                     <br>
                                     </c:if>

@@ -50,7 +50,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>Editoriales</servlet-name>
-    <servlet-class>es.upm.dit.isst.bookAdvisor.Editorial_Servlet</servlet-class>
+    <servlet-class>es.upm.dit.isst.bookAdvisor.Editoriales_Servlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Editoriales</servlet-name>

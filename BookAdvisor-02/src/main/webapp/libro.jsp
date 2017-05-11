@@ -44,7 +44,7 @@
                     <h3 id="nombre-libro" class="text-uppercase" style="margin-bottom: -40px;">${libro.titulo}</h3>
                     <hr class="templatemo-section-header-hr">
                     <p class="text-uppercase templatemo-section-subheader"></p>
-                <div id ="div-derecha" style="margin-top:20px;">
+                <div id ="div-derecha" style="margin-top:20px; margin-left:344px;">
                     <div id="div-derecha-sub">
                     <div id="resumen" class ="derecha-dentro">
                         <h5><strong>Resumen:</strong></h5>
@@ -95,11 +95,11 @@
                 </div>
                 
                  <c:if test="${not empty lector and empty valoracion and empty admin}">
-                  <div id="div-derecha2">
+                  <div id="div-derecha2" style="margin-top: 20px;">
                     <div id="div-derecha2-sub">
                    
                     <div id="nuevo-comentario"  class ="derecha-dentro">
-                        <h5><strong>Añadir valoración:</strong></h5>
+                        <h5 style="text-align: center;"><strong>Añadir valoración:</strong></h5>
                         <form class="" method="post" action="/valoracion">
                         <div class="rating">
   							  <span><input  class="star" type="radio" name="rating" id="str5" value="5"><label for="str5"></label></span>
@@ -137,22 +137,36 @@
 	
 	
 	<div id="botons2" style="margin-top: -30px;margin-bottom: 50px;margin-left: 70px;">
-                    <c:if test="${not empty lector and empty loTiene and empty admin}">
                    
-                        <form action="/intercambio" method="post" id="form-intercambio" style="margin-bottom: 10px;">
+                   
+                   <c:if test="${not empty lector and empty loTiene and empty admin}">
+                   
+                        <form action="/intercambio" method="post" id="form-intercambio" style="margin-bottom: 50px;">
                         <input type="hidden" name="tengo" value="true">
                         <input type="hidden" name="libro" value="${libro.id}" >
+                        <div id="LotengoIntercambio" style="margin-left: 100px;">
                         <button class="button" type="submit" >Lo tengo para intercambio</button>
-                      	<%@include file="formbookcrossing.jsp" %>
+                        </div>
+                        <div class="BookCross" style="margin-left:-200px;">
+                        <%@include file="formbookcrossing.jsp" %>
+                        </div>
                         </form>
                   	 	
                     </c:if>  
+                     
+                     
+                     
                     <c:if test="${not empty lector and not empty loTiene}">
+                        <div id="SiLotengo" style="margin-left:100px;">
+                        	<p><Strong><span class="glyphicon glyphicon-hand-right"></span>&nbspLo tienes para intercambio</Strong></p> 	
+                    	</div>
+                    	<div class="BookCross2" style="margin-left: -201px;margin-bottom: 50px;">
                    		<%@include file="formbookcrossing.jsp" %>
-                        <p>Lo tienes para intercambio</p>
-                        
-                  	 	
+                        </div>
                     </c:if>
+         
+                     
+                   
                       <c:if test="${not empty libreria and empty loTiene}">
                    
                         <form action="/asignaLibreria" method="post" id="form-asignaLibreria" style="margin-bottom: 10px;">
@@ -165,8 +179,8 @@
                         <option value="eBook">eBook</option> 
                         </select>
                         <br>
-                        <strong style="margin-left: 16px;">Precio:&nbsp</strong>
-                        <input required="" type="number" name="precio" step="0.50" min="1" style="margin-top: 10px;width: 15.4%;text-align:center;">
+                        <strong style="margin-left: 0px;">Precio:&nbsp</strong>
+                        <input required="" type="number" name="precio" step="0.50" min="1" style="margin-top: 10px;width: 6.4%;text-align:center;">
                         <strong style="margin-left: 10px;">Euros</strong>
                         <br>
                         <input type="hidden" name="tengo" value="true">
@@ -182,6 +196,8 @@
                         <strong>En formato:</strong> ${asignacionlib.formato}
                   	 	</div>
                     </c:if>    
+                
+                <c:if test="${not empty lector}">
                     <form action="/disponibilidad" method="get">
                     <input type="hidden" value="true" name="intercambio">
                     <input type="hidden" value="${libro.id}" name="libro">
@@ -192,19 +208,25 @@
                     <input type="hidden" value="${libro.id}" name="libro">
                    <button class="button" type="submit" >Disponibilidad librerias</button>
                     </form>
+                </c:if>    
+
     </div>
     
     <c:if test="${not empty lector and not empty valoracion}">
  					<div id="valoracion"  class ="" style="margin-left: 65px;margin-top: -25px;margin-bottom: 30px;">
-                        <h4 ><strong style="text-decoration: underline;">Mi valoración:</strong></h4>
+                        <h4 class="text-uppercase" style="margin-bottom: -1px">Mi valoración:</h4>
+                        <hr class="templatemo-section-header-hr">
+                        
                         <h5><strong style="color:#D0B04C;"><span class="glyphicon glyphicon-heart-empty"></span>&nbspValoración:</strong>&nbsp${valoracion.valoracion}</h5>
                         <p style="margin-left:20px !important;">${valoracion.comentario}</p>
                   	</div>
                     </c:if> 
                    
 
-					<div id="comentarios"  class ="" style="margin-left: 65px;margin-top: -25px;margin-bottom: 25px;">
-                        <h4 ><strong style="text-decoration: underline;">Comentarios:</strong></h4>
+					<div id="comentarios"  class ="" style="margin-left: 65px;margin-top: -15px;margin-bottom: 25px;">
+                        <h4 class="text-uppercase" style="margin-bottom: -1px">Comentarios:</h4>
+                        <hr class="templatemo-section-header-hr">
+                        
 
                         <c:if test="${not empty valoraciones}">
                         <c:forEach items="${valoraciones}" var="vali">

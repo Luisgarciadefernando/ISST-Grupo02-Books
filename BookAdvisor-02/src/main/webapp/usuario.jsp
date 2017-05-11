@@ -45,17 +45,46 @@
 
                
 		<p style="margin-left: 70px;margin-top: 30px;"><strong><span class="glyphicon glyphicon-user"></span>&nbspUsuario:</strong> ${lectorPerfil.nombre}
-		 <br><strong style="margin-left: 20px;">Email:</strong>&nbsp${lectorPerfil.email}
+		 <br><strong><span class="glyphicon glyphicon-envelope"></span>&nbspEmail:</strong>&nbsp${lectorPerfil.email}
+		 
 		 
 				<c:if test="${not empty admin}">
 					<form action="/admin" method="post">
                      <input type="hidden" name="usuarioAEliminar" value="${lectorPerfil.id}">
-                     <button class="button" type="submit" name="eliminaUsuario" value="true" style="margin-left: 90px;">Eliminar usuario</button>
-                     </p>
+                     <button class="button" type="submit" name="eliminaUsuario" value="true" style="margin-left: 70px;">Eliminar usuario</button>
+                     </form>
                  </c:if>
-		<div id="comentarios"  class ="" style="margin-left: 65px;margin-top: 25px;margin-bottom: 25px;">
-                        <h4 ><strong style="text-decoration: underline;">Comentarios de: ${lectorPerfil.nombre}:</strong></h4>
+        		
+        		<div id="ChangePass"  style="margin-left: 65px;margin-top: 25px;margin-bottom: 25px;">
+        		<c:if test="${empty admin}">
+          			<form action="/usuario" method="post">
+          				
+          				 <h4 class="text-uppercase" style="margin-bottom: -1px;">Cambiar contraseña</h4>
+          				 <hr class="templatemo-section-header-hr">
+						<br>
+          		    	<label for="nombrenuevo" style="margin-left:40px">Nuevo Nombre</label><br>
+                        <input type="text" style="text-align:center;" name="cambiarnombre" value="${lectorPerfil.nombre}"><br>
+          		    	<label for="emailnuevo" style="margin-left:50px">Nuevo Email</label><br>
+                        <input type="text" style="text-align:center;"name="cambiaremail" value="${lectorPerfil.email}"><br>
+          		    	<label for="contraseñaAntigua" style="margin-left:25px">Contraseña antigua</label><br>
+                     	<input type="text" style="text-align:center;" type="password" name="passAntigua"><br>
+          		    	<label for="contraselanueva" style="margin-left:27px">Contraseña nueva</label><br>
+                      	<input type="text" style="text-align:center;" type="password" name="passNueva" ><br>
+                         <label for="Repetircontraseña" style="margin-left: 3px;">Repetir contraseña nueva</label><br>
+                      	<input type="text" style="text-align:center;" type="password" name="passNueva2" ><br>
+                      	<input type="hidden" name="cambiarcontrasena" value="true">
+                     	<button class="button" type="submit" style="margin-left: 40px;margin-top: 15px;">Guardar cambios</button>
+                    </form>
+                    
+        		</c:if>
+        		</div>
 
+		
+		
+		
+		<div id="comentarios"  class ="" style="margin-left: 65px;margin-top: 25px;margin-bottom: 25px;">
+                        <h4 class="text-uppercase" style="margin-bottom: -1px">Comentarios de ${lectorPerfil.nombre}</h4>
+                        <hr class="templatemo-section-header-hr">
                      <c:if test="${not empty valoraciones}">
                       <c:forEach items="${valoraciones}" var="vali">
                       <p>

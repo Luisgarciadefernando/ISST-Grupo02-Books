@@ -54,7 +54,7 @@ public class BookCrossing_Servlet extends HttpServlet {
 				Libro libro = (Libro) req.getSession().getAttribute("libro");
 			
 				BookCrossing b =BookCrossingDAOImpl.getInstancia().create(lector.getId(), libro.getId(), direccion, informacion, false, new Date());
-				String mensaje = "El código es: "+b.getId();
+				String mensaje = "Su codigo de Bookcrossing es: "+b.getId() + ". Por favor apÃºntelo en el libro.";
 				
 				req.getSession().setAttribute("mensaje", mensaje);
 			}
@@ -65,10 +65,10 @@ public class BookCrossing_Servlet extends HttpServlet {
 					b.setEncontrado(true);
 					b.setLector(lector.getId());
 					BookCrossingDAOImpl.getInstancia().update(b);
-					req.getSession().setAttribute("mensaje", "Código válido");
+					req.getSession().setAttribute("mensaje", "Codigo valido");
 				}
 				else {
-					req.getSession().setAttribute("mensaje", "Código no válido");
+					req.getSession().setAttribute("mensaje", "Codigo no valido");
 				}
 			}
 			resp.sendRedirect("/bookcrossing");

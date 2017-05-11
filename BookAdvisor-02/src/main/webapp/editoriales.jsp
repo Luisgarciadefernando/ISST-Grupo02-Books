@@ -48,42 +48,49 @@
                     <div class="col-lg-12">
                         <ul class="pagination" style="margin-left: 86px;">
                             <li><a href="#">&laquo;</a></li>
-                            <li><a href="/autores?letra=A">A</a></li>
-                            <li><a href="/autores?letra=B">B</a></li>
-                            <li><a href="/autores?letra=B">C</a></li>
-                            <li><a href="/autores?letra=D">D</a></li>
-                            <li><a href="/autores?letra=E">E</a></li>
-                            <li><a href="/autores?letra=F">F</a></li>
-                            <li><a href="/autores?letra=G">G</a></li>
-                            <li><a href="/autores?letra=H">H</a></li>
-                            <li><a href="/autores?letra=I">I</a></li>
-                            <li><a href="/autores?letra=J">J</a></li>
-                            <li><a href="/autores?letra=K">K</a></li>
-                            <li><a href="/autores?letra=L">L</a></li>
-                            <li><a href="/autores?letra=M">M</a></li>
-                            <li><a href="/autores?letra=N">N</a></li>
-                            <li><a href="/autores?letra=Ñ">Ñ</a></li>
-                            <li><a href="/autores?letra=O">O</a></li>
-                            <li><a href="/autores?letra=P">P</a></li>
-                            <li><a href="/autores?letra=Q">Q</a></li>
-                            <li><a href="/autores?letra=R">R</a></li>
-                            <li><a href="/autores?letra=S">S</a></li>
-                            <li><a href="/autores?letra=T">T</a></li>
-                            <li><a href="/autores?letra=U">U</a></li>
-                            <li><a href="/autores?letra=V">V</a></li>
-                            <li><a href="/autores?letra=W">W</a></li>
-                            <li><a href="/autores?letra=X">X</a></li>
-                            <li><a href="/autores?letra=Y">Y</a></li>
-                            <li><a href="/autores?letra=Z">Z</a></li>                              
+                            <li><a href="/editoriales?letra=A">A</a></li>
+                            <li><a href="/editoriales?letra=B">B</a></li>
+                            <li><a href="/editoriales?letra=C">C</a></li>
+                            <li><a href="/editoriales?letra=D">D</a></li>
+                            <li><a href="/editoriales?letra=E">E</a></li>
+                            <li><a href="/editoriales?letra=F">F</a></li>
+                            <li><a href="/editoriales?letra=G">G</a></li>
+                            <li><a href="/editoriales?letra=H">H</a></li>
+                            <li><a href="/editoriales?letra=I">I</a></li>
+                            <li><a href="/editoriales?letra=J">J</a></li>
+                            <li><a href="/editoriales?letra=K">K</a></li>
+                            <li><a href="/editoriales?letra=L">L</a></li>
+                            <li><a href="/editoriales?letra=M">M</a></li>
+                            <li><a href="/editoriales?letra=N">N</a></li>
+                            <li><a href="/editoriales?letra=Ñ">Ñ</a></li>
+                            <li><a href="/editoriales?letra=O">O</a></li>
+                            <li><a href="/editoriales?letra=P">P</a></li>
+                            <li><a href="/editoriales?letra=Q">Q</a></li>
+                            <li><a href="/editoriales?letra=R">R</a></li>
+                            <li><a href="/editoriales?letra=S">S</a></li>
+                            <li><a href="/editoriales?letra=T">T</a></li>
+                            <li><a href="/editoriales?letra=U">U</a></li>
+                            <li><a href="/editoriales?letra=V">V</a></li>
+                            <li><a href="/editoriales?letra=W">W</a></li>
+                            <li><a href="/editoriales?letra=X">X</a></li>
+                            <li><a href="/editoriales?letra=Y">Y</a></li>
+                            <li><a href="/editoriales?letra=Z">Z</a></li>                              
                             <li><a href="#">&raquo;</a></li>
                         </ul>
                     </div>
                 </div>
-	            <div class="row">
+	          <div class="row">
                     <!-- Left block, images -->
                     <div class="col-lg-10 col-lg-offset-1">
                         <table class="table">
-                            
+                             <tbody>
+                            <c:forEach items="${editoriales}" var="edit">
+                                <tr>
+                                    <td><a href="libros?editorial=${edit.id}">${edit.nombre}</td>
+                                </tr>
+                                
+                                </c:forEach>
+                            </tbody>
                          </table>
                     </div>
                     <!-- Right block, text -->

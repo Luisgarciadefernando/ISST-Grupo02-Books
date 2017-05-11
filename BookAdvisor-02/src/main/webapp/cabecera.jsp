@@ -83,6 +83,17 @@
 
     </head>
     <body>
+        <%
+    if (request.getSession().getAttribute("mensaje")!=null){
+      String mensaje = (String)request.getSession().getAttribute("mensaje");
+    %>  
+      <div class="alert alert-warning">
+        <strong><%= mensaje %></strong>
+      </div>
+    <%
+      request.getSession().removeAttribute("mensaje");
+    }
+    %>
         <!-- Header -->
          <div class="templatemo-container">
             <div class="templatemo-block-left">
@@ -153,7 +164,7 @@
      </c:if>
      <c:if test="${not empty lector and empty admin}">
             
-      <div class="credenciales" style="padding-bottom: 67px !important;">
+      <div class="credenciales" style="padding-bottom: 80px !important;">
         <div class="templatemo-container">
       	  <div class="imagen"><img src="img/no-disponible.jpg" alt="" class="img-circle"> </div>
           <div class="usuario">
@@ -162,11 +173,12 @@
        	    
        	    </div>
        	    <div class="log">
+       	    <a href="/usuario?id=${lector.id}" class="autenticado">Editar perfil</a><br>
        	    <a href="/logout" class="autenticado">Logout</a>
-       	    </div>
+            </div>
           </div>
           
-          <div class="botones">
+          <div class="botones" style="margin-top: -160px !important;">
          
             <!--<a href="/subir.jsp" class="autenticado">Subir ficha</a>-->
             <%@include file="subir.jsp" %>
