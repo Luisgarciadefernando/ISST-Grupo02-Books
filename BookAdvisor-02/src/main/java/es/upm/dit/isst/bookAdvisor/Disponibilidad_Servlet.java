@@ -76,8 +76,9 @@ public class Disponibilidad_Servlet extends HttpServlet{
 			
 		}
 		if(request.getParameter("libro")!=null && request.getParameter("librerias")!=null){
-			String libro = request.getParameter("libro");
-			List<AsignacionesLibrerias> asignacionesLibrerias = asigLibreriasDao.readLibro(libro);
+			String libroId = request.getParameter("libro");
+			Libro libro = librodao.readID(libroId);
+			List<AsignacionesLibrerias> asignacionesLibrerias = asigLibreriasDao.readLibro(libroId);
 			List<Libreria> librerias = new ArrayList<Libreria>();
 			
 			for(int i=0; i<asignacionesLibrerias.size();i++){
@@ -86,7 +87,9 @@ public class Disponibilidad_Servlet extends HttpServlet{
 				librerias.add(l);
 				
 			}
+			request.getSession().setAttribute("asignacionesLibrerias", asignacionesLibrerias);
 			request.getSession().setAttribute("librerias", librerias);
+			request.getSession().setAttribute("libro", libro);
 
 			RequestDispatcher view = request.getRequestDispatcher("librerias.jsp");
 			view.forward(request, response);

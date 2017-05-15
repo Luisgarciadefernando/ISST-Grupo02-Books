@@ -168,6 +168,14 @@
     <servlet-name>AsignacionesLibrerias</servlet-name>
     <url-pattern>/asignaLibreria</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AsignacionesEditoriales</servlet-name>
+    <servlet-class>es.upm.dit.isst.bookAdvisor.AsignaEditorial_Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AsignacionesEditoriales</servlet-name>
+    <url-pattern>/asignaEditorial</url-pattern>
+  </servlet-mapping>
    <servlet>
     <servlet-name>Admin</servlet-name>
     <servlet-class>es.upm.dit.isst.bookAdvisor.Admin_Servlet</servlet-class>
@@ -191,6 +199,14 @@
   <servlet-mapping>
     <servlet-name>BookCrossing</servlet-name>
     <url-pattern>/bookcrossing</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MostrarEditorial</servlet-name>
+    <servlet-class>es.upm.dit.isst.bookAdvisor.MostrarEditorial_Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MostrarEditorial</servlet-name>
+    <url-pattern>/mostrarEditorial</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>

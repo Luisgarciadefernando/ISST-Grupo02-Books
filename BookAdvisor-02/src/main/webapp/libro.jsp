@@ -190,6 +190,36 @@
                         </form>
                   	 	
                     </c:if>  
+                    
+                    <c:if test="${not empty editorial and empty loTiene}">
+                   
+                        <form action="/asignaEditorial" method="post" id="form-asignaEditorial" style="margin-bottom: 10px;">
+                        <div id="formato" style="margin-bottom: 10px;">
+                        <strong>Formato:&nbsp</strong>
+                        <select required="" name="formato" id="formato" style="text-align:center;">
+                        <option value="Sin Formato">Seleccione un formato</option>
+                        <option value="Tapa dura">Tapa dura</option> 
+                        <option value="Tapa blanda">Tapa blanda</option>
+                        <option value="eBook">eBook</option> 
+                        </select>
+                        <br>
+                        <strong style="margin-left: 0px;">Idioma:&nbsp</strong>
+                        <select required="" name="idioma" id="idioma" style="text-align:center;">
+                        <option value="Sin idioma">Seleccione un idioma</option>
+                        <option value="Espanol">Español</option> 
+                        <option value="Ingles">Inglés</option>
+                        <option value="Aleman">Alemán</option> 
+                        <option value="Frances">Francés</option> 
+                        </select>
+                        <br>
+                        <input type="hidden" name="tengo" value="true">
+                        <input type="hidden" name="libro" value="${libro.id}" >
+                        </div>
+                        <button class="button" type="submit" >Lo tengo</button>
+                        </form>
+                  	 	
+                    </c:if> 
+                    
                     <c:if test="${not empty libreria and not empty loTiene and not empty asignacionlib}">
                    	<div id="lotienes" style="margin-bottom: 10px;">
                         <strong><span class="glyphicon glyphicon-book"></span>&nbspLo tienes a un precio de:</strong> ${asignacionlib.precio} Euros<br>

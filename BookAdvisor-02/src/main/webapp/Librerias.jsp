@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="es.upm.dit.isst.bookAdvisor.model.Libreria" %>
+<%@ page import="es.upm.dit.isst.bookAdvisor.model.AsignacionesLibrerias" %>
+<%@ page import="java.util.List" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -44,13 +46,35 @@
                     <div class="col-lg-12">
                         <h2 class="text-uppercase">Librerías</h2>
                         <hr class="templatemo-section-header-hr">
-                        <p class="text-uppercase templatemo-section-subheader margin-bottom-0">Listado de librerías</p>
+                        <c:if test="${not empty libro}">
+                        	<p class="text-uppercase templatemo-section-subheader margin-bottom-0">Listado de librerías que disponen <c:out value="${libro.titulo}"/></p>
+                        </c:if>
+                        <c:if test="${empty libro}">
+                        	<p class="text-uppercase templatemo-section-subheader margin-bottom-0">Listado de librerías</p>
+                       	</c:if>
                     </div>
                 </div>
                 
 
  				<%int n=0;%>
                 <c:forEach items="${librerias}" var="libreria">
+   <%-- 					<c:if test="${not empty asignacionesLibrerias}">
+	                	<%
+	                	List<AsignacionesLibrerias> asignacionesLibrerias = (List<AsignacionesLibrerias>)request.getSession().getAttribute("asignacionesLibrerias");
+	                	Libreria libreria = (Libreria)pageContext.getAttribute("libreria");
+	            		String formato = "";
+	            		double precio = 0.0;
+	                	for (AsignacionesLibrerias a: asignacionesLibrerias){
+	                		if (a.getLibreria().equals(libreria.getId())){
+	                			formato = a.getFormato();
+	                			precio = a.getPrecio();
+	                		}
+	                	}
+	                	%>
+	                	<p class="gold-text"><i>Formato: <%= formato %></i></p>
+	                	<p class="gold-text"><i>Precio: <%= precio %> euros</i></p>
+	                </c:if>
+	                --%>
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-left">
                             <div class="post-title">
@@ -59,12 +83,31 @@
                             <div class="post-meta-data">
                                 <p class="gold-text"><i><c:out value="${libreria.localizacion}" /></i></p>
                             </div>
-
-
-
+                            <div>
+			   					<c:if test="${not empty asignacionesLibrerias}">
+			   						<c:forEach items="${asignacionesLibrerias}" var="a">
+			   							<c:if test="${a.libreria ==libreria.id }">
+			   								<p>Formato: <c:out value="${a.formato }"/></p>
+				                			<p>Precio: <c:out value="${a.precio }"/> euros</p>
+			                			</c:if>
+			   		<%--					<%
+					            		String formato = "";
+					            		double precio = 0.0;
+			   							AsignacionesLibrerias a = (AsignacionesLibrerias)pageContext.getAttribute("asignacionesLibrerias");
+			   							Libreria libreria = (Libreria)pageContext.getAttribute("libreria");
+			   							if (a.getLibreria().equals(libreria.getId())){
+				                			formato = a.getFormato();
+				                			precio = a.getPrecio();
+				                		}
+			   							%>
+				                		<p class="gold-text"><i>Formato: <%= formato %></i></p>
+				                		<p class="gold-text"><i>Precio: <%= precio %> euros</i></p>
+				                		--%>
+				                	</c:forEach>
+				                </c:if>
+			                </div>
                             <div class="post-excerpt gray-text">
                                 <p><c:out value="${libreria.descripcion}" /></p>
-                                <p><c:out value="${libreria.localizacion}" /></p>
                             </div>
                             <a href="${libreria.url}" class="gray-text margin-top-10 post-read-more">
                                 <i class="fa fa-arrow-circle-o-right fa-2x v-align-middle"></i> Visitar la web

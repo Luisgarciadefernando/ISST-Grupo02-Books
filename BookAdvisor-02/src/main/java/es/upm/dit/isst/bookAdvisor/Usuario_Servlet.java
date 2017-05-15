@@ -144,6 +144,11 @@ public class Usuario_Servlet extends HttpServlet{
 					lectorPerfil.setNombre(nombre);
 					lectorPerfil.setEmail(email);
 					LectorDAOImpl.getInstancia().update(lectorPerfil);	
+					List<Valoracion> valoracionesLector = ValoracionDAOImpl.getInstancia().readLector(lectorPerfil.getId());
+			          for (Valoracion v: valoracionesLector) {
+			            v.setLectorNombre(nombre);
+			            ValoracionDAOImpl.getInstancia().update(v);
+			          }
 					request.getSession().setAttribute("mensaje", "Nombre de usuario actualizado");
 
 				}

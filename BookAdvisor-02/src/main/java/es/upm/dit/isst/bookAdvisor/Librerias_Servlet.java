@@ -41,7 +41,9 @@ public class Librerias_Servlet extends HttpServlet{
 //		Libreria libreria3 = dao.create("Libreria3", "c/ de la Piruleta", "http://www.marca.com", "email3", "Esta es una mas libreria de noseque y de nosecuantos", "1", "libreria3.jpeg");
 //		dao.deleteAll();
 		List<Libreria> librerias = dao.read();
-		
+
+		request.getSession().setAttribute("libro", null);
+		request.getSession().setAttribute("asignacionesLibrerias", null);
 		request.getSession().setAttribute("librerias", librerias);
 		
 		RequestDispatcher view = request.getRequestDispatcher("librerias.jsp");

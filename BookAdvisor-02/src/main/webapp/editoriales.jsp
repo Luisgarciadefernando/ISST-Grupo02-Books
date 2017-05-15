@@ -43,7 +43,7 @@
                     <div class="col-lg-12" style="margin-bottom: -50px;">
                         <h2 class="text-uppercase">Editoriales</h2>
                         <hr class="templatemo-section-header-hr">
-                        <p class="text-uppercase templatemo-section-subheader">Listado de Editorials</p>
+                        <p class="text-uppercase templatemo-section-subheader">Listado de Editoriales</p>
                     </div>
                     <div class="col-lg-12">
                         <ul class="pagination" style="margin-left: 86px;">
@@ -83,13 +83,14 @@
                     <!-- Left block, images -->
                     <div class="col-lg-10 col-lg-offset-1">
                         <table class="table">
-                             <tbody>
-                            <c:forEach items="${editoriales}" var="edit">
-                                <tr>
-                                    <td><a href="libros?editorial=${edit.id}">${edit.nombre}</td>
-                                </tr>
-                                
-                                </c:forEach>
+                            <tbody>
+	                            <c:forEach items="${editoriales}" var="edit">
+	                            	<c:if test="${edit.confirmado == true}">
+	                                	<tr>
+	                                    	<td><a href="mostrarEditorial?id=${edit.id}">${edit.nombre}</td>
+	                                	</tr>
+	                                </c:if>
+	                            </c:forEach>
                             </tbody>
                          </table>
                     </div>

@@ -17,7 +17,9 @@ import com.googlecode.objectify.ObjectifyService;
 
 import es.upm.dit.isst.bookAdvisor.dao.EditorialDAO;
 import es.upm.dit.isst.bookAdvisor.dao.EditorialDAOImpl;
+import es.upm.dit.isst.bookAdvisor.model.Autor;
 import es.upm.dit.isst.bookAdvisor.model.Editorial;
+import es.upm.dit.isst.bookAdvisor.model.Libro;
 
 public class Editoriales_Servlet  extends HttpServlet{
 	
@@ -49,6 +51,18 @@ public class Editoriales_Servlet  extends HttpServlet{
 					}
 				}
 			}
+		
+		
+		if(request.getParameter("id")!=null){
+			
+			String nombreId = request.getParameter("id");
+			Editorial a = Aut_dao.readId(nombreId);
+				
+			
+		request.getSession().setAttribute("nombreEditoriales", a);
+		RequestDispatcher view = request.getRequestDispatcher("editorialListado.jsp");
+		view.forward(request, response);
+
 		}
 		
 		request.getSession().setAttribute("editoriales", listaEditoriales);
@@ -59,4 +73,6 @@ public class Editoriales_Servlet  extends HttpServlet{
 		
 	}
 
+	}
 }
+
