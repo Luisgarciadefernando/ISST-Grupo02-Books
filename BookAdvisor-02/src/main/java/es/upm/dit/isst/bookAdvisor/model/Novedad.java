@@ -7,6 +7,7 @@ import java.util.Date;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
+import es.upm.dit.isst.bookAdvisor.model.AsignacionesEditoriales;
 
 @Entity
 public class Novedad implements Serializable{
@@ -17,25 +18,16 @@ public class Novedad implements Serializable{
 	@Index
 	Libro libro;
 	@Index
-	Editorial editorial;
-	@Index
-	String formato;
-	@Index
-	String idioma;
-	@Index
-	Date fecha;
+	AsignacionesEditoriales asignacionesEditoriales;
 	@Index
 	int estado;
 	
 	public Novedad() {}
 	
-	public Novedad (Libro libro, Editorial editorial, String formato, String idioma, Date fecha, int estado){
+	public Novedad (Libro libro, AsignacionesEditoriales asignacionesEditoriales, int estado){
 		this.id = java.util.UUID.randomUUID().toString();
 		this.libro = libro;
-		this.editorial = editorial;
-		this.formato = formato;
-		this.idioma = idioma;
-		this.fecha = fecha;
+		this.asignacionesEditoriales = asignacionesEditoriales;
 		this.estado = estado;
 	}
 	
@@ -47,18 +39,9 @@ public class Novedad implements Serializable{
 		this.estado = estado;
 	}
 	
-	public Date getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
-	
 	public String getId() {
 		return id;
 	}
-	
 	
 	public Libro getLibro() {
 		return libro;
@@ -72,28 +55,12 @@ public class Novedad implements Serializable{
 		this.id = id;
 	}
 
-	public String getFormato() {
-		return formato;
+	public AsignacionesEditoriales getAsignacionesEditoriales() {
+		return asignacionesEditoriales;
 	}
 
-	public void setFormato(String formato) {
-		this.formato = formato;
-	}
-
-	public String getIdioma() {
-		return idioma;
-	}
-
-	public void setIdioma(String idioma) {
-		this.idioma = idioma;
-	}
-
-	public Editorial getEditorial() {
-		return editorial;
-	}
-
-	public void setEditorial(Editorial editorial) {
-		this.editorial = editorial;
+	public void setAsignacionesEditoriales(AsignacionesEditoriales asignacionesEditoriales) {
+		this.asignacionesEditoriales = asignacionesEditoriales;
 	}
 	
 }

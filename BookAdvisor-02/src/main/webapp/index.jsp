@@ -45,7 +45,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <a href="libros.html">
+                                <a href="/libros">
                                     <div class="product-type-container">
                                         <div class="product-type-overlay">
                                             <div class="product-type-info">
@@ -58,7 +58,7 @@
                                 </a>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <a href="autores.html">
+                                <a href="/autores">
                                     <div class="product-type-container">
                                         <div class="product-type-overlay">
                                             <div class="product-type-info">
@@ -73,7 +73,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <a href="bibliotecas.html">
+                                <a href="/bibliotecas">
                                     <div class="product-type-container">
                                         <div class="product-type-overlay">
                                             <div class="product-type-info">
@@ -86,7 +86,7 @@
                                 </a>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <a href="librerias.html">
+                                <a href="/librerias">
                                     <div class="product-type-container">
                                         <div class="product-type-overlay">
                                             <div class="product-type-info">

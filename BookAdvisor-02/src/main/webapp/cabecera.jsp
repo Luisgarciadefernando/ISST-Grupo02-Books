@@ -130,8 +130,9 @@
                     <li><a href="autores">Autores</a></li>
                     <li><a href="bibliotecas">Bibliotecas</a></li>
                     <li><a href="librerias">Librerías</a></li>
-                    <li><a href="editoriales.jsp">Editoriales</a></li>
-                     <li><a href="ofertas" style="margin-left: -15px;">Ofertas y descuentos</a></li>
+                    <li><a href="editoriales">Editoriales</a></li>
+                    <li><a href="novedades">Novedades</a></li>
+                    <li><a href="ofertas" style="margin-left: -15px;">Ofertas y descuentos</a></li>
         
                 </ul>
             </nav>
@@ -147,7 +148,7 @@
             
           </div>
           <div class="log">
-          <a href="/admin" class="autenticado">Administración del sistema</a><br>
+          <a href="/admin" class="autenticado">Listado de libros pendientes de confirmación</a><br>
        	  <a href="/admin?usuarios=true" class="autenticado">Listado de usuarios</a><br>
        	  <a href="/admin?usuariosPendientes=true" class="autenticado">Listado de usuarios pendientes de confirmación</a><br>
        	  <a href="/logout" class="autenticado">Logout</a>
@@ -244,8 +245,9 @@
             	<a href="/logout" class="autenticado">Logout</a>
           	</div>
           </div>
-        <div class="botones">
-        </div>
+        <div class="botones" style="margin-top: -160px !important;">
+            <%@include file="subirNovedad.jsp" %>
+          </div>
         </div>
     
      </c:if>

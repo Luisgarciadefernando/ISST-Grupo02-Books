@@ -7,6 +7,7 @@ import com.googlecode.objectify.Key;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
+import es.upm.dit.isst.bookAdvisor.model.AsignacionesEditoriales;
 import es.upm.dit.isst.bookAdvisor.model.Editorial;
 import es.upm.dit.isst.bookAdvisor.model.Libro;
 import es.upm.dit.isst.bookAdvisor.model.Novedad;
@@ -21,9 +22,9 @@ public class NovedadDAOImpl implements NovedadDAO{
 		return instancia;
 	}
 	@Override
-	public Novedad create(Libro libro, Editorial editorial, String formato, String idioma, Date fecha, int estado) {
+	public Novedad create(Libro libro, AsignacionesEditoriales asignacionesEditoriales, int estado) {
 		// TODO Auto-generated method stub
-		Novedad novedad = new Novedad(libro, editorial, formato, idioma, fecha, estado);
+		Novedad novedad = new Novedad(libro, asignacionesEditoriales, estado);
 		ofy().save().entity(novedad).now();
 		return novedad;
 	}
@@ -33,12 +34,7 @@ public class NovedadDAOImpl implements NovedadDAO{
 		// TODO Auto-generated method stub
 		return ofy().load().type(Novedad.class).list(); 
 	}
-
-	@Override
-	public List<Novedad> readFormato(String formato) {
-		// TODO Auto-generated method stub
-		return ofy().load().type(Novedad.class).filter("formato", formato).list();
-	}
+	
 	@Override
 	public List<Novedad> readLibro(Libro libro) {
 		// TODO Auto-generated method stub
@@ -46,15 +42,9 @@ public class NovedadDAOImpl implements NovedadDAO{
 	}
 
 	@Override
-	public List<Novedad> readIdioma(String idioma) {
+	public List<Novedad> readAsignacionesEditoriales(AsignacionesEditoriales asignacionesEditoriales) {
 		// TODO Auto-generated method stub
-		return ofy().load().type(Novedad.class).filter("idioma", idioma).list();
-	}
-
-	@Override
-	public List<Novedad> readEditorial(Editorial editorial) {
-		// TODO Auto-generated method stub
-		return ofy().load().type(Novedad.class).filter("editorial", editorial).list();
+		return ofy().load().type(Novedad.class).filter("asignacionesEditoriales", asignacionesEditoriales).list();
 	}
 
 	@Override
@@ -70,11 +60,7 @@ public class NovedadDAOImpl implements NovedadDAO{
 		ofy().delete().entity(novedad).now();
 		return novedad; 
 	}
-	@Override
-	public List<Novedad> readFecha(Date fecha) {
-		// TODO Auto-generated method stub
-		return ofy().load().type(Novedad.class).filter("fecha", fecha).list();
-	}
+	
 	@Override
 	public Novedad readID(String id) {
 		// Novedad Auto-generated method stub

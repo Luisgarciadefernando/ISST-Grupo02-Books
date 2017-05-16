@@ -129,6 +129,22 @@
     <url-pattern>/subirOferta</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>SubirNovedad</servlet-name>
+    <servlet-class>es.upm.dit.isst.bookAdvisor.SubirNovedad_Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SubirNovedad</servlet-name>
+    <url-pattern>/subirNovedad</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Novedades</servlet-name>
+    <servlet-class>es.upm.dit.isst.bookAdvisor.Novedades_Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Novedades</servlet-name>
+    <url-pattern>/novedades</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>Ofertas</servlet-name>
     <servlet-class>es.upm.dit.isst.bookAdvisor.Ofertas_Servlet</servlet-class>
   </servlet>
