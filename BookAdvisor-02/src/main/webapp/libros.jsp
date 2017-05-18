@@ -24,6 +24,32 @@
 
        
         <link rel="icon" type="image/png" href="img/logo2.png" />
+        <style>
+			.templatemo-nav2>li {
+				float:left;
+			}
+			
+			.templatemo-nav2 li a {
+				background-color:#000;
+				display:block;
+			}
+			
+			.templatemo-nav2 li a:hover {
+				background-color:#434343;
+			}
+			
+			.templatemo-nav2 li ul {
+				display:none;
+				position:absolute;
+				min-width:140px;
+			}
+			
+			.templatemo-nav2 li:hover > ul {
+				display:block;
+			}   
+		
+		
+		</style>
 
     </head>
     <body>
@@ -49,15 +75,43 @@
                         </form>
                         
                         </div>
+                    
+                    <c:if test="${not empty lector}">
                     <nav class="templatemo-nav2" id = "nav-libros">
                         <ul class="text-uppercase">
                             <li ><a href="libros?recomendados=true">Recomendados</a></li>
 							<li ><a href="bookcrossing">Bookcrossing</a></li>
                             <li><a href="libros?novedades=true">Novedades</a></li>
-                            
+                            <li><a href="">Género</a>
+                    			<ul>
+             				 		<li><a href="/libros?genero=aventura">Aventura</a></li>
+              				 		<li><a href="/libros?genero=cienciaficcion">Ciencia ficción</a></li>
+             				 		<li><a href="/libros?genero=policia">Policial</a></li>
+             			     		<li><a href="/libros?genero=romantico">Romántico</a></li>
+              				 		<li><a href="/libros?genero=terror">Terror</a></li>
+           			    		</ul> 
+           					</li>      
                         </ul> 
                     </nav>
-                        
+                    </c:if>
+                    <c:if test="${empty lector}">
+                    <nav class="templatemo-nav2" id = "nav-libros" style="width: 420px;">
+                        <ul class="text-uppercase">
+                            <li ><a href="libros?recomendados=true">Recomendados</a></li>
+							
+                            <li><a href="libros?novedades=true">Novedades</a></li>
+                            <li><a href="">Género</a>
+                    			<ul>
+             				 		<li><a href="/libros?genero=aventura">Aventura</a></li>
+              				 		<li><a href="/libros?genero=cienciaficcion">Ciencia ficción</a></li>
+             				 		<li><a href="/libros?genero=policia">Policial</a></li>
+             			     		<li><a href="/libros?genero=romantico">Romántico</a></li>
+              				 		<li><a href="/libros?genero=terror">Terror</a></li>
+           			    		</ul> 
+           					</li>      
+                        </ul> 
+                    </nav>
+                    </c:if>
                 </div>
             </div>
 
@@ -68,9 +122,9 @@
             <div class="row">
             <%} %>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-center">
-              <div class="new-arrival-container">   
-              <strong>${libroi.titulo}</strong>  (${libroi.valoracion})    
-              <a href="libro?id=${libroi.id}"><img src="img/${libroi.imagen}" alt="Imagen no encontrada" class="img-rounded imagen-libro"> </a>
+              <div class="new-arrival-container" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">   
+              <strong>${libroi.titulo}</strong> <br> (<span class="glyphicon glyphicon-star"></span>:&nbsp${libroi.valoracion})<br>    
+              <a href="libro?id=${libroi.id}"><img src="${libroi.imagen}" alt="Imagen no encontrada" class="img-rounded imagen-libro" style="border: solid black;margin-top: 10px;"> </a>
 
               </div>
             </div>

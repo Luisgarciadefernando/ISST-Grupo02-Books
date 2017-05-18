@@ -43,7 +43,7 @@
             <div class="row">
                 <!-- Main content -->
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12" style="margin-bottom: 40px;">
                         <h2 class="text-uppercase">Novedades Editoriales</h2>
                         <hr class="templatemo-section-header-hr">
                         <p class="text-uppercase templatemo-section-subheader margin-bottom-0">Listado de novedades</p>
@@ -72,7 +72,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="post-img-container">
-                                    <img src="img/${novedad.libro.imagen}" class="post-img img-responsive">
+                                    <img src="${novedad.libro.imagen}" class="post-img img-responsive">
                                 </div>
                             </div>
                         </div>

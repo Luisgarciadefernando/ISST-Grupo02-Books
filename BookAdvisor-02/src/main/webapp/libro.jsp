@@ -124,7 +124,7 @@
             </div>
                 <span>
              
-                 <img style="border: black solid;" src="img/${libro.imagen}" alt="Error al cargar la imagen" id="libro-image" class="img-rounded imagen-libro">
+                 <img style="border: black solid;" src="${libro.imagen}" alt="Error al cargar la imagen" id="libro-image" class="img-rounded imagen-libro">
                 
                   </span>
                   <span>
@@ -141,16 +141,17 @@
                    
                    <c:if test="${not empty lector and empty loTiene and empty admin}">
                    
-                        <form action="/intercambio" method="post" id="form-intercambio" style="margin-bottom: 50px;">
+                        <form action="/intercambio" method="post" id="form-intercambio" >
                         <input type="hidden" name="tengo" value="true">
                         <input type="hidden" name="libro" value="${libro.id}" >
                         <div id="LotengoIntercambio" style="margin-left: 100px;">
                         <button class="button" type="submit" >Lo tengo para intercambio</button>
                         </div>
-                        <div class="BookCross" style="margin-left:-200px;">
+                        </form>
+                        <div class="BookCross" style="margin-left:-200px; margin-bottom: 50px;">
                         <%@include file="formbookcrossing.jsp" %>
                         </div>
-                        </form>
+                        
                   	 	
                     </c:if>  
                      
@@ -172,7 +173,7 @@
                         <form action="/asignaLibreria" method="post" id="form-asignaLibreria" style="margin-bottom: 10px;">
                         <div id="formato" style="margin-bottom: 10px;">
                         <strong>Formato:&nbsp</strong>
-                        <select required="" name="formato" id="formato" style="text-align:center;">
+                        <select class="form-control" required="" name="formato" id="formato" style="text-align:center;width: 18%;margin-left: 70px;margin-top: -26px;">
                         <option value="Sin Formato">Seleccione un formato</option>
                         <option value="Tapa dura">Tapa dura</option> 
                         <option value="Tapa blanda">Tapa blanda</option>
@@ -180,23 +181,42 @@
                         </select>
                         <br>
                         <strong style="margin-left: 0px;">Precio:&nbsp</strong>
-                        <input required="" type="number" name="precio" step="0.50" min="1" style="margin-top: 10px;width: 6.4%;text-align:center;">
-                        <strong style="margin-left: 10px;">Euros</strong>
-                        <br>
+                        <input class="form-control"required="" type="number" name="precio" step="0.50" min="1" style="margin-top: 10px;width: 8.4%;text-align:center;margin-left: 60px;margin-top: -25px;margin-bottom:-30px;">
+                        <strong style="margin-left: 170px;">Euros</strong>
+                        
+                        <input type="hidden" name="tengo" value="true">
+                        <input type="hidden" name="libro" value="${libro.id}" >
+                        </div>
+                        <button class="button" type="submit" style="margin-top: 10px;" >Lo tengo</button>
+                        </form>
+                  	 	
+                    </c:if>  
+
+                      <c:if test="${not empty biblioteca and empty loTiene}">
+                   
+                        <form action="/asignaBiblioteca" method="post" id="form-asignaLibreria" style="margin-bottom: 10px;">
+                        <div id="formato" style="margin-bottom: 10px;">
+                        <strong>Formato:&nbsp</strong>
+                        <select  class="form-control" required="" name="formato" id="formato" style="text-align:center;width: 18%;margin-left: 70px;margin-top: -26px;">
+                        <option value="Sin Formato">Seleccione un formato</option>
+                        <option value="Tapa dura">Tapa dura</option> 
+                        <option value="Tapa blanda">Tapa blanda</option>
+                        <option value="eBook">eBook</option> 
+                        </select>                    
                         <input type="hidden" name="tengo" value="true">
                         <input type="hidden" name="libro" value="${libro.id}" >
                         </div>
                         <button class="button" type="submit" >Lo tengo</button>
                         </form>
                   	 	
-                    </c:if>  
-                    
+                    </c:if>     
+                                     
                     <c:if test="${not empty editorial and empty loTiene}">
                    
                         <form action="/asignaEditorial" method="post" id="form-asignaEditorial" style="margin-bottom: 10px;">
                         <div id="formato" style="margin-bottom: 10px;">
                         <strong>Formato:&nbsp</strong>
-                        <select required="" name="formato" id="formato" style="text-align:center;">
+                        <select  class="form-control" required="" name="formato" id="formato" style="text-align:center;width: 18%;margin-left: 70px;margin-top: -25px;">
                         <option value="Sin Formato">Seleccione un formato</option>
                         <option value="Tapa dura">Tapa dura</option> 
                         <option value="Tapa blanda">Tapa blanda</option>
@@ -204,14 +224,14 @@
                         </select>
                         <br>
                         <strong style="margin-left: 0px;">Idioma:&nbsp</strong>
-                        <select required="" name="idioma" id="idioma" style="text-align:center;">
+                        <select class="form-control" required="" name="idioma" id="idioma" style="text-align:center;width: 18%;margin-left: 70px;margin-top: -25px;">
                         <option value="Sin idioma">Seleccione un idioma</option>
                         <option value="Espanol">Español</option> 
                         <option value="Ingles">Inglés</option>
                         <option value="Aleman">Alemán</option> 
                         <option value="Frances">Francés</option> 
                         </select>
-                        <br>
+                        
                         <input type="hidden" name="tengo" value="true">
                         <input type="hidden" name="libro" value="${libro.id}" >
                         </div>
@@ -226,18 +246,30 @@
                         <strong>En formato:</strong> ${asignacionlib.formato}
                   	 	</div>
                     </c:if>    
+     				
+     				<c:if test="${not empty biblioteca and not empty loTiene and not empty asignacionbib}">
+                   	<div id="lotienes" style="margin-bottom: 10px;">
+                        <strong><span class="glyphicon glyphicon-book"></span>&nbspLo tienes para alquilar en formato:</strong> ${asignacionbib.formato}
+                  	 	</div>
+                    </c:if>                    
+                    
                 
                 <c:if test="${not empty lector}">
-                    <form action="/disponibilidad" method="get">
-                    <input type="hidden" value="true" name="intercambio">
-                    <input type="hidden" value="${libro.id}" name="libro">
+                   <form action="/disponibilidad" method="get">
+                   <input type="hidden" value="true" name="intercambio">
+                   <input type="hidden" value="${libro.id}" name="libro">
                    <button class="button" type="submit" >Disponibilidad intercambio</button><br>
-                    </form>
-                    <form action="/disponibilidad" method="get" style="margin-left: 160px;margin-top: -30px;">
-                    <input type="hidden" value="true" name="librerias">
-                    <input type="hidden" value="${libro.id}" name="libro">
+                   </form>
+                   <form action="/disponibilidad" method="get" style="margin-left: 160px;margin-top: -30px;">
+                   <input type="hidden" value="true" name="librerias">
+                   <input type="hidden" value="${libro.id}" name="libro">
                    <button class="button" type="submit" >Disponibilidad librerias</button>
-                    </form>
+                   </form>
+                   <form action="/disponibilidad" method="get" style="margin-left: 300px;margin-top: -30px;">
+                   <input type="hidden" value="true" name="bibliotecas">
+                   <input type="hidden" value="${libro.id}" name="libro">
+                   <button class="button" type="submit" >Disponibilidad bibliotecas</button>
+                   </form>
                 </c:if>    
 
     </div>

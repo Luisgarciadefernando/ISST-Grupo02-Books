@@ -14,7 +14,7 @@
  
 </head>
 <body>
-    <div class="box">
+    <div class="box" style="margin-top: -5px;">
         <a class="button" href="#popup2">Publicar Oferta</a>
     </div>      
     <div id="popup2" class="overlay" style="overflow: scroll;">
@@ -53,7 +53,7 @@
                     
                     
                     <label for="caducidad">Fecha de caducidad</label>
-                    <select name="dia" class="form-control" id="dia" style="width:20%;text-align:center;">
+                    <select name="dia" class="form-control" id="dia" style="width:21%;text-align:center;">
                         <option value="D">Día</option>
                         <option value="1">1</option> 
                         <option value="2">2</option>
@@ -86,7 +86,7 @@
                         <option value="30">30</option>
                         <option value="31">31</option>
                     </select>
-                    <select name="mes" class="form-control" id="mes" style="width: 42%;margin-left: 72px;margin-top:-34px;text-align:center;">
+                    <select name="mes" class="form-control" id="mes" style="width: 43%;margin-left: 72px;margin-top:-34px;text-align:center;">
                         <option value="M">Mes</option>
                         <option value="Enero">Enero</option>
                         <option value="Febrero">Febrero</option>

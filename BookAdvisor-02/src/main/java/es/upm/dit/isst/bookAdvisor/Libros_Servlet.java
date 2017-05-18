@@ -64,7 +64,29 @@ public class Libros_Servlet  extends HttpServlet  {
 	      libros=librosBusqueda;
 	    }
 	    
-		if(request.getParameter("novedades")!=null){
+	    List<Libro> librosGenero = new ArrayList<Libro>();
+	    if(request.getParameter("genero")!=null){
+	    	String gen = request.getParameter("genero");
+	    	gen = gen.toLowerCase();
+		    Pattern genero = Pattern.compile(".*"+gen+".*");
+		    
+		    Iterator<Libro> libroIt = libros.iterator();
+		      while (libroIt.hasNext()) {
+		         Libro libro = libroIt.next();
+		         if(libro.getGenero()!= null) {
+		           Matcher mat = genero.matcher(libro.getGenero().toLowerCase());
+		             if(mat.matches()){
+		               //libroIt.remove();
+		               librosGenero.add(libro);
+		             }
+		        }
+		        
+		      }
+		      libros=librosGenero;
+		    }
+	    	    
+	    
+	    if(request.getParameter("novedades")!=null){
 			  Collections.sort(libros, new Comparator<Libro>() {
 			        @Override
 			        public int compare(Libro o1, Libro o2) {

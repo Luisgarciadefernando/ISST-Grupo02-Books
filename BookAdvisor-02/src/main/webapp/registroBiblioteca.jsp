@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ page import="com.google.appengine.api.blobstore.BlobstoreServiceFactory" %>
+<%@ page import="com.google.appengine.api.blobstore.BlobstoreService" %>
+<% BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService(); %>
 <%@ page import="javax.swing.JOptionPane" %>
 
 <!DOCTYPE html>
@@ -50,7 +52,7 @@
         <div id="div-login">
             <div class="templatemo-container">
               <div class="wrapper">
-                    <form class="form-signin" method="post" action="/registroBiblioteca" style="background-color: black;opacity: 0.9;margin-bottom: pad;padding-bottom: 20px;border-radius: 5px;">     
+                    <form class="form-signin" action="<%=blobstoreService.createUploadUrl("/registroBiblioteca")%>" method="post" enctype="multipart/form-data" style="background-color: black;opacity: 0.9;margin-bottom: pad;padding-bottom: 20px;border-radius: 5px;">     
                         <img src="img/logo4.png" style="width: 215px; margin-left: 45px;margin-bottom: 10px;margin-top: 15px;">
                         <!-- <h2 class="form-signin-heading">BOOKADVISOR</h2> -->
                         <input type="text" class="form-control" name="email" id="email" placeholder="Email" required="" autofocus="" />
@@ -67,7 +69,7 @@
                         <input type="password" class="form-control" name="password2" id="password2" placeholder="Repetir la contraseña" required="" style="margin-bottom: 10px;"/>      
                       
                         <div class="drag-drop">
-                            <input type="file" multiple="multiple" id="photo" />
+                            <input type="file" name="file" multiple="multiple" id="photo" />
                                 <span class="fa-stack fa-2x">
                                 <i class="fa fa-cloud fa-stack-2x bottom pulsating"></i>
                                 <i class="fa fa-circle fa-stack-1x top medium"></i>

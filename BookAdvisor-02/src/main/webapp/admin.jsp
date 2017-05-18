@@ -71,7 +71,7 @@
                        
                 	</div>    
              		<div id="div-derecha" style="margin-left: 300px;margin-top: -315px;">
-                		 <img  src="img/${libro.imagen}" style="width:200px; height:300px;border: black solid;" alt="Error al cargar la imagen" id="libro-image" class="img-rounded imagen-libro">
+                		 <img  src="${libro.imagen}" style="width:200px; height:300px;border: black solid;" alt="Error al cargar la imagen" id="libro-image" class="img-rounded imagen-libro">
 							
           						<button style="margin-left:20px;" action="submit" name="aceptar" value="true" class="button">Aceptar</button>
           						<button style="margin-left:10px;" action="submit" name="rechazar" value="true" class="button">Rechazar</button>

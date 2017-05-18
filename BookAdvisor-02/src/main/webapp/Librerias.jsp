@@ -43,11 +43,11 @@
             <div class="row">
                 <!-- Main content -->
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12" style="margin-bottom: 40px;">
                         <h2 class="text-uppercase">Librerías</h2>
                         <hr class="templatemo-section-header-hr">
                         <c:if test="${not empty libro}">
-                        	<p class="text-uppercase templatemo-section-subheader margin-bottom-0">Listado de librerías que disponen <c:out value="${libro.titulo}"/></p>
+                        	<p class="text-uppercase templatemo-section-subheader margin-bottom-0">Listado de librerías que disponen de <c:out value="${libro.titulo}"/></p>
                         </c:if>
                         <c:if test="${empty libro}">
                         	<p class="text-uppercase templatemo-section-subheader margin-bottom-0">Listado de librerías</p>
@@ -87,8 +87,8 @@
 			   					<c:if test="${not empty asignacionesLibrerias}">
 			   						<c:forEach items="${asignacionesLibrerias}" var="a">
 			   							<c:if test="${a.libreria ==libreria.id }">
-			   								<p>Formato: <c:out value="${a.formato }"/></p>
-				                			<p>Precio: <c:out value="${a.precio }"/> euros</p>
+			   								<p><strong style="color:#333333">Formato:</strong> <c:out value="${a.formato }"/></p>
+				                			<p><strong style="color:#333333">Precio:</strong> <c:out value="${a.precio }"/> euros</p>
 			                			</c:if>
 			   		<%--					<%
 					            		String formato = "";
@@ -116,7 +116,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="post-img-container">
-                                    <img src="img/${libreria.imagen}" class="post-img img-responsive">
+                                    <img src="${libreria.imagen}" class="post-img img-responsive">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">

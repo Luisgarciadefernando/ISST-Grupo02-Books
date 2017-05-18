@@ -184,6 +184,14 @@
     <servlet-name>AsignacionesLibrerias</servlet-name>
     <url-pattern>/asignaLibreria</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <servlet-name>AsignacionesBibliotecas</servlet-name>
+    <servlet-class>es.upm.dit.isst.bookAdvisor.AsignaBiblioteca_Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AsignacionesBibliotecas</servlet-name>
+    <url-pattern>/asignaBiblioteca</url-pattern>
+  </servlet-mapping>  
   <servlet>
     <servlet-name>AsignacionesEditoriales</servlet-name>
     <servlet-class>es.upm.dit.isst.bookAdvisor.AsignaEditorial_Servlet</servlet-class>

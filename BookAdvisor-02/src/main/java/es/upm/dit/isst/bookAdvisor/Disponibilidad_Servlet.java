@@ -16,18 +16,24 @@ import com.googlecode.objectify.ObjectifyService;
 
 import es.upm.dit.isst.bookAdvisor.dao.AsignacionesLibreriasDAO;
 import es.upm.dit.isst.bookAdvisor.dao.AsignacionesLibreriasDAOImpl;
+import es.upm.dit.isst.bookAdvisor.dao.AsignacionesBibliotecasDAO;
+import es.upm.dit.isst.bookAdvisor.dao.AsignacionesBibliotecasDAOImpl;
 import es.upm.dit.isst.bookAdvisor.dao.IntercambioTienenDAO;
 import es.upm.dit.isst.bookAdvisor.dao.IntercambioTienenDAOImpl;
 import es.upm.dit.isst.bookAdvisor.dao.LectorDAO;
 import es.upm.dit.isst.bookAdvisor.dao.LectorDAOImpl;
 import es.upm.dit.isst.bookAdvisor.dao.LibreriaDAO;
 import es.upm.dit.isst.bookAdvisor.dao.LibreriaDAOImpl;
+import es.upm.dit.isst.bookAdvisor.dao.BibliotecaDAO;
+import es.upm.dit.isst.bookAdvisor.dao.BibliotecaDAOImpl;
 import es.upm.dit.isst.bookAdvisor.dao.LibroDAO;
 import es.upm.dit.isst.bookAdvisor.dao.LibroDAOImpl;
 import es.upm.dit.isst.bookAdvisor.model.AsignacionesLibrerias;
+import es.upm.dit.isst.bookAdvisor.model.AsignacionesBibliotecas;
 import es.upm.dit.isst.bookAdvisor.model.IntercambioTienen;
 import es.upm.dit.isst.bookAdvisor.model.Lector;
 import es.upm.dit.isst.bookAdvisor.model.Libreria;
+import es.upm.dit.isst.bookAdvisor.model.Biblioteca;
 import es.upm.dit.isst.bookAdvisor.model.Libro;
 import es.upm.dit.isst.bookAdvisor.model.Valoracion;
 
@@ -38,6 +44,7 @@ public class Disponibilidad_Servlet extends HttpServlet{
 		ObjectifyService.register(Lector.class);
 		ObjectifyService.register(Libreria.class);
 		ObjectifyService.register(AsignacionesLibrerias.class);
+		ObjectifyService.register(AsignacionesBibliotecas.class);
 
 		ObjectifyService.register(Valoracion.class);
 		ObjectifyService.register(IntercambioTienen.class);
@@ -54,7 +61,9 @@ public class Disponibilidad_Servlet extends HttpServlet{
 		List<Lector> lectores = lectordao.read();
 		LibroDAO librodao = LibroDAOImpl.getInstancia();
 		LibreriaDAO libdao = LibreriaDAOImpl.getInstancia();
+		BibliotecaDAO bibdao = BibliotecaDAOImpl.getInstancia();
 		AsignacionesLibreriasDAO asigLibreriasDao = AsignacionesLibreriasDAOImpl.getInstancia();
+		AsignacionesBibliotecasDAO asigBibliotecasDao = AsignacionesBibliotecasDAOImpl.getInstancia();
 		
 		if(request.getParameter("libro")!=null && request.getParameter("intercambio")!=null){
 			String libroId = request.getParameter("libro");
@@ -75,6 +84,7 @@ public class Disponibilidad_Servlet extends HttpServlet{
 			view.forward(request, response);
 			
 		}
+		
 		if(request.getParameter("libro")!=null && request.getParameter("librerias")!=null){
 			String libroId = request.getParameter("libro");
 			Libro libro = librodao.readID(libroId);
@@ -92,6 +102,26 @@ public class Disponibilidad_Servlet extends HttpServlet{
 			request.getSession().setAttribute("libro", libro);
 
 			RequestDispatcher view = request.getRequestDispatcher("librerias.jsp");
+			view.forward(request, response);
+		}
+		
+		if(request.getParameter("libro")!=null && request.getParameter("bibliotecas")!=null){
+			String libroId = request.getParameter("libro");
+			Libro libro = librodao.readID(libroId);
+			List<AsignacionesBibliotecas> asignacionesBibliotecas = asigBibliotecasDao.readLibro(libroId);
+			List<Biblioteca> bibliotecas = new ArrayList<Biblioteca>();
+			
+			for(int i=0; i<asignacionesBibliotecas.size();i++){
+				AsignacionesBibliotecas a = asignacionesBibliotecas.get(i);
+				Biblioteca l = bibdao.readId(a.getBiblioteca());
+				bibliotecas.add(l);
+				
+			}
+			request.getSession().setAttribute("asignacionesBibliotecas", asignacionesBibliotecas);
+			request.getSession().setAttribute("bibliotecas", bibliotecas);
+			request.getSession().setAttribute("libro", libro);
+
+			RequestDispatcher view = request.getRequestDispatcher("bibliotecas.jsp");
 			view.forward(request, response);
 		}
 	}

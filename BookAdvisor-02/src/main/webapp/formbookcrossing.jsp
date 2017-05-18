@@ -30,7 +30,7 @@
                     <input type="text" class="form-control" name="direccion" id="direccion"/>
            
                     <label for="info">Información adicional</label> 
-                    <textarea class="form-control" name="info" style="width: 321px; height: 100px; border-radius: 4px"></textarea>
+                    <textarea class="form-control" name="info" style="width: 336px; height: 100px; border-radius: 4px"></textarea>
                         
                 </div>
                 <input type="hidden"  name="crear" value="true">

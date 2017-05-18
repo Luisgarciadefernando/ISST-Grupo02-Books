@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 	
-                    <div class="row" style="margin-top: 20px;">
+                    <div class="row" style="margin-top: 20px;margin-left: 0px;">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-left">
                             <div class="post-title">
                                 <h3 class="text-uppercase"><c:out value="${editorialBuscada.nombre}" /></h3>
@@ -63,7 +63,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="post-img-container">
-                                    <img src="img/${editorialBuscada.imagen}" class="post-img img-responsive" style="margin-left: -400px;border: solid black 2px;border-radius: 131px;height: 150px;width: 150px;">
+                                    <img src="${editorialBuscada.imagen}" class="post-img img-responsive" style="margin-left: -400px;border: solid black 2px;border-radius: 131px;height: 150px;width: 150px;">
                                 </div>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                 <hr>  
             </div>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12" style="margin-bottom: 40px;">
             		<hr class="templatemo-section-header-hr">
                     <p class="text-uppercase templatemo-section-subheader margin-bottom-0">Listado de ediciones</p>
                 </div>
@@ -91,19 +91,19 @@
                             <h3 class="text-uppercase"><c:out value="${a.libro.titulo}" /></h3>
                         </div>
                         <div class="post-meta-data">
-                            <p class="gold-text"><i>Autor: <c:out value="${a.libro.autor}" /></i></p>
+                            <p class="gold-text"><i><strong style="color:#333333">Autor:</strong> <c:out value="${a.libro.autor}" /></i></p>
                         </div>
                         <div class="post-meta-data">
-                            <p class="gold-text"><i>Formato: "<c:out value="${a.formato}" />"</i></p>
+                            <p class="gold-text"><i><strong style="color:#333333">Formato:</strong> <c:out value="${a.formato}" /></i></p>
                         </div>
                         <div class="post-meta-data">
-                            <p class="gold-text"><i>Idioma: "<c:out value="${a.idioma}" />"</i></p>
+                            <p class="gold-text"><i><strong style="color:#333333">Idioma:</strong> <c:out value="${a.idioma}" /></i></p>
                         </div>
                     </div>
 	                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
 	                    <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12" float="right">
 	                        <div class="post-img-container">
-	                            <img src="img/${a.libro.imagen}" class="post-img img-responsive">
+	                            <img src="img/${a.libro.imagen}" class="post-img img-responsive" style="margin-left: -450px;border: solid;height: 200px;width: 150px;margin-top: -10px;">
 	                        </div>
 	                    </div>
 	                </div>

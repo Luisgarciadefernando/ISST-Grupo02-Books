@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.googlecode.objectify.Key;
 
+import es.upm.dit.isst.bookAdvisor.model.Biblioteca;
 import es.upm.dit.isst.bookAdvisor.model.BookCrossing;
 import es.upm.dit.isst.bookAdvisor.model.Libreria;
 import es.upm.dit.isst.bookAdvisor.model.Oferta;
@@ -25,7 +26,7 @@ public class BookCrossingDAOImpl implements BookCrossingDAO{
 	@Override
 	public BookCrossing create(String lector, String libro,String informacion, String direccion, boolean encontrado, Date fecha) {
 		// TODO Auto-generated method stub
-		BookCrossing b = new BookCrossing(lector,libro,direccion, informacion,encontrado,fecha);
+		BookCrossing b = new BookCrossing(lector,libro,informacion,direccion,encontrado,fecha);
 		ofy().save().entity(b).now();
 		return b;
 	}
@@ -70,6 +71,15 @@ public class BookCrossingDAOImpl implements BookCrossingDAO{
 	public BookCrossing update(BookCrossing bookcrossing) {
 		// TODO Auto-generated method stub
 		ofy().save().entity(bookcrossing).now();
+		return bookcrossing;
+	}
+	
+	@Override
+	public List<BookCrossing> readDireccion (String direccion) {
+		if (direccion == null || direccion == "") {
+			return null;
+		}
+		List<BookCrossing> bookcrossing = ofy().load().type(BookCrossing.class).filter("direccion", direccion).list();
 		return bookcrossing;
 	}
 

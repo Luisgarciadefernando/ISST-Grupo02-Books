@@ -132,7 +132,7 @@
                     <li><a href="librerias">Librerías</a></li>
                     <li><a href="editoriales">Editoriales</a></li>
                     <li><a href="novedades">Novedades</a></li>
-                    <li><a href="ofertas" style="margin-left: -15px;">Ofertas y descuentos</a></li>
+                    <li style="width: 12.5%;"><a href="ofertas">Ofertas y descuentos</a></li>
         
                 </ul>
             </nav>
@@ -153,7 +153,7 @@
        	  <a href="/admin?usuariosPendientes=true" class="autenticado">Listado de usuarios pendientes de confirmación</a><br>
        	  <a href="/logout" class="autenticado">Logout</a>
        	  </div>
-          <div class="botones" style="margin-top: -163px !important;padding-bottom: 70px;">
+          <div class="botones" style="margin-top: -204px !important;padding-bottom: 112px;">
           
             <!--<a href="/subir.jsp" class="autenticado">Subir ficha</a>-->
             <%@include file="subir.jsp" %>
@@ -190,9 +190,9 @@
         
      </c:if>
          <c:if test="${not empty libreria}">
-        <div class="credenciales">
+        <div class="credenciales" style="padding-bottom:24px !important;">
         <div class="templatemo-container">
-          <div class="imagen"><img src="img/no-disponible.jpg" alt="" class="img-circle"> </div>
+          <div class="imagen"><img src="${libreria.imagen}" alt="" class="img-circle"> </div>
           <div class="usuario">
              <h10>${libreria.nombre}</h10> 
             <p><h11> Librería </h11></p>
@@ -215,7 +215,7 @@
          <c:if test="${not empty biblioteca}">
         <div class="credenciales" style="padding-bottom: 67px !important;">
         <div class="templatemo-container">
-          <div class="imagen"><img src="img/no-disponible.jpg" alt="" class="img-circle"></div>
+          <div class="imagen"><img src="${biblioteca.imagen }" alt="" class="img-circle"></div>
           <div class="usuario">
              <h10>${biblioteca.nombre}</h10> 
             <p><h11> Biblioteca </h11></p>
@@ -234,9 +234,9 @@
      
      </c:if>
       <c:if test="${not empty editorial}">
-        <div class="credenciales" style="padding-bottom: 122px !important;">
+        <div class="credenciales" style="padding-bottom: 65px !important;">
         <div class="templatemo-container">
-          <div class="imagen"><img src="img/no-disponible.jpg" alt="" class="img-circle"> </div>
+          <div class="imagen"><img src="${editorial.imagen }" alt="" class="img-circle"> </div>
           <div class="usuario">
              <h10>${editorial.nombre}</h10> 
             <p><h11> Editorial </h11></p>
@@ -245,7 +245,7 @@
             	<a href="/logout" class="autenticado">Logout</a>
           	</div>
           </div>
-        <div class="botones" style="margin-top: -160px !important;">
+        <div class="botones" style="margin-top: -145px !important;">
             <%@include file="subirNovedad.jsp" %>
           </div>
         </div>

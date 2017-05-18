@@ -34,6 +34,7 @@ public class BookCrossing implements Serializable{
 		this.lector=lector;
 		this.encontrado=encontrado;
 		this.fecha = fecha;
+		this.informacion = informacion;
 	}
 
 	public String getId() {

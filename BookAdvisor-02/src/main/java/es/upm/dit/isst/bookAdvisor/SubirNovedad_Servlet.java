@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.appengine.api.blobstore.BlobKey;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import com.google.appengine.api.images.ImagesService;
+import com.google.appengine.api.images.ImagesServiceFactory;
+import com.google.appengine.api.images.ServingUrlOptions;
 import com.googlecode.objectify.ObjectifyService;
 
 import es.upm.dit.isst.bookAdvisor.dao.AsignacionesEditorialesDAO;
@@ -57,14 +60,17 @@ public class SubirNovedad_Servlet extends HttpServlet {
 		AsignacionesEditorialesDAO asigDao = AsignacionesEditorialesDAOImpl.getInstancia();
 		NovedadDAO novedadDao = NovedadDAOImpl.getInstancia();
 		
-//		Map<String, List<BlobKey>> blobs = BlobstoreServiceFactory.getBlobstoreService().getUploads(req);
-//		List<BlobKey> blobKeys = blobs.get("file");
-//		if (blobKeys == null || blobKeys.isEmpty() || blobKeys.get(0) == null) {
-//			resp.sendError(1200);
-//		}
-//		else {
-//			imagen = blobKeys.get(0).getKeyString();
-//		}
+		Map<String, List<BlobKey>> blobs = BlobstoreServiceFactory.getBlobstoreService().getUploads(req);
+		List<BlobKey> blobKeys = blobs.get("file");
+		if (blobKeys == null || blobKeys.isEmpty() || blobKeys.get(0) == null) {
+			resp.sendError(1200);
+		}
+		else {
+			ImagesService imagesService = ImagesServiceFactory.getImagesService();
+			ServingUrlOptions servingOptions = ServingUrlOptions.Builder.withBlobKey(blobKeys.get(0));
+	        String servingUrl = imagesService.getServingUrl(servingOptions);
+			imagen = servingUrl;
+		}
 		
 		Libro libro = libroDao.create(titulo, resumen, genero, autor, 0, imagen);
 		

@@ -22,8 +22,8 @@
     </div>      
     <div id="popup1" class="overlay" style="overflow: scroll;">
         <div class="popup">
-            <h1 style="text-align: center;text-decoration: underline;margin-bottom: -10px;"> Publicar una novedad editorial </h1>
-            <form class="form-subir" role="form" method="post" action="/subirNovedad" style="margin-left: -3px;margin-top: 22px;">
+            <h1 style="text-align: center;text-decoration: underline;margin-bottom: -10px;"> Publicar novedad editorial </h1>
+            <form class="form-subir" role="form" action="<%=blobstoreService.createUploadUrl("/subirNovedad")%>" method="post" enctype="multipart/form-data" style="margin-left: -7px;margin-top: 22px;">
                 <div class="form-group">
                     <a class="close" href="#">&times;</a>
                     <label for="titulo">Título</label>
@@ -31,7 +31,7 @@
                     <label for="autor">Autor</label>
                     <input type="text" class="form-control" name="autor" id="autor" />
                     <label for="genero">Género</label>
-                    <select name="genero" class="form-control">
+                    <select name="genero" class="form-control" style="text-align:center;">
                         <option value="SinGénero">Seleccione un género literario</option>
                         <option value="Policial">Policial</option> 
                         <option value="Romantico">Romántico</option>
@@ -40,7 +40,7 @@
                         <option value="Aventura">Aventura</option> 
                     </select>
                     <label for="idioma">Idioma</label>
-                    <select required="" name="idioma" id="idioma" style="text-align:center;">
+                    <select required="" name="idioma" id="idioma" class="form-control" style="text-align:center;">
                         <option value="Sin idioma">Seleccione un idioma</option>
                         <option value="Espanol">Español</option> 
                         <option value="Ingles">Inglés</option>
@@ -48,7 +48,7 @@
                         <option value="Frances">Francés</option> 
                     </select>
                     <label for="formato">Formato</label>
-                    <select required="" name="formato" id="formato" style="text-align:center;">
+                    <select required="" name="formato" id="formato" class="form-control" style="text-align:center;">
                         <option value="Sin Formato">Seleccione un formato</option>
                         <option value="Tapa dura">Tapa dura</option> 
                         <option value="Tapa blanda">Tapa blanda</option>

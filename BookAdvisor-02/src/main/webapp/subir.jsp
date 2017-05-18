@@ -23,7 +23,7 @@
     <div id="popup1" class="overlay" style="overflow: scroll;">
         <div class="popup">
             <h1 style="text-align: center;text-decoration: underline;margin-bottom: -10px;"> Subir una ficha </h1>
-            <form class="form-subir" role="form" method="post" action="/subir" style="margin-left: -3px;margin-top: 22px;">
+            <form class="form-subir" role="form" action="<%=blobstoreService.createUploadUrl("/subir")%>" method="post" enctype="multipart/form-data" style="margin-left: -7px;margin-top: 22px;">
                 <div class="form-group">
                     <a class="close" href="#">&times;</a>
                     <label for="titulo">Título</label>
@@ -31,7 +31,7 @@
                     <label for="autor">Autor</label>
                     <input type="text" class="form-control" name="autor" id="autor" />
                     <label for="genero">Género</label>
-                    <select name="genero" class="form-control">
+                    <select name="genero" class="form-control" style="text-align:center;">
                         <option value="SinGénero">Seleccione un género literario</option>
                         <option value="Policial">Policial</option> 
                         <option value="Romantico">Romántico</option>

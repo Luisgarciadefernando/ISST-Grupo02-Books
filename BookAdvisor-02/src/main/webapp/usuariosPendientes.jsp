@@ -73,7 +73,7 @@
                        
                 	</div>    
              		<div id="div-derecha" style="margin-left: 270px;margin-top: -380px;">
-                		 <img  src="img/${libreria.imagen}" style="width:200px; height:200px;border: black solid;border-radius: 100px;" alt="Error al cargar la imagen" id="libreria-image" class="img-rounded imagen-libro">
+                		 <img  src="${libreria.imagen}" style="width:200px; height:200px;border: black solid;border-radius: 100px;" alt="Error al cargar la imagen" id="libreria-image" class="img-rounded imagen-libro">
 							
           						<button style="margin-left:20px;" action="submit" name="aceptarLibreria" value="true" class="button">Aceptar</button>
           						<button style="margin-left:10px;" action="submit" name="rechazarLibreria" value="true" class="button">Rechazar</button>
@@ -106,7 +106,7 @@
                        
                 	</div>    
              		<div id="div-derecha" style="margin-left: 270px;margin-top: -380px;">
-                		 <img  src="img/${biblioteca.imagen}" style="width:200px; height:200px;border: black solid;border-radius: 100px;" alt="Error al cargar la imagen" id="libreria-image" class="img-rounded imagen-libro">
+                		 <img  src="${biblioteca.imagen}" style="width:200px; height:200px;border: black solid;border-radius: 100px;" alt="Error al cargar la imagen" id="libreria-image" class="img-rounded imagen-libro">
 							
           						<button style="margin-left:20px;" action="submit" name="aceptarBiblioteca" value="true" class="button">Aceptar</button>
           						<button style="margin-left:10px;" action="submit" name="rechazarBiblioteca" value="true" class="button">Rechazar</button>
@@ -134,7 +134,7 @@
                     </div>
                     
                     <div id="div-derecha" style="margin-left: 270px;margin-top: -175px;">
-                		 <img  src="img/${editorial.imagen}" style="width:200px; height:200px;border: black solid;border-radius: 100px;" alt="Error al cargar la imagen" id="libreria-image" class="img-rounded imagen-libro">
+                		 <img  src="${editorial.imagen}" style="width:200px; height:200px;border: black solid;border-radius: 100px;" alt="Error al cargar la imagen" id="libreria-image" class="img-rounded imagen-libro">
 							
           					<button style="margin-left:20px;" action="submit" name="aceptarEditorial" value="true" class="button">Aceptar</button>
           					<button style="margin-left:10px;" action="submit" name="rechazarEditorial" value="true" class="button">Rechazar</button>

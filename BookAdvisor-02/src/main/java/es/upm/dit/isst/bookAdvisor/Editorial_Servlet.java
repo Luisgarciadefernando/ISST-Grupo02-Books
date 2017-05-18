@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.appengine.api.blobstore.BlobKey;
+import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import com.google.appengine.api.images.ImagesService;
+import com.google.appengine.api.images.ImagesServiceFactory;
+import com.google.appengine.api.images.ServingUrlOptions;
 import com.googlecode.objectify.ObjectifyService;
 
 import es.upm.dit.isst.bookAdvisor.dao.EditorialDAO;
@@ -32,7 +38,7 @@ public class Editorial_Servlet extends HttpServlet  {
 		String pass2 = request.getParameter("password2");
 		String hash1="";
 		String hash2="";
-		String imagen = request.getParameter("imagen");
+		String imagen = "img/no-disponible.jpg";
 		
 		
 		try {
@@ -46,10 +52,19 @@ public class Editorial_Servlet extends HttpServlet  {
 		} catch (NoSuchAlgorithmException e) {				
 				e.printStackTrace();
 		}
-		if (imagen == null){
-			imagen = "no-disponible.jpg";
+		
+		Map<String, List<BlobKey>> blobs = BlobstoreServiceFactory.getBlobstoreService().getUploads(request);
+		List<BlobKey> blobKeys = blobs.get("file");
+		if (blobKeys == null || blobKeys.isEmpty() || blobKeys.get(0) == null) {
+			response.sendError(1200);
 		}
-			
+		else {
+			ImagesService imagesService = ImagesServiceFactory.getImagesService();
+			ServingUrlOptions servingOptions = ServingUrlOptions.Builder.withBlobKey(blobKeys.get(0));
+	        String servingUrl = imagesService.getServingUrl(servingOptions);
+			imagen = servingUrl;
+		}
+		
 		Editorial editorial = Edi_dao.readEmail(email);
 		List<Editorial> edit = Edi_dao.read();
 		if(hash1==null || hash2==null || !hash1.equals(hash2)){
@@ -57,7 +72,7 @@ public class Editorial_Servlet extends HttpServlet  {
 			response.sendRedirect("/registroEditorial");
 			
 		}
-
+		
 		else if (editorial != null){
 			request.getSession().setAttribute("mensaje","editorial ya existente");
 			response.sendRedirect("/registroEditorial");

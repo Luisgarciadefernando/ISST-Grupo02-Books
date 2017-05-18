@@ -42,7 +42,7 @@
             <div class="row" style="margin-bottom:50px;">
                 <!-- Main content -->
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12" style="margin-bottom: 20px;">
                         <h2 class="text-uppercase">Ofertas y descuentos</h2>
                         <hr class="templatemo-section-header-hr">
                         <p class="text-uppercase templatemo-section-subheader margin-bottom-0">Listado de ofertas</p>

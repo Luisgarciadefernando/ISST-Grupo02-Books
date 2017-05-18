@@ -3,6 +3,7 @@ package es.upm.dit.isst.bookAdvisor.dao;
 import java.util.Date;
 import java.util.List;
 
+import es.upm.dit.isst.bookAdvisor.model.Biblioteca;
 import es.upm.dit.isst.bookAdvisor.model.BookCrossing;
 
 public interface BookCrossingDAO {
@@ -15,6 +16,8 @@ public interface BookCrossingDAO {
 	public List<BookCrossing> readEncontrado(boolean encontrado);
 	public BookCrossing delete(BookCrossing bookcrossing);
 	public BookCrossing update (BookCrossing bookcrossing);
+	public List<BookCrossing> readDireccion(String direccion);
+
 
 }
 

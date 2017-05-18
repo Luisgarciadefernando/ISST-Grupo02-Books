@@ -46,10 +46,15 @@
         <section class="templatemo-white-bg">
             <div class="container" style="margin-bottom: 40px;">
                 <div class="row">
-                    <div class="col-lg-12" style="margin-bottom: -50px;">
+                    <div class="col-lg-12" style="margin-bottom: 40px;">
                         <h2 class="text-uppercase">Usuarios</h2>
                         <hr class="templatemo-section-header-hr">
-                        <p class="text-uppercase templatemo-section-subheader">Listado de usuarios </p>
+                        <c:if test="${not empty libro}">
+                        	<p class="text-uppercase templatemo-section-subheader margin-bottom-0">Listado de usuarios que desean intercambiar  <c:out value="${libro.titulo}"/></p>
+                        </c:if>
+                        <c:if test="${empty libro}">
+                        	<p class="text-uppercase templatemo-section-subheader margin-bottom-0">Listado de usuarios</p>
+                       	</c:if>
                     </div>
                     
                 </div>
