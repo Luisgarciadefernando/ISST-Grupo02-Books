@@ -51,28 +51,28 @@
                 </div>
                 
                 <c:forEach items="${novedades}" var="novedad">
-                    <div class="row">
+                    <div class="row" style="margin-top:50px;">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-left">
                             <div class="post-title">
                                 <h3 class="text-uppercase"><c:out value="${novedad.libro.titulo}" /></h3>
                             </div>
                             <div class="post-meta-data">
-                                <p class="gold-text"><i>Editorial: <c:out value="${novedad.asignacionesEditoriales.editorial.nombre}" /></i></p>
+                                <p class="gold-text"><i><strong>Editorial:</strong> <c:out value="${novedad.asignacionesEditoriales.editorial.nombre}" /></i></p>
                             </div>
                             <div class="post-excerpt gray-text">
-                                <p>Formato: <c:out value="${novedad.asignacionesEditoriales.formato}" /></p>
+                                <p><strong>Formato:</strong> <c:out value="${novedad.asignacionesEditoriales.formato}" /></p>
                             </div>
                             <div class="post-excerpt gray-text">
-                                <p>Idioma: <c:out value="${novedad.asignacionesEditoriales.idioma}" /></p>
+                                <p><Strong>Idioma:</Strong> <c:out value="${novedad.asignacionesEditoriales.idioma}" /></p>
                             </div>
                             <div class="post-excerpt gray-text">
-                                <p>Fecha de publicación: <c:out value="${novedad.asignacionesEditoriales.fecha}" /></p>
+                                <p><strong>Fecha de publicación:</strong> <c:out value="${novedad.asignacionesEditoriales.fecha}" /></p>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="post-img-container">
-                                    <img src="${novedad.libro.imagen}" class="post-img img-responsive">
+                                <div class="post-img-container" style="margin-top: -20px;">
+                                    <img src="${novedad.libro.imagen}" class="post-img img-responsive" style="height: 300px;width: 200px;">
                                 </div>
                             </div>
                         </div>

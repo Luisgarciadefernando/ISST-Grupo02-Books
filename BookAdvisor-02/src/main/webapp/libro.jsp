@@ -45,24 +45,20 @@
                     <hr class="templatemo-section-header-hr">
                     <p class="text-uppercase templatemo-section-subheader"></p>
                 <div id ="div-derecha" style="margin-top:20px; margin-left:344px;">
-                    <div id="div-derecha-sub">
+                    <div id="div-derecha-sub" style="margin-top: -20px;">
                     <div id="resumen" class ="derecha-dentro">
                         <h5><strong>Resumen:</strong></h5>
                         <h6>${libro.resumen}
                         </h6>
-                        <h5><strong>Autor:</strong></h5>
-                        <h6>${libro.autor}
-                        </h6>
-                        <h5><strong>Género:</strong></h5>
-                        <h6>${libro.genero}
-                        </h6>
+                       <h5><strong>Autor:&nbsp</strong>${libro.autor}</h5>
+                       <h5><strong>Género:&nbsp</strong>${libro.genero}</h5>
                         
                     </div>
                     
                     
-                    <div id="valoracion"  class ="derecha-dentro">
-                    Valoracion: ${libro.valoracion }<br>
-                    Veces valorado:&nbsp<span class="badge"> ${libro.vecesValorado}</span><br>
+                    <div id="valoracion"  class ="derecha-dentro" style="margin-top: -5px;">
+                    <strong>Valoracion:&nbsp</strong> ${libro.valoracion }<br>
+                    <strong>Veces valorado:&nbsp</strong><span class="badge"> ${libro.vecesValorado}</span><br>
                     <%Libro libro = (Libro)request.getSession().getAttribute("libro"); 
                     	int valoracionEntera = (int)libro.getValoracion();
                     	int estrellas =0;
