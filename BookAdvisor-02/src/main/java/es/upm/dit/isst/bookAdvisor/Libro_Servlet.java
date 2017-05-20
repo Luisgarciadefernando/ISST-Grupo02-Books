@@ -15,6 +15,7 @@ import es.upm.dit.isst.bookAdvisor.dao.AsignacionesLibreriasDAO;
 import es.upm.dit.isst.bookAdvisor.dao.AsignacionesLibreriasDAOImpl;
 import es.upm.dit.isst.bookAdvisor.dao.AsignacionesBibliotecasDAO;
 import es.upm.dit.isst.bookAdvisor.dao.AsignacionesBibliotecasDAOImpl;
+import es.upm.dit.isst.bookAdvisor.dao.AsignacionesEditorialesDAOImpl;
 import es.upm.dit.isst.bookAdvisor.dao.IntercambioTienenDAO;
 import es.upm.dit.isst.bookAdvisor.dao.IntercambioTienenDAOImpl;
 import es.upm.dit.isst.bookAdvisor.dao.LibroDAO;
@@ -23,10 +24,12 @@ import es.upm.dit.isst.bookAdvisor.dao.ValoracionDAO;
 import es.upm.dit.isst.bookAdvisor.dao.ValoracionDAOImpl;
 import es.upm.dit.isst.bookAdvisor.model.AsignacionesLibrerias;
 import es.upm.dit.isst.bookAdvisor.model.AsignacionesBibliotecas;
+import es.upm.dit.isst.bookAdvisor.model.AsignacionesEditoriales;
 import es.upm.dit.isst.bookAdvisor.model.IntercambioTienen;
 import es.upm.dit.isst.bookAdvisor.model.Lector;
 import es.upm.dit.isst.bookAdvisor.model.Libreria;
 import es.upm.dit.isst.bookAdvisor.model.Biblioteca;
+import es.upm.dit.isst.bookAdvisor.model.Editorial;
 import es.upm.dit.isst.bookAdvisor.model.Libro;
 import es.upm.dit.isst.bookAdvisor.model.Valoracion;
 
@@ -39,6 +42,7 @@ public class Libro_Servlet extends HttpServlet {
 		ObjectifyService.register(IntercambioTienen.class);
 		ObjectifyService.register(AsignacionesLibrerias.class);
 		ObjectifyService.register(AsignacionesBibliotecas.class);
+		ObjectifyService.register(AsignacionesEditoriales.class);
 
 
 	}
@@ -63,20 +67,23 @@ public class Libro_Servlet extends HttpServlet {
 		
 		Libreria libreria = (Libreria) request.getSession().getAttribute("libreria");
 		Biblioteca biblioteca = (Biblioteca) request.getSession().getAttribute("biblioteca");
+		Editorial editorial = (Editorial) request.getSession().getAttribute("editorial");
 		
 		AsignacionesLibreriasDAO asignacionesLibreriadao = AsignacionesLibreriasDAOImpl.getInstancia();
 		List<AsignacionesLibrerias> asignacionesLibrerias = null;
 		AsignacionesBibliotecasDAO asignacionesBibliotecadao = AsignacionesBibliotecasDAOImpl.getInstancia();
 		List<AsignacionesBibliotecas> asignacionesBibliotecas = null;
+		List<AsignacionesEditoriales> asignacionesEditorial = null;
 		
 		if(libreria!=null){
-			System.out.println("AAAA");
 			asignacionesLibrerias = asignacionesLibreriadao.readLibreria(libreria.getId());
 		}
 		
 		if(biblioteca!=null){
-			System.out.println("AAAA");
 			asignacionesBibliotecas = asignacionesBibliotecadao.readBiblioteca(biblioteca.getId());
+		}
+		if(editorial!=null){
+			asignacionesEditorial = AsignacionesEditorialesDAOImpl.getInstancia().readEditorial(editorial);
 		}
 		
 		
@@ -112,6 +119,15 @@ public class Libro_Servlet extends HttpServlet {
 			
 			}
 		}
+		AsignacionesEditoriales asignacionEditorial = null;
+		if(asignacionesEditorial!=null){
+			for(AsignacionesEditoriales a: asignacionesEditorial) {
+				if(a.getLibro().getId().equals(libro.getId())) {
+					loTiene = true;
+					asignacionEditorial = a;
+				}
+			}
+		}
 		AsignacionesBibliotecas asignacionbiblioteca = null;
 		if(asignacionesBibliotecas!=null){
 
@@ -133,6 +149,9 @@ public class Libro_Servlet extends HttpServlet {
 			}
 			if(biblioteca!=null){
 				request.getSession().setAttribute("asignacionbib", asignacionbiblioteca);
+			}
+			if(editorial!=null){
+				request.getSession().setAttribute("asignacionEditorial", asignacionEditorial);
 			}
 		}
 		

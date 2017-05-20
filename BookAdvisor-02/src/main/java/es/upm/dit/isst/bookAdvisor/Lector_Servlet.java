@@ -6,6 +6,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +14,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.appengine.api.blobstore.BlobKey;
+import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import com.google.appengine.api.images.ImagesService;
+import com.google.appengine.api.images.ImagesServiceFactory;
+import com.google.appengine.api.images.ServingUrlOptions;
 import com.googlecode.objectify.ObjectifyService;
 
 import es.upm.dit.isst.bookAdvisor.dao.LectorDAO;
@@ -52,7 +58,6 @@ public class Lector_Servlet extends HttpServlet  {
 		
 		
 		//Lector lector = dao.readEmail(email);
-		
 		Lector lector = dao.readEmail(email);
 		List<Lector> lects = dao.read();
 		if(hash1==null || hash2==null || !hash1.equals(hash2)){

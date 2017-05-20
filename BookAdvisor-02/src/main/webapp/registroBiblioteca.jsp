@@ -69,7 +69,7 @@
                         <input type="password" class="form-control" name="password2" id="password2" placeholder="Repetir la contraseña" required="" style="margin-bottom: 10px;"/>      
                       
                         <div class="drag-drop">
-                            <input type="file" name="file" multiple="multiple" id="photo" />
+                            <input type="file" name="file" multiple="multiple" id="photo" required="" />
                                 <span class="fa-stack fa-2x">
                                 <i class="fa fa-cloud fa-stack-2x bottom pulsating"></i>
                                 <i class="fa fa-circle fa-stack-1x top medium"></i>

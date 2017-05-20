@@ -130,7 +130,7 @@
                     <li><a href="autores">Autores</a></li>
                     <li><a href="bibliotecas">Bibliotecas</a></li>
                     <li><a href="librerias">Librerías</a></li>
-                    <li><a href="editoriales">Editoriales</a></li>
+                    <li><a href="/editoriales?letra=A">Editoriales</a></li>
                     <li><a href="novedades">Novedades</a></li>
                     <li style="width: 12.5%;"><a href="ofertas">Ofertas y descuentos</a></li>
         
@@ -141,7 +141,7 @@
             
       <div class="credenciales">
         <div class="templatemo-container">
-      	  <div class="imagen"><img src="img/no-disponible.jpg" alt="" class="img-circle"> </div>
+      	  <div class="imagen"><img src="img/user.jpg" alt="" class="img-circle"> </div>
           <div class="usuario">
       	     <h10>${lector.nombre}</h10> 
             <p><h11> Administrador </h11></p>
@@ -167,7 +167,7 @@
             
       <div class="credenciales" style="padding-bottom: 80px !important;">
         <div class="templatemo-container">
-      	  <div class="imagen"><img src="img/no-disponible.jpg" alt="" class="img-circle"> </div>
+      	  <div class="imagen"><img src="img/user.jpg" alt="" class="img-circle"> </div>
           <div class="usuario">
       	     <h10>${lector.nombre}</h10> 
             <p><h11> Lector </h11></p>

@@ -103,7 +103,7 @@
 	                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
 	                    <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12" float="right">
 	                        <div class="post-img-container">
-	                            <img src="img/${a.libro.imagen}" class="post-img img-responsive" style="margin-left: -450px;border: solid;height: 200px;width: 150px;margin-top: -10px;">
+	                            <img src="${a.libro.imagen}" class="post-img img-responsive" style="margin-left: -450px;border: solid;height: 200px;width: 150px;margin-top: -10px;">
 	                        </div>
 	                    </div>
 	                </div>

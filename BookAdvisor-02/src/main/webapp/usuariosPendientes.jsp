@@ -55,7 +55,7 @@
  		   <section class="container">
  		  <form action="/admin" method="post">
             <div class="row" style="margin-top:-100px;margin-bottom: 200px;">
-                    <h3 id="nombre-libreria" class="text-uppercase" style="margin-bottom: -40px;">${libreria.nombre} (Librería)</h3>
+                    <h3 id="nombre-libreria" class="text-uppercase" style="margin-bottom: -40px;"><c:out value="${libreria.nombre }"/> (Librería)</h3>
                     <hr class="templatemo-section-header-hr">
                     <p class="text-uppercase templatemo-section-subheader"></p>
                 	<div id ="div-izq">
@@ -70,6 +70,7 @@
                         <h5><strong>Email:</strong></h5>
                        <input type="text" name="email" value="${libreria.email}"><br>
                        <input type="hidden" name="libreriaId" value="${libreria.id}"><br>
+                       <input type="hidden" name="imagen" value="${libreria.imagen}"><br>
                        
                 	</div>    
              		<div id="div-derecha" style="margin-left: 270px;margin-top: -380px;">
@@ -103,6 +104,7 @@
                         <h5><strong>Email:</strong></h5>
                        <input type="text" name="email" value="${biblioteca.email}"><br>
                        <input type="hidden" name="bibliotecaId" value="${biblioteca.id}"><br>
+                       <input type="hidden" name="imagen" value="${biblioteca.imagen}"><br>
                        
                 	</div>    
              		<div id="div-derecha" style="margin-left: 270px;margin-top: -380px;">

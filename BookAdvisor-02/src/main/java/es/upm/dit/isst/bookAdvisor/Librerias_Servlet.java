@@ -42,9 +42,9 @@ public class Librerias_Servlet extends HttpServlet{
 //		dao.deleteAll();
 		List<Libreria> librerias = dao.read();
 
+		request.getSession().setAttribute("librerias", librerias);
 		request.getSession().setAttribute("libro", null);
 		request.getSession().setAttribute("asignacionesLibrerias", null);
-		request.getSession().setAttribute("librerias", librerias);
 		
 		RequestDispatcher view = request.getRequestDispatcher("librerias.jsp");
 		view.forward(request, response);

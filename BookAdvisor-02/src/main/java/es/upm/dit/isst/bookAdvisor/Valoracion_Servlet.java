@@ -42,6 +42,9 @@ public class Valoracion_Servlet extends HttpServlet {
 			double valTotal = valLibro*nVeces + valoracion;
 			nVeces++;
 			double valNueva = valTotal/nVeces;
+			
+			valNueva = Math.rint(valNueva*100)/100;
+			
 			libro.setValoracion(valNueva);
 			libro.setVecesValorado(nVeces);
 			daoLibro.update(libro);

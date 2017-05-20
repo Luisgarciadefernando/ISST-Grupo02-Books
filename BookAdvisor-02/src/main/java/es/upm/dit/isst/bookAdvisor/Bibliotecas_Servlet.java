@@ -39,6 +39,8 @@ public class Bibliotecas_Servlet extends HttpServlet{
 		List<Biblioteca> bibliotecas = dao.read();
 		
 		request.getSession().setAttribute("bibliotecas", bibliotecas);
+		request.getSession().setAttribute("libro", null);
+		request.getSession().setAttribute("asignacionesBibliotecas", null);
 		
 		RequestDispatcher view = request.getRequestDispatcher("bibliotecas.jsp");
 		view.forward(request, response);

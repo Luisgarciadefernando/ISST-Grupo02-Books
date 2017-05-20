@@ -57,11 +57,10 @@ public class Editoriales_Servlet  extends HttpServlet{
 			
 			String nombreId = request.getParameter("id");
 			Editorial a = Aut_dao.readId(nombreId);
-				
 			
-		request.getSession().setAttribute("nombreEditoriales", a);
-		RequestDispatcher view = request.getRequestDispatcher("editorialListado.jsp");
-		view.forward(request, response);
+			request.getSession().setAttribute("nombreEditoriales", a);
+			RequestDispatcher view = request.getRequestDispatcher("editorialListado.jsp");
+			view.forward(request, response);
 
 		}
 		
@@ -70,7 +69,8 @@ public class Editoriales_Servlet  extends HttpServlet{
 		
 		RequestDispatcher view = request.getRequestDispatcher("editoriales.jsp");
 		view.forward(request, response);
-		
+//
+//		response.sendRedirect("/editoriales");
 	}
 
 	}

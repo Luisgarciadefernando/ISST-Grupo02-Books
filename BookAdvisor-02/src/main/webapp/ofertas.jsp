@@ -97,7 +97,7 @@
 	                    <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
 	                        <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12" float="right">
 	                            <div class="post-img-container">
-	                                <img src="img/${oferta.libreria.imagen}" class="post-img img-responsive">
+	                                <img src="${oferta.libreria.imagen}" class="post-img img-responsive">
 	                            </div>
 	                        </div>
 	                    </div>

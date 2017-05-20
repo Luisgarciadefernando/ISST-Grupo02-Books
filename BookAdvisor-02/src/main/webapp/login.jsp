@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -32,6 +33,9 @@
     <body>
         <!-- Header -->
      <%
+     if (request.getUserPrincipal()!=null){
+     	response.sendRedirect("/login");
+     }
     if (request.getSession().getAttribute("mensaje")!=null){
     	String mensaje = (String)request.getSession().getAttribute("mensaje");
     %>	
@@ -58,14 +62,9 @@
                             <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Recordar Contraseña 
                         </label>
                         <button class="btn btn-lg btn-primary btn-block" type="submit" style="font-size: 13px;background-color: #D0AF51;border-color: #D0AF51;">LOGIN</button> 
-                        <a class="btn btn-block btn-social btn-facebook" onclick="_gaq.push(['_trackEvent', 'btn-social', 'click', 'btn-facebook']);">
-                            <span class="fa fa-facebook"></span> Login con Facebook
-                        </a>  
-                        <a class="btn btn-block btn-social btn-google" onclick="_gaq.push(['_trackEvent', 'btn-social', 'click', 'btn-google']);">
+                        
+                        <a class="btn btn-block btn-social btn-google" href = "<%=UserServiceFactory.getUserService().createLoginURL(request.getRequestURI()) %>">
                             <span class="fa fa-google"></span> Login con Google
-                        </a>
-                         <a class="btn btn-block btn-social btn-instagram" onclick="_gaq.push(['_trackEvent', 'btn-social', 'click', 'btn-instagram']);">
-                            <span class="fa fa-instagram"></span> Login con Instagram
                         </a>
                         <div class ="texto-login" style="text-align: center;margin-top: 10px;" color>
                             <p class="gray-text">

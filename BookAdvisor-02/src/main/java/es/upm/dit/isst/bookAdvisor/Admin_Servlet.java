@@ -107,6 +107,7 @@ public class Admin_Servlet extends HttpServlet{
 		String url = request.getParameter("url");
 		String email = request.getParameter("email");
 		String nombre = request.getParameter("nombre");
+		String imagen = request.getParameter("imagen");
 		
 		if(request.getSession().getAttribute("admin")!=null){
 			if(request.getParameter("rechazar")!=null){
@@ -130,6 +131,7 @@ public class Admin_Servlet extends HttpServlet{
 				libreria.setLocalizacion(localizacion);
 				libreria.setNombre(nombre);
 				libreria.setConfirmado(true);
+				libreria.setImagen(imagen);
 				libreriaDao.update(libreria);
 				response.sendRedirect("/admin?usuariosPendientes=true");
 			}
@@ -148,6 +150,7 @@ public class Admin_Servlet extends HttpServlet{
 				biblioteca.setLocalizacion(localizacion);
 				biblioteca.setNombre(nombre);
 				biblioteca.setConfirmado(true);
+				biblioteca.setImagen(imagen);
 				bibliotecaDao.update(biblioteca);
 				response.sendRedirect("/admin?usuariosPendientes=true");
 			}

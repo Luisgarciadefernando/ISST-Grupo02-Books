@@ -235,7 +235,13 @@
                         </form>
                   	 	
                     </c:if> 
+                    <c:if test="${not empty editorial and not empty loTiene}">
+                    <div id="lotienes" style="margin-bottom: 10px;">
+                        <strong><span class="glyphicon glyphicon-book"></span>&nbspLo tienes a en:</strong> ${asignacionEditorial.idioma}<br>
+                        <strong>En formato:</strong> ${asignacionEditorial.formato}
+                  	 </div>
                     
+                    </c:if> 
                     <c:if test="${not empty libreria and not empty loTiene and not empty asignacionlib}">
                    	<div id="lotienes" style="margin-bottom: 10px;">
                         <strong><span class="glyphicon glyphicon-book"></span>&nbspLo tienes a un precio de:</strong> ${asignacionlib.precio} Euros<br>

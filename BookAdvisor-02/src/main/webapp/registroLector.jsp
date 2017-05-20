@@ -55,17 +55,7 @@
                         <input type="text" class="form-control" name="email" id="email" placeholder="Email" required="" autofocus="" />
                         <input type="text" class="form-control" name="name" id="name" placeholder="Nombre usuario" required="" autofocus="" />
                         <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" required=""/>      
-                        <input type="password" class="form-control" name="password2" id="password2" placeholder="Repetir la contraseña" required="" style="margin-bottom: 10px;"/> 
-
-                        <div class="drag-drop">
-                            <input type="file" multiple="multiple" id="photo" />
-                                <span class="fa-stack fa-2x">
-                                <i class="fa fa-cloud fa-stack-2x bottom pulsating"></i>
-                                <i class="fa fa-circle fa-stack-1x top medium"></i>
-                                <i class="fa fa-arrow-circle-up fa-stack-1x top"></i>
-                                </span>
-                                <span class="desc">Pulse aquí para subir su foto de perfil</span>
-                        </div>        
+                        <input type="password" class="form-control" name="password2" id="password2" placeholder="Repetir la contraseña" required="" style="margin-bottom: 10px;"/>  
                       
                         <button class="btn btn-lg btn-primary btn-block" type="submit" style="font-size: 13px;background-color: #D0AF51;border-color: #D0AF51;color: white;">Registrarme</button> 
                         
