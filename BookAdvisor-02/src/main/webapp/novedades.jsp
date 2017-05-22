@@ -52,7 +52,14 @@
                 
                 <c:forEach items="${novedades}" var="novedad">
                     <div class="row" style="margin-top:50px;">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-left">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="post-img-container" style="margin-top: -20px;">
+                                    <img src="${novedad.libro.imagen}" class="post-img img-responsive" style="height: 300px;width: 200px;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-left" style="margin-left: -250px";>
                             <div class="post-title">
                                 <h3 class="text-uppercase"><c:out value="${novedad.libro.titulo}" /></h3>
                             </div>
@@ -67,13 +74,6 @@
                             </div>
                             <div class="post-excerpt gray-text">
                                 <p><strong>Fecha de publicación:</strong> <c:out value="${novedad.asignacionesEditoriales.fecha}" /></p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="post-img-container" style="margin-top: -20px;">
-                                    <img src="${novedad.libro.imagen}" class="post-img img-responsive" style="height: 300px;width: 200px;">
-                                </div>
                             </div>
                         </div>
                     </div>

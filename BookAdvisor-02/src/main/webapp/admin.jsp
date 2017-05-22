@@ -65,6 +65,10 @@
                         <textarea type="text" name="resumen" style="resize: inherit;height: 100px;">${libro.resumen}</textarea><br>
                         <h5><strong>Autor:</strong></h5>
                         <input type="text" name="autor" value="${libro.autor}"><br>
+                        <h5><strong>Traductor:</strong></h5>
+                        <input type="text" name="traductor" value="${libro.traductor}"><br>
+                        <h5><strong>ISBN:</strong></h5>
+                        <input type="text" name="isbn" value="${libro.isbn}"><br>
                         <h5><strong>Género:</strong></h5>
                        <input type="text" name="genero" value="${libro.genero}"><br>
                        <input type="hidden" name="libroId" value="${libro.id}"><br>

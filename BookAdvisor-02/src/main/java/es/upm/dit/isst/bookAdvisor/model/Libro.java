@@ -20,6 +20,10 @@ public class Libro implements Serializable{
 	@Index
 	String autor;
 	@Index
+	String traductor;
+	@Index
+	int isbn;
+	@Index
 	int estado;
 	String imagen;
 	@Index
@@ -31,12 +35,14 @@ public class Libro implements Serializable{
 	
 	public Libro() {}
 	
-	public Libro (String titulo, String resumen, String genero, String autor, int estado, String imagen){
+	public Libro (String titulo, String resumen, String genero, String autor, String traductor, int isbn, int estado, String imagen){
 		this.id = java.util.UUID.randomUUID().toString();
 		this.resumen = resumen;
 		this.genero = genero;
 		this.titulo = titulo;
 		this.autor = autor;
+		this.traductor = traductor;
+		this.isbn = isbn;
 		this.estado = estado;
 		this.imagen = imagen;
 		this.valoracion = 0;
@@ -104,6 +110,22 @@ public class Libro implements Serializable{
 
 	public void setAutor(String autor) {
 		this.autor = autor;
+	}
+	
+	public String getTraductor() {
+		return traductor;
+	}
+
+	public void setTraductor(String traductor) {
+		this.traductor = traductor;
+	}
+	
+	public int getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(int isbn) {
+		this.isbn = isbn;
 	}
 
 	public int getEstado() {

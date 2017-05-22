@@ -51,6 +51,8 @@
                         <h6>${libro.resumen}
                         </h6>
                        <h5><strong>Autor:&nbsp</strong>${libro.autor}</h5>
+                       <h5><strong>Traductor:&nbsp</strong>${libro.traductor}</h5>
+                       <h5><strong>ISBN:&nbsp</strong>${libro.isbn}</h5>
                        <h5><strong>Género:&nbsp</strong>${libro.genero}</h5>
                         
                     </div>

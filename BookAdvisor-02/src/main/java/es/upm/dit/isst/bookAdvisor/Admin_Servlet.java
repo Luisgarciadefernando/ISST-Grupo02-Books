@@ -101,6 +101,8 @@ public class Admin_Servlet extends HttpServlet{
 		}
 		String resumen = request.getParameter("resumen");
 		String autor = request.getParameter("autor");
+		String traductor = request.getParameter("traductor");
+		String isbn = request.getParameter("isbn");
 		String titulo = request.getParameter("titulo");
 		String localizacion = request.getParameter("localizacion");
 		String descripcion = request.getParameter("descripcion");
@@ -109,6 +111,11 @@ public class Admin_Servlet extends HttpServlet{
 		String nombre = request.getParameter("nombre");
 		String imagen = request.getParameter("imagen");
 		
+		int isbn1 = 0;
+		if (isbn != null){
+			isbn1 = Integer.parseInt(isbn);
+		}
+		
 		if(request.getSession().getAttribute("admin")!=null){
 			if(request.getParameter("rechazar")!=null){
 				librodao.delete(libro);
@@ -116,9 +123,11 @@ public class Admin_Servlet extends HttpServlet{
 			}
 			if(request.getParameter("aceptar")!=null){
 				libro.setAutor(autor);
+				libro.setTraductor(traductor);
 				libro.setTitulo(titulo);
 				libro.setResumen(resumen);
 				libro.setEstado(1);
+				libro.setIsbn(isbn1);
 				librodao.update(libro);
 				response.sendRedirect("/admin");
 				

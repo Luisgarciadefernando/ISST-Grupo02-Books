@@ -58,6 +58,7 @@
 
  				<%int n=0;%>
                 <c:forEach items="${librerias}" var="libreria">
+                	<c:if test="${libreria.confirmado != false}">
    <%-- 					<c:if test="${not empty asignacionesLibrerias}">
 	                	<%
 	                	List<AsignacionesLibrerias> asignacionesLibrerias = (List<AsignacionesLibrerias>)request.getSession().getAttribute("asignacionesLibrerias");
@@ -151,7 +152,7 @@
       
     </script>    
       
-    
+    </c:if>
                 </c:forEach>
 
                 <script>

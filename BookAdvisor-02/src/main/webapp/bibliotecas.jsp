@@ -54,6 +54,7 @@
                 </div>
                 	<%int n=0;%>
                 <c:forEach items="${bibliotecas}" var="biblioteca">
+                	<c:if test="${biblioteca.confirmado != false}">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-left">
                             <div class="post-title">
@@ -120,6 +121,7 @@
       }
       
     </script>              
+    </c:if>
                 </c:forEach>
                 
                        <script>

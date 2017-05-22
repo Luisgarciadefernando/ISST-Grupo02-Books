@@ -46,14 +46,19 @@ public class SubirNovedad_Servlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String titulo = req.getParameter("titulo");
 		String autor = req.getParameter("autor");
+		String traductor = req.getParameter("traductor");
 		String resumen = req.getParameter("resumen");
 		String genero = req.getParameter("genero");
+		String isbn = req.getParameter("isbn");
 		String formato = req.getParameter("formato");
 		String idioma = req.getParameter("idioma");
 		Editorial editorial = (Editorial) req.getSession().getAttribute("editorial");
 		String editorialId = editorial.getId();
 
 		String imagen = "no-disponible.jpg";
+		
+		int isbn1 = 0;
+		isbn1 = Integer.parseInt(isbn);
 		
 		LibroDAO libroDao = LibroDAOImpl.getInstancia();
 		AutorDAO autorDao = AutorDAOImpl.getInstancia();
@@ -72,7 +77,7 @@ public class SubirNovedad_Servlet extends HttpServlet {
 			imagen = servingUrl;
 		}
 		
-		Libro libro = libroDao.create(titulo, resumen, genero, autor, 0, imagen);
+		Libro libro = libroDao.create(titulo, resumen, genero, autor, traductor, isbn1,  0, imagen);
 		
 		if(autorDao.readNombre(autor).size()==0){
 			autorDao.create(autor);

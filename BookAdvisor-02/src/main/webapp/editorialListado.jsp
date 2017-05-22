@@ -84,7 +84,14 @@
             <c:if test="${not empty asignacionesEditorial }">
             <c:forEach items="${asignacionesEditorial}" var="a">
                 <div class="row">
-                    <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12 text-left">
+	                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+	                    <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12" float="right">
+	                        <div class="post-img-container">
+	                            <img src="${a.libro.imagen}" class="post-img img-responsive" style="border: solid;height: 200px;width: 150px;margin-top: -10px;">
+	                        </div>
+	                    </div>
+	                </div>
+                    <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12 text-left" style="margin-left: -150px;">
                         <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">	
                         </div>
                         <div class="post-title">
@@ -100,13 +107,6 @@
                             <p class="gold-text"><i><strong style="color:#333333">Idioma:</strong> <c:out value="${a.idioma}" /></i></p>
                         </div>
                     </div>
-	                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-	                    <div class="col-lg-8 col-md-6 col-sm-12 col-xs-12" float="right">
-	                        <div class="post-img-container">
-	                            <img src="${a.libro.imagen}" class="post-img img-responsive" style="margin-left: -450px;border: solid;height: 200px;width: 150px;margin-top: -10px;">
-	                        </div>
-	                    </div>
-	                </div>
                 </div>
                 <hr>
             </c:forEach>

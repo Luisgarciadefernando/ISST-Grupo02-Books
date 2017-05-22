@@ -30,6 +30,10 @@
                     <input type="text" class="form-control" name="titulo" id="titulo"/>
                     <label for="autor">Autor</label>
                     <input type="text" class="form-control" name="autor" id="autor" />
+                    <label for="traductor">Traductor</label>
+                    <input type="text" class="form-control" name="traductor" id="traductor" />
+                    <label for="isbn">ISBN</label>
+                    <input type="text" class="form-control" maxlength = "9" name="isbn" id="isbn" />
                     <label for="genero">Género</label>
                     <select name="genero" class="form-control" style="text-align:center;">
                         <option value="SinGénero">Seleccione un género literario</option>

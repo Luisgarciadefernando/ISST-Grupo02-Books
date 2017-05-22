@@ -35,12 +35,18 @@ public class Subir_Servlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+	
 		String titulo = req.getParameter("titulo");
 		String autor = req.getParameter("autor");
+		String traductor = req.getParameter("traductor");
 		String resumen = req.getParameter("resumen");
+		String isbn = req.getParameter("isbn");
 		String genero = req.getParameter("genero");
 
 		String imagen = "img/no-disponible.jpg";
+		
+		int isbn1 = 0;
+		isbn1 = Integer.parseInt(isbn);
 		
 		LibroDAO dao = LibroDAOImpl.getInstancia();
 		AutorDAO autorDao = AutorDAOImpl.getInstancia();
@@ -57,7 +63,7 @@ public class Subir_Servlet extends HttpServlet {
 			imagen = servingUrl;
 		}
 		
-		dao.create(titulo, resumen, genero, autor, 0, imagen);
+		dao.create(titulo, resumen, genero, autor, traductor, isbn1, 0, imagen);
 		
 		if(autorDao.readNombre(autor).size()==0){
 			autorDao.create(autor);

@@ -139,7 +139,7 @@
                         </div>
                     </div>
                 
-                        <div class="fotobook" style="width:200px; height:250px;margin-left: 590px;border: solid;margin-top: -200px;">
+                        <div class="fotobook" style="width:200px; height:300px;margin-left: 590px;border: solid;margin-top: -200px;">
                             <div class="post-img-container">
                                <a href="libro?id=${booki.libro}"><img src="<%=libro.getImagen()%>" class="post-img img-responsive"></a> 
                             </div>

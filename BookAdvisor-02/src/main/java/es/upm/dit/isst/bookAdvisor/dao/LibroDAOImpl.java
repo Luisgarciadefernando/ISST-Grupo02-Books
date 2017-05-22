@@ -18,9 +18,9 @@ public class LibroDAOImpl implements LibroDAO{
 		return instancia;
 	}
 	@Override
-	public Libro create(String titulo, String resumen, String genero, String autor, int estado, String imagen) {
+	public Libro create(String titulo, String resumen, String genero, String autor, String traductor, int isbn, int estado, String imagen) {
 		// TODO Auto-generated method stub
-		Libro libro = new Libro(titulo, resumen, genero, autor, estado, imagen);
+		Libro libro = new Libro(titulo, resumen, genero, autor, traductor, isbn, estado, imagen);
 		ofy().save().entity(libro).now();
 		return libro;
 	}
@@ -50,6 +50,12 @@ public class LibroDAOImpl implements LibroDAO{
 	}
 
 	@Override
+	public List<Libro> readIsbn(int isbn) {
+		// TODO Auto-generated method stub
+		return ofy().load().type(Libro.class).filter("isbn", isbn).list();
+	}
+	
+	@Override
 	public Libro update(Libro libro) {
 		// TODO Auto-generated method stub
 		ofy().save().entity(libro).now();
@@ -62,11 +68,19 @@ public class LibroDAOImpl implements LibroDAO{
 		ofy().delete().entity(libro).now();
 		return libro; 
 	}
+	
 	@Override
 	public List<Libro> readAutor(String autor) {
 		// TODO Auto-generated method stub
 		return ofy().load().type(Libro.class).filter("autor", autor).list();
 	}
+	
+	@Override
+	public List<Libro> readTraductor(String traductor) {
+		// TODO Auto-generated method stub
+		return ofy().load().type(Libro.class).filter("traductor", traductor).list();
+	}
+	
 	@Override
 	public Libro readID(String id) {
 		// TODO Auto-generated method stub
@@ -74,5 +88,5 @@ public class LibroDAOImpl implements LibroDAO{
 		return ofy().load().type(Libro.class).filterKey(Key.create(Libro.class,id)).first().now();
 		
 	}
-
+	
 }
